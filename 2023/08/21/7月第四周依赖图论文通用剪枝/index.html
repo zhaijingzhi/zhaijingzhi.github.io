@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="12345title: 7月第四周依赖图论文通用剪枝date: 202308tags: 依赖图通用剪枝categories: 剪枝1234  7月第四周依赖图论文通用剪枝论文1 DepGraph: Towards Any Structural PruningDepGraph：面向任何结构修剪Basic Information: Title: DepGraph: Towards Any Struct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E4%BE%9D%E8%B5%96%E5%9B%BE%E8%AE%BA%E6%96%87%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="12345title: 7月第四周依赖图论文通用剪枝date: 202308tags: 依赖图通用剪枝categories: 剪枝1234  7月第四周依赖图论文通用剪枝论文1 DepGraph: Towards Any Structural PruningDepGraph：面向任何结构修剪Basic Information: Title: DepGraph: Towards Any Struct">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221403214.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221459077.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221521004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221523007.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221524708.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221527044.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221531158.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221534860.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291115870.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291141964.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291138381.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291138203.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291142007.png">
+<meta property="article:published_time" content="2023-08-21T07:31:26.228Z">
+<meta property="article:modified_time" content="2023-08-21T07:57:39.097Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221403214.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-7月第四周依赖图论文通用剪枝" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E4%BE%9D%E8%B5%96%E5%9B%BE%E8%AE%BA%E6%96%87%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T07:31:26.228Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 7月第四周依赖图论文通用剪枝</span><br><span class="line">date: 202308</span><br><span class="line">tags: 依赖图通用剪枝</span><br><span class="line">categories: 剪枝</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+
+<h1 id="7月第四周依赖图论文通用剪枝"><a href="#7月第四周依赖图论文通用剪枝" class="headerlink" title="7月第四周依赖图论文通用剪枝"></a>7月第四周依赖图论文通用剪枝</h1><h1 id="论文1-DepGraph-Towards-Any-Structural-Pruning"><a href="#论文1-DepGraph-Towards-Any-Structural-Pruning" class="headerlink" title="论文1 DepGraph: Towards Any Structural Pruning"></a>论文1 DepGraph: Towards Any Structural Pruning</h1><h1 id="DepGraph：面向任何结构修剪"><a href="#DepGraph：面向任何结构修剪" class="headerlink" title="DepGraph：面向任何结构修剪"></a>DepGraph：面向任何结构修剪</h1><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: DepGraph: Towards Any Structural Pruning (DepGraph: 通向任意结构剪枝)</li>
+<li>Authors: Gongfan Fang, Xinyin Ma, Mingli Song, Michael Bi Mi, Xinchao Wang</li>
+<li>Affiliation: National University of Singapore, Zhejiang University, Huawei Technologies Ltd.</li>
+<li>Keywords: structural pruning, neural networks, dependency graph, automatic method, generalizability</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2301.12900v2">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/VainF/Torch-Pruning">GitHub</a></li>
+</ul>
+<h1 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li><p>提出了一种非深度图算法DepGraph，实现了架构通用的结构化剪枝，适用于CNNs, Transformers, RNNs, GNNs等网络。DepGraph能够自动地分析复杂的结构耦合，从而正确地移除参数实现网络加速。基于DepGraph算法，我们开发了PyTorch结构化剪枝框架 <a href="https://link.zhihu.com/?target=https://github.com/VainF/Torch-Pruning">Torch-Pruning</a>。不同于依赖Masking实现的“模拟剪枝”，该框架能够实际地移除参数和通道，降低模型推理成本。在DepGraph的帮助下，研究者和工程师无需再与复杂的网络结构斗智斗勇，可以轻松完成复杂模型的一键剪枝。</p>
+<p>论文标题：DepGraph: Towards Any Structural Pruning<br>论文链接：<a href="https://link.zhihu.com/?target=https://arxiv.org/abs/2301.12900">https://arxiv.org/abs/2301.12900</a><br>项目地址：<a href="https://link.zhihu.com/?target=https://github.com/VainF/Torch-Pruning">https://github.com/VainF/Torch-</a></p>
+</li>
+</ul>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 近年来，边缘计算应用的出现使得深度神经网络压缩变得必要。剪枝作为一种网络压缩方法已被证明是高效且实用的。然而，现有的剪枝方法往往依赖于手动设计的分组方案，限制了其在新的网络架构上的通用性。</li>
+<li>过去方案: 传统的剪枝方法可以大致分为结构剪枝和非结构剪枝两种。结构剪枝通过物理上移除参数来改变神经网络的结构，而非结构剪枝则通过将特定权重置零来实现。然而，现有的结构剪枝方法往往需要针对不同网络进行个案分析，且无法直接推广到其他网络架构，限制了其在实际应用中的使用。</li>
+<li>论文的Motivation: 鉴于现有结构剪枝方法的局限性，本文旨在提出一种通用的剪枝方案，能够适用于任意网络架构。为了解决结构剪枝中的依赖性问题，作者引入了Dependency Graph (DepGraph)方法，通过显式建模不同层之间的依赖关系，实现了全自动的剪枝过程。通过在多个网络架构上的实验证明了DepGraph的有效性和通用性。</li>
+</ul>
+<h1 id="论文摘要"><a href="#论文摘要" class="headerlink" title="论文摘要"></a>论文摘要</h1><blockquote>
+<p>结构剪枝能够通过从神经网络中移除结构性分组的参数来加速模型。然而，不同模型中的参数分组模式各不相同，这使得依赖于手动设计的分组方案的特定架构的剪枝器无法泛化到新的架构。在这项工作中，我们研究了一个极具挑战性但鲜少被探索的任务，即<strong>任意结构剪枝</strong>，以解决诸如CNNs、RNNs、GNNs和Transformers等任意架构的通用结构剪枝。实现这个目标的最大难题在于<strong>结构耦合</strong>，它不仅强制不同的层同时被剪枝，还期望所有被移除的参数在重要性上保持一致，从而避免剪枝后出现结构问题和显著的性能下降。为解决这个问题，我们提出了一种通用且全自动的方法，依赖图（Dependency Graph，DepGraph），用以明确地建模层与层之间的依赖关系，以及为剪枝全面地组合耦合参数。在这项工作中，我们对多种架构和任务进行了广泛的评估，包括用于图像的ResNe(X)t、DenseNet、MobileNet和Vision transformer，用于图的GAT，用于3D点云的DGCNN，以及用于语言的LSTM，并表明，即使采用简单的基于规范的判别准则，所提出的方法也能够持续产生令人满意的性能。</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>什么是结构耦合（structural coupling），并且它如何影响神经网络的剪枝？</li>
+<li>结构耦合是指<strong>神经网络中不同层之间的关联性</strong>，这种关联性强制同时剪枝不同的层，同时也期望所有被剪枝的参数都一致地不重要，这样可以避免剪枝后出现结构问题和明显的性能下降。具体来说，如果一个参数被剪枝，那么它的耦合参数也应该被剪枝，以保持网络的结构完整性。</li>
+</ol>
+</blockquote>
+<h2 id="图片1：不同神经网络模型结构耦合和剪枝策略的对比"><a href="#图片1：不同神经网络模型结构耦合和剪枝策略的对比" class="headerlink" title="图片1：不同神经网络模型结构耦合和剪枝策略的对比"></a>图片1：不同神经网络模型结构耦合和剪枝策略的对比</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221403214.png" alt="image-20230722140353693"></p>
+<blockquote>
+<p>a: 在”a”部分（CNNs）中，例如，为了剪枝Conv2，块内的所有其他层（如Conv1, BN1, BN2）也必须被剪枝。这强调了在剪枝过程中，如果要剪枝某个层，则必须同时剪枝块内的所有其他层。</p>
+<p>b: b部分中，如果要对Transform的MLP模块进行剪枝，也就必须要对Norm和多头注意力进行剪枝，这种情况的出现是由于神经网络中的结构耦合。在神经网络中，不同层的参数是彼此依赖的，这种依赖关系迫使一旦一个层（如MLP）被剪枝，那么它的耦合层（如Norm和多头注意力机制）也必须被剪枝。各层之间的信息流动是相互依赖的。如果你剪掉了一个层，那么它的输出就不再能够作为下一层的输入。因此，下一层也就失去了它的输入源，相当于也被”剪掉”了。而这些层可能又是其他层的输入源，因此，剪枝一个层可能会导致多个层被剪掉。这就是为什么在剪枝MLP的同时，必须剪掉Norm和多头注意力机制。</p>
+<p>c 一样的道理 RNNS</p>
+<p>d GNNS  进行剪枝时，不仅要考虑节点或边的重要性，还需要考虑剪枝操作对整个网络结构的影响。例如，如果剪枝的节点或边是信息传播路径的一部分，那么剪枝可能会阻断信息的流动，从而影响网络的性能。</p>
+</blockquote>
+<h1 id="相关工作部分"><a href="#相关工作部分" class="headerlink" title="相关工作部分"></a>相关工作部分</h1><blockquote>
+<ol>
+<li><strong>结构剪枝和非结构剪枝</strong>：结构剪枝的目标是物理上移除一组参数，从而减少神经网络的大小。相比之下，非结构剪枝涉及将特定的权重置零，但不改变网络结构。非结构剪枝在实践中易于实施，并且本质上能够适应各种网络。然而，它通常需要专门的AI加速器或软件进行模型加速。相反，结构剪枝通过从网络中物理上移除参数来改善推理开销，从而在更广泛的应用领域中找到应用。</li>
+<li><strong>剪枝分组参数</strong>：在复杂的网络结构中，参数组之间可能存在依赖性，需要同时进行剪枝。例如，当剪枝两个连续的卷积层时，从第一层移除一个过滤器需要剪枝下一层的关联核。虽然手动分析参数依赖性是可行的，但当应用于复杂的网络时，这个过程可能非常耗费人力。此外，这样的手动方案本质上不能转移到新的架构，这严重限制了剪枝的应用。最近，一些初步的工作已经被提出来解密层与层之间的复杂关系。不幸的是，现有的技术仍然依赖于经验规则或预定义的架构模式，使它们对所有结构剪枝应用的通用性不足。</li>
+<li>作者指出了他们的工作目标：提出一种通用的方法来解决这个挑战，证明有效地处理参数依赖性可以使结构剪枝在各种网络中通用，从而在多个任务上得到满意的性能。</li>
+</ol>
+<p>在卷积神经网络（CNNs）中，一层的输出通常作为下一层的输入，这种依赖关系也适用于卷积层。如果你移除了Conv2的一个过滤器，那么Conv2的输入（也就是Conv1的输出）就会少了一个特征映射。为了保持网络的结构完整性，你需要同时剪掉Conv1中对应的输出通道。</p>
+<p><strong>具体来说，Conv1的每个过滤器都会输出一个特征映射，这些特征映射被堆叠在一起，形成Conv2的输入。每个Conv2的过滤器都会在这些输入特征映射上进行卷积操作。如果你移除了Conv2的一个过滤器，那么那个过滤器对应的输入特征映射就不再需要了。这个输入特征映射是Conv1的一个输出特征映射，所以对应的Conv1的过滤器也就可以被剪掉了。</strong></p>
+<p>这就是为什么在剪枝Conv2的时候，也需要剪掉Conv1。这是由于Conv1和Conv2之间的结构耦合，也就是他们的输出和输入之间的依赖关系。</p>
+</blockquote>
+<h1 id="方法-21、29"><a href="#方法-21、29" class="headerlink" title="方法:21、29"></a>方法:21、29</h1><ol>
+<li><h2 id="Dependency-in-Neural-Networks神经网络中的依赖"><a href="#Dependency-in-Neural-Networks神经网络中的依赖" class="headerlink" title="Dependency in Neural Networks神经网络中的依赖"></a>Dependency in Neural Networks神经网络中的依赖</h2></li>
+<li><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221459077.png" alt="image-20230722145939026"></p>
+</li>
+<li><p>在不同结构中具有相互依赖性的分组参数。必须同时修剪所有高亮显示的参数。</p>
+</li>
+<li><blockquote>
+<p>在许多神经网络优化任务中，结构修剪是一种常用的技术，通过移除不重要的神经元来使网络更加高效。在这里，作者使用了一个由三个连续层组成的线性神经网络作为例子，每一层都由二维权重矩阵（wl, wl+1和wl+2）参数化。</p>
+<p>当通过修剪神经元来瘦身网络时，参数之间的依赖性就显现出来了。在这里，wl和wl+1的依赖性是这样的：如果你想修剪连接wl和wl+1的第k个神经元，那么你就必须同时移除wl[k, :] 和 wl+1[:, k]。这就是所谓的“依赖性”，因为这两个参数（即wl和wl+1）必须一起修剪，不能单独修剪。</p>
+<p>在现有的文献中，研究人员通常使用手动设计的、模型特定的方案来处理层依赖性并对深度神经网络进行结构修剪。然而，这个过程中存在着各种类型的依赖性，如作者所示。手动分析所有的依赖性并不可行，尤其是当简单的依赖性可能会嵌套或组合形成更复杂的模式时。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Dependency-Graph依赖图"><a href="#Dependency-Graph依赖图" class="headerlink" title="Dependency Graph依赖图"></a>Dependency Graph依赖图</h2><p>1.分组：为了执行结构修剪（结构修剪是一种优化神经网络的方法，通过删除不重要的神经元或连接来减少网络的复杂性），我们首先需要将网络层按照它们的依赖关系进行分组。在这里，他们提出了一个分组矩阵G，它是一个L×L的矩阵，其中L是网络层的数量。在这个矩阵中，如果第i层和第j层之间存在依赖关系，那么Gij就是1。</p>
+<p>然而，现代的深度网络可能由成千上万个具有复杂连接的层组成，这使得从神经网络中获取分组模式变得非常困难。也就是说，得到的分组矩阵G可能会非常大而复杂，其中Gij的值不仅取决于第i层和第j层，还会受到它们之间所有中间层的影响。在大多数情况下，这种非局部的、隐式的关系不能用简单的规则来处理。</p>
+<p>因此，作者提出了一个新的解决方案：<strong>他们不直接估计分组矩阵G，而是提出了一个更易于估计的依赖模型方法，即依赖图。依赖图是从分组矩阵G中有效地提取出来的，它能更好地处理和展示层之间复杂的依赖关系。</strong></p>
+<p> 1 分组矩阵的定义：<br>$$<br>G \in {0,1}^{L \times L}<br>$$</p>
+<ol start="2">
+<li><p>如果第i层和第j层之间存在依赖关系，那么：<br>$$<br>G_{ij} &#x3D; 1<br>$$</p>
+</li>
+<li><p>如果不存在依赖关系，则：</p>
+</li>
+</ol>
+<p>$$<br>G_{ij} &#x3D; 0<br>$$</p>
+<ol start="4">
+<li>对角线元素的设置，即自依赖性：</li>
+</ol>
+<p>$$<br>Diag(G) &#x3D; \mathbf{1}_{1 \times L}<br>$$</p>
+<p>其中$\mathbf{1}_{1 \times L}$是长度为L的全1向量。</p>
+<ol start="5">
+<li>表示与第i层有依赖关系的所有层的集合：</li>
+</ol>
+<p>$$<br>g(i) &#x3D; {j | G_{ij} &#x3D; 1}<br>$$</p>
+<p>2 Dependency Graph ：介绍了一种新的图形数据结构——依赖图Dependency Graph，这是一种有效的分组矩阵G的压缩方式。依赖图D记录了具有直接连接的相邻层之间的本地依赖关系，与分组矩阵G的区别在于，它仅记录了直接连接的相邻层之间的依赖关系。依赖图D可以被视为分组矩阵G的传递性简化，即<strong>包含与G相同的顶点，但尽可能少的边</strong>。</p>
+<p>在介绍Dependency Graph之前，首先用一个例子解释了依赖关系的冗余。考虑一个依赖组g &#x3D; {w1, w2, w3}，它有依赖关系w1 ⇔ w2，w2 ⇔ w3，和w1 ⇔ w3。经过仔细观察，可以发现这个依赖模型存在一些冗余。例如，依赖关系w1 ⇔ w3可以通过递归过程从w1 ⇔ w2和w2 ⇔ w3推导出来。开始时，我们以w1为起点，检查它与其他层（如w1 ⇔ w2）的依赖关系。然后，w2提供了一个新的起点，用于递归地扩展依赖关系，这反过来又“触发”了w2 ⇔ w3。这个递归过程最终以一个传递关系w1 ⇔ w2 ⇔ w3结束。在这种情况下，我们只需要两个依赖关系就可以描述组g中的关系。</p>
+<p>同样的，3.2节中讨论的分组矩阵G对于依赖性建模也是冗余的，因此可以被压缩为一个形式更紧凑，边更少，但保留相同信息的形式。这就引出了依赖图。</p>
+<p>依赖图D的正式构造规则是：对于所有的Gij &#x3D; 1，在D中存在从顶点i到j的路径。因此，Gij可以通过检查D中顶点i和j之间是否存在路径来推导出来。</p>
+<blockquote>
+<p>依赖图Dependency Graph的构造过程分步骤解释：</p>
+<ol>
+<li><strong>定义所有节点</strong>：首先，我们在图中定义每一层网络为一个节点。这些节点相当于我们要考虑的网络层。</li>
+<li><strong>检查并添加直接的边</strong>：然后，我们仔细观察网络中每一层之间的直接连接。如果第i层和第j层之间有直接连接（即第i层的输出是第j层的输入），我们就在依赖图中添加一条从i到j的边。这样，我们就得到了所有直接相邻层之间的依赖关系。</li>
+</ol>
+<p>现在我们来考虑一个更为复杂的依赖关系：如果有第i层→第j层→第k层的依赖关系。在原始的分组矩阵G中，我们会同时标记Gij和Gjk为1，还需要标记Gik为1，表示第i层和第k层也存在依赖关系。</p>
+<p>然而，在依赖图D中，我们不需要直接标记Gik。只要有从节点i到节点k的路径（在这种情况下，路径就是i→j→k），就认为Gik存在。这样，依赖图D只需要记录直接的依赖关系，而所有间接的依赖关系可以通过检查路径的存在来推导。这大大减少了需要记录的依赖关系的数量。</p>
+<p>依赖图D的主要目标就是将分组矩阵G压缩为更简洁的形式，便于处理复杂的依赖关系。这种压缩是有效的，因为我们只关心是否存在从一个节点到另一个节点的路径，而不关心路径的具体形状。这种方法可以在保留所有重要信息的同时，大大简化了依赖关系的表示。</p>
+</blockquote>
+<p>3 Network Decomposition 网络分解</p>
+<blockquote>
+<p>这一段的主要内容是说，在实际操作中，仅仅在网络层级别上建立依赖图可能存在一些问题，因为某些基础层（如全连接层）可能有两种不同的修剪方案，比如 w[k, :] 和 w[:, k]，它们分别压缩了输入和输出的维度。此外，网络还包含一些非参数化的操作，比如跳过连接（skip connections），它们也会影响层之间的依赖关系。</p>
+<p>为了解决这些问题，作者提出了一种新的表示法，将网络 F(x; w) 分解为更细的基本组件，表示为 F &#x3D; {f1, f2, …, fL}，其中每个组件 f 可以是参数化的层（如卷积）或非参数化的操作（如残差加法）。他们不再专注于层级别的关系，而是集中于层的输入和输出之间的依赖关系。特别地，他们将组件 fi 的输入和输出分别表示为 f- i 和 f+ i。对于任何网络，最终的分解可以被形式化为 F &#x3D; {f- 1 , f+ 1 , …, f- L , f+ L }。这种表示法使得依赖关系的建模更为容易，并允许同一层有不同的修剪方案。</p>
+</blockquote>
+<p>4 Dependency Modeling 依赖模型</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221521004.png" alt="image-20230722152158933"></p>
+<blockquote>
+<p>层分组是通过从f+ 4开始在DepGraph上递归传播来实现的。在该示例中，由于上面所示的发散修剪方案，在卷积输入f-4和输出f+ 4之间不存在层内依赖性。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221523007.png" alt="image-20230722152330970"></p>
+<p>算法1 解释</p>
+<blockquote>
+<p>用于构建所“依赖图”，它是一个二维矩阵，用于表示网络中的层之间的依赖关系。</p>
+<p>以下是这个算法的步骤：</p>
+<ol>
+<li><p>输入一个神经网络F(x; w)。</p>
+</li>
+<li><p>将网络F分解为两组组件：f− 和 f+。这些组件分别代表每一层的输入和输出。</p>
+</li>
+<li><p>初始化依赖图DepGraph D，这是一个 2L x 2L 的零矩阵，其中 L 是网络中层的数量。</p>
+</li>
+<li><p>双重循环遍历所有的 i 和 j，对于每一对 (i, j)，根据公式计算 D(f- i, f+ j) 和 D(f+ j, f- i) 的值。</p>
+<ul>
+<li><p>如果 f- i 与 f+ j 是相连的，或者它们位于同一层并且有相同的剪枝方案（sch(f- i) &#x3D; sch(f+ j)），则值为1；</p>
+</li>
+<li><p>否则，值为0。</p>
+</li>
+</ul>
+</li>
+<li><p>返回依赖图D。</p>
+</li>
+</ol>
+<p>简单来说，这个算法通过检查网络中每一层的输入和输出，建立了一个表征层间和层内依赖关系的二维矩阵。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221524708.png" alt="image-20230722152425671"></p>
+<blockquote>
+<p>这个算法是用来在神经网络中创建一组分组，每一组中的层有依赖关系。</p>
+<p>以下是这个算法的步骤：</p>
+<ol>
+<li><p>输入依赖图DepGraph D。</p>
+</li>
+<li><p>初始化一个空的集合G，这将存储分组。</p>
+</li>
+<li><p>遍历所有层i。</p>
+</li>
+<li><p>对于每个i，初始化一个包含i的新组g。</p>
+</li>
+<li><p>在一个循环中，持续更新g，直到没有新的元素可以添加进g为止：</p>
+<ul>
+<li><p>创建一个未见过的层的集合UNSEEN，这些层还没有被添加到g中。</p>
+</li>
+<li><p>创建一个新的集合g’，包含那些在UNSEEN中并且与g中的某个层k有依赖关系的层（即Dkj &#x3D; 1）。</p>
+</li>
+<li><p>更新g，将g’中的所有层添加到g中。</p>
+</li>
+</ul>
+</li>
+<li><p>将g添加到G中。</p>
+</li>
+<li><p>返回所有的分组G。</p>
+</li>
+</ol>
+<p>简单来说，这个算法是通过遍历网络中的所有层，并查看哪些层与已经在组中的层有依赖关系，从而创建一系列分组。每个分组中的所有层都有相互依赖关系。</p>
+</blockquote>
+<h2 id="3-3-组级剪枝"><a href="#3-3-组级剪枝" class="headerlink" title="3.3 组级剪枝"></a>3.3 组级剪枝</h2><p>这部分主要讨论了如何在神经网络中实现组级别的剪枝。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221527044.png" alt="image-20230722152727989"></p>
+<blockquote>
+<p>比较了三种不同的剪枝方法，即如何选择神经网络中应该删除的权重（即神经元之间的连接）。每种方法都有自己的优点和缺点，主要的区别在于他们如何定义哪些权重是“重要的”。</p>
+<ol>
+<li>方法(a) 是非结构化剪枝：在这种方法中，每个权重都被独立地看待。换句话说，我们只关注每个单独权重的重要性，而不考虑它们之间的关系。这种方法的优点是简单直观，缺点是它可能忽略了权重之间的依赖关系。</li>
+<li>方法(b) 是结构化剪枝：这种方法在评估权重重要性时，会考虑到一层内的结构关系，即在同一层内的权重将会一起被考虑。但是，它依然忽视了在不同层之间可能存在的关联关系。</li>
+<li>方法(c) 是本文提出的组级剪枝：这种方法考虑到了权重之间的依赖关系，无论这些权重是在同一层还是在不同层。它的目标是将所有关联的参数（即一组）一起设置为零，这样就可以很容易地通过一个简单的幅度方法（magnitude method）来识别它们。</li>
+</ol>
+<p>这三种方法的主要区别在于他们处理权重之间关系的方式。在组级剪枝中，作者认为在神经网络中，权重之间的关系是非常重要的，应该被一同考虑，从而得到更好的剪枝效果。</p>
+</blockquote>
+<p>在前面的部分中，作者们已经开发了一种用于分析神经网络内部依赖性的通用方法，这自然引导出了组级别剪枝问题。评估组合参数的重要性对于剪枝来说是一个重大的挑战，因为它涉及到几个关联的层。在这个部分中，作者们利用一个简单的基于范数的标准来为组级别剪枝建立了一个实用的方法。</p>
+<p>给定一个参数组g &#x3D; {w1, w2, …, w|g|}，现有的标准，如L2范数的重要性I(w) &#x3D; w2，可以为g中的每个w产生独立的评分。估计组的重要性的一个自然的方式是计算一个聚合的评分I(g) &#x3D; ∑w∈g I(w)。但不幸的是，独立地在不同层上估计的重要性评分可能由于分布和大小的差异而不可加，因此没有意义。为了使这个简单的聚合适用于重要性估计，<strong>作者们提出了一个稀疏训练方法</strong>，用于在组级别上稀疏化参数，这样，那些被零化的组就可以从网络中安全地移除。</p>
+<blockquote>
+<p>作者在这一部分讨论了如何对神经网络进行“组级别”的剪枝，这是一种对网络进行优化的方法，用以删除网络中不重要或者冗余的部分，以减少网络的复杂性。</p>
+<p>在这里，他们提到的”组”指的是一组相关的神经网络参数，比如，这些参数可能来自同一层，或者在不同层间有一些依赖关系。这些参数被看作是一个整体，而不是独立处理，因为他们在网络中的作用是相互关联的。</p>
+<p>那么，问题来了，我们应该如何决定哪个“组”重要，哪个不重要呢？作者在这里提出了一种方法，即通过计算组内所有参数的L2范数（一种衡量参数重要性的方法）的总和来判断。如果一个组的总重要性得分低，那么这个组可能就不太重要，可以被剪枝掉。</p>
+<p>但是，这个方法有个问题，就是不同层的参数可能具有不同的规模或分布，所以我们不能简单地将他们的重要性得分加在一起。为了解决这个问题，作者提出了一种“稀疏训练”的方法。这种方法的目标是尽量让不重要的组的参数变为0，这样这些参数就不会对网络的输出产生影响，可以安全地被剪枝掉。</p>
+<p>作者使用了一个特定的公式，通过对参数进行“惩罚”，使得不重要的参数趋向于0，这就是所谓的”正则化项”。这个公式涉及一些复杂的数学概念，简单来说，就是根据每个参数的重要性对其进行加权，重要性越低的参数，其“惩罚”越大。</p>
+<p>在进行了这种“稀疏训练”后，作者再用一个简单的公式来决定哪些参数是不重要的，即他们的分数低于某个阈值，然后将这些参数删除。</p>
+<p>最后，作者通过实验证明，这种方法在剪枝效果上能达到与其他现代方法相当的水平，即使它的原理比较简单。</p>
+</blockquote>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li><h2 id="a-详细的实验设置-作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。-“Model-Data”-ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。-“Method”-这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法-“Ours”-。-“Base”-这是未进行剪枝的模型在测试数据集上的准确率。-“Pruned”-这是使用特定剪枝方法后的模型在测试数据集上的准确率。-“∆-Acc-”-这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。-“Speed-Up”-这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。"><a href="#a-详细的实验设置-作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。-“Model-Data”-ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。-“Method”-这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法-“Ours”-。-“Base”-这是未进行剪枝的模型在测试数据集上的准确率。-“Pruned”-这是使用特定剪枝方法后的模型在测试数据集上的准确率。-“∆-Acc-”-这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。-“Speed-Up”-这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。" class="headerlink" title="a. 详细的实验设置:- 作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。- - &gt; - “Model &#x2F; Data”: ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。  &gt; - “Method”: 这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法(“Ours”)。  &gt; - “Base”: 这是未进行剪枝的模型在测试数据集上的准确率。  &gt; - “Pruned”: 这是使用特定剪枝方法后的模型在测试数据集上的准确率。  &gt; - “∆ Acc.”: 这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。  &gt; - “Speed Up”: 这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。"></a>a. 详细的实验设置:<br>- 作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。<br>- <img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221531158.png" alt="image-20230722153111108"><br>- &gt; - “Model &#x2F; Data”: ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。<br>  &gt; - “Method”: 这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法(“Ours”)。<br>  &gt; - “Base”: 这是未进行剪枝的模型在测试数据集上的准确率。<br>  &gt; - “Pruned”: 这是使用特定剪枝方法后的模型在测试数据集上的准确率。<br>  &gt; - “∆ Acc.”: 这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。<br>  &gt; - “Speed Up”: 这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。</h2><ul>
+<li>报告了修剪模型的准确性和理论加速比。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:</li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221534860.png" alt="image-20230722153445775"></li>
+<li><blockquote>
+<p>这个表格展示了对各种网络结构（如ResNet-56、VGG-19、DenseNet-121、MobileNetv2和GoogleNet）进行不同策略的剪枝时的精确度结果。策略包括随机剪枝、不进行分组剪枝、只对卷积层进行剪枝、以及全分组剪枝。并且分别对比了统一的剪枝和学习到的剪枝的效果。</p>
+<p>每行的数据对应一种剪枝策略对应的结果。</p>
+<ul>
+<li>“Architecture”: 这是正在测试的模型的名称。</li>
+<li>“Strategy”: 这是正在测试的剪枝策略。表中列出了一系列的剪枝策略，包括随机剪枝（”Random”）、不进行分组剪枝（”No grouping”）、只对卷积层进行剪枝（”Conv-only”）以及全分组剪枝（”Full Grouping”）。</li>
+<li>“Pruned Accuracy with Uniform &#x2F; Learned Sparsity”: 这是剪枝后的模型在测试数据集上的准确率，其中包括了使用统一的剪枝策略和学习到的剪枝策略的结果。剪枝策略分别对应了不同的速度提升比例，例如1.5倍、3.0倍、6.0倍、12倍。</li>
+<li>“Avg.”: 这是各个速度提升比例下的平均精确度。</li>
+</ul>
+<p>表格的主要目的是展示在使用不同的剪枝策略以及不同的速度提升比例时，各个网络模型的精确度的变化情况，以此来评估和比较不同剪枝策略的效果。</p>
+</blockquote>
+<ul>
+<li>结果显示，他们的方法在所有分组层（包括卷积、批归一化和全连接层）上都能促进稀疏性，从而提高修剪模型的准确性。</li>
+<li>作者还可视化了他们的方法学习到的分组参数的范数，显示了组内的稀疏性。</li>
+<li>进行了消融研究以验证分组的有效性，结果表明忽略分组信息会显著降低他们方法的性能。</li>
+<li>作者还比较了均匀稀疏性和学习稀疏性，发现学习稀疏性通常优于均匀稀疏性，尽管有时会导致过度修剪和准确性下降。</li>
+<li>他们还将其框架应用于包括DenseNet和GoogleNet在内的各种卷积神经网络，展示了其框架的通用性。</li>
+<li>提供了DepGraph可视化，显示了参数的分组，为大型神经网络的修剪过程提供了便利。</li>
+</ul>
+</li>
+</ul>
+<h1 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h1><p><a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/1TRvELQDNj9PwM-EERWbF3IQOyxZeDepp?usp=sharing#scrollTo=yaoMwy86Vhxz">Torch-Pruning-Demo.ipynb - Colaboratory (google.com)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">model_dict = &#123;</span><br><span class="line">    <span class="string">&#x27;resnet50&#x27;</span>: torchvision.models.resnet50,</span><br><span class="line">    <span class="string">&#x27;resnet18&#x27;</span>: torchvision.models.resnet18,</span><br><span class="line">    <span class="string">&#x27;convnext&#x27;</span>: torchvision.models.convnext_base,</span><br><span class="line">    <span class="string">&#x27;vgg_19_bn&#x27;</span>: torchvision.models.vgg19_bn,</span><br><span class="line">    <span class="string">&#x27;regnet_x_1_6gf&#x27;</span>: torchvision.models.regnet_x_1_6gf,</span><br><span class="line">    <span class="string">&#x27;efficientnet_b4&#x27;</span>: torchvision.models.efficientnet_b4,</span><br><span class="line">    <span class="string">&#x27;densenet121&#x27;</span>: torchvision.models.densenet121,</span><br><span class="line">    <span class="string">&#x27;vit_b_32&#x27;</span>: torchvision.models.vit_b_32,</span><br><span class="line">    <span class="string">&#x27;mobilenet_v3_large&#x27;</span>: torchvision.models.mobilenet_v3_large,</span><br><span class="line">    <span class="comment"># Register your models here. This demo only covers classification models.</span></span><br><span class="line">    <span class="comment"># Swin Transformers are not supported.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">model = model_dict[<span class="string">&#x27;vit_b_32&#x27;</span>](pretrained=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">imp = tp.importance.MagnitudeImportance(p=<span class="number">2</span>) </span><br><span class="line"><span class="comment"># 创建一个重要性估计器，这基于权重的L2范数来评估神经网络各部分的重要性。</span></span><br><span class="line"></span><br><span class="line">ignored_layers = []</span><br><span class="line"><span class="comment"># 创建一个空的列表，用于保存我们不想剪裁的神经网络层。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> model.modules():</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">isinstance</span>(m, torch.nn.Linear) <span class="keyword">and</span> m.out_features == <span class="number">1000</span>: </span><br><span class="line">  <span class="comment"># 遍历模型中的所有模块。如果模块是线性层且输出特征数为1000（即分类器），则忽略这一层，不进行剪裁。</span></span><br><span class="line">    ignored_layers.append(m)</span><br><span class="line"></span><br><span class="line">round_to = <span class="literal">None</span></span><br><span class="line"><span class="comment"># 创建一个变量，用于设定剪裁的粒度。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">isinstance</span>( model, torchvision.models.vision_transformer.VisionTransformer):</span><br><span class="line">  round_to = model.encoder.layers[<span class="number">0</span>].num_heads </span><br><span class="line">  <span class="comment"># 模型是视觉变换器，则将round_to设为变换器的头部数量，这是模型特定的剪裁限制。</span></span><br><span class="line"></span><br><span class="line">pruner = tp.pruner.MagnitudePruner(</span><br><span class="line">    model = model,</span><br><span class="line">    <span class="comment"># 待剪裁的模型</span></span><br><span class="line"></span><br><span class="line">    example_inputs = torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>),</span><br><span class="line">    <span class="comment"># 输入的样例，用于模型的前向传播</span></span><br><span class="line"></span><br><span class="line">    importance = imp,     </span><br><span class="line">    <span class="comment"># 重要性估计器，用于评估哪些部分可以剪裁</span></span><br><span class="line"></span><br><span class="line">    global_pruning=<span class="literal">False</span>, </span><br><span class="line">    <span class="comment"># 设置全局剪裁为False，这意味着不是对整个网络进行剪裁，而是对各层独立进行剪裁。</span></span><br><span class="line"></span><br><span class="line">    ch_sparsity = <span class="number">0.5</span>,    </span><br><span class="line">    <span class="comment"># 设置剪裁后的稀疏度为0.5，即剪裁后每层保留的神经元或通道的比例。</span></span><br><span class="line"></span><br><span class="line">    iterative_steps = <span class="number">1</span>,  </span><br><span class="line">    <span class="comment"># 设置迭代步骤数为1，即达到目标稀疏度所需的剪裁步骤数。</span></span><br><span class="line"></span><br><span class="line">    ignored_layers = ignored_layers,        </span><br><span class="line">    <span class="comment"># 指定要忽略的层，这些层在剪裁过程中不会被剪裁。</span></span><br><span class="line"></span><br><span class="line">    round_to = round_to,  </span><br><span class="line">    <span class="comment"># 设置剪裁的粒度，即剪裁后的通道数需要是这个数的倍数。</span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Model size before pruning</span></span><br><span class="line">base_macs, base_nparams = tp.utils.count_ops_and_params(model, torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line"><span class="comment"># 计算剪裁前的模型大小。使用的度量包括MACs（乘加操作数）和参数数量。输入数据是随机生成的张量。</span></span><br><span class="line"></span><br><span class="line">pruner.step()</span><br><span class="line"><span class="comment"># 执行剪裁操作。在之前的代码中，已经对pruner对象进行了初始化，并设置了剪裁参数。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># modify some inferece-related attributes if necessary</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">isinstance</span>(model, torchvision.models.vision_transformer.VisionTransformer):</span><br><span class="line"><span class="comment"># 如果模型是视觉变换器（ViT），那么在剪裁后需要修改一些与推理相关的属性。</span></span><br><span class="line">    model.hidden_dim = model.conv_proj.out_channels</span><br><span class="line"><span class="comment"># 对于视觉变换器，剪裁后其隐藏维度（hidden_dim）需要被修改为卷积投影层的输出通道数。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Parameter &amp; MACs Counter</span></span><br><span class="line">pruned_macs, pruned_nparams = tp.utils.count_ops_and_params(model, torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line"><span class="comment"># 计算剪裁后的模型大小。使用的度量依然是MACs和参数数量。输入数据是随机生成的张量。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The pruned model:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(model)</span><br><span class="line"><span class="comment"># 打印剪裁后的模型。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Summary:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Params: &#123;:.2f&#125; M =&gt; &#123;:.2f&#125; M&quot;</span>.<span class="built_in">format</span>(base_nparams/<span class="number">1e6</span>, pruned_nparams/<span class="number">1e6</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;MACs: &#123;:.2f&#125; G =&gt; &#123;:.2f&#125; G&quot;</span>.<span class="built_in">format</span>(base_macs/<span class="number">1e9</span>, pruned_macs/<span class="number">1e9</span>))</span><br><span class="line"><span class="comment"># 打印剪裁前后的模型大小，包括参数数量和MACs。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Test Forward</span></span><br><span class="line">output = model(torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line"><span class="comment"># 测试剪裁后模型的正向传播。输入数据是随机生成的张量。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Output.shape: &quot;</span>, output.shape)</span><br><span class="line"><span class="comment"># 打印正向传播的输出形状。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Test Backward</span></span><br><span class="line">loss = torch.nn.functional.cross_entropy(output, torch.randint(<span class="number">1</span>, <span class="number">1000</span>, (<span class="number">1</span>,)))</span><br><span class="line"><span class="comment"># 计算反向传播的损失。使用的损失函数是交叉熵，目标值是随机生成的整数。</span></span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line"><span class="comment"># 执行反向传播，计算梯度。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="论文2：Scaling-TransNormer-to-175-Billion-Parameters"><a href="#论文2：Scaling-TransNormer-to-175-Billion-Parameters" class="headerlink" title="论文2：Scaling TransNormer to 175 Billion Parameters"></a>论文2：Scaling TransNormer to 175 Billion Parameters</h1><p>Zhen Qin♯, 1,2Dong Li♯, 1,2Weigao Sun♯, 1,2Weixuan Sun♯, 1,2Xuyang Shen♯,<br>2Xiaodong Han, 2Yunshen Wei, 2Baohong Lv, 1Fei Yuan, 2Xiao Luo,<br>1Yu Qiao, 1,2Yiran Zhong∗<br>1Shanghai AI Laboratory, 2OpenNLPLab</p>
+<h1 id="Basic-Information-1"><a href="#Basic-Information-1" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: Scaling TransNormer to 175 Billion Parameters (将TransNormer扩展到1750亿参数)</li>
+<li>Authors: Zhen Qin, Dong Li, Weigao Sun, Weixuan Sun, Xuyang Shen, Xiaodong Han, Yunshen Wei, Baohong Lv, Fei Yuan, Xiao Luo, Yu Qiao, Yiran Zhong</li>
+<li>Affiliation: Shanghai AI Laboratory, OpenNLPLab (上海人工智能实验室, OpenNLPLab)</li>
+<li>Keywords: Large Language Model, TransNormerLLM, linear attention, efficiency, scalability (大型语言模型, TransNormerLLM, 线性注意力, 效率, 可扩展性)</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.14995v1">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/OpenNLPLab/TransnormerLLM">GitHub</a></li>
+</ul>
+<h1 id="论文简要-1"><a href="#论文简要-1" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本文介绍了TransNormerLLM，这是第一个基于线性注意力的大型语言模型，它在准确性和效率方面优于传统的基于softmax注意力的模型。通过引入位置嵌入、线性注意力加速、门控机制、张量归一化和推理加速等先进修改，TransNormerLLM从之前的线性注意力架构TransNormer发展而来。通过一系列的实验验证，该模型在训练和推理阶段都表现出卓越的效率和性能。</li>
+</ul>
+<h1 id="背景和创新点"><a href="#背景和创新点" class="headerlink" title="背景和创新点:"></a>背景和创新点:</h1><blockquote>
+<ol>
+<li><p>尽管现有的 Transformer 模型在许多任务上表现优秀，但是当面对大规模参数时，它们往往会遇到一些问题。首先，计算效率较低，这主要是因为 Transformer 模型需要计算和存储所有 token 之间的注意力权重，这在处理长序列时会导致计算和存储开销极大。其次，Transformer 模型还存在注意力稀释问题，即模型可能无法有效地关注到距离较远的 token。</p>
+<p>为了解决这些问题，论文作者提出了 TransNormerLLM。TransNormerLLM 是对 TransNormer 模型的一个改进，它通过一系列创新的设计来解决上述问题。以下是 TransNormerLLM 的一些主要创新点：</p>
+<ol>
+<li><strong>位置编码</strong>：在 TransNormerLLM 中，作者引入了一种名为 LRPE-d 的新方法，这是一种线性化相对位置编码（LRPE）与指数衰减相结合的方法。这种方法可以让模型对距离较远的 token 给予较小的注意力权重，从而有效地解决了注意力稀释问题。同时，由于 LRPE-d 可以被分解为关于每个输入元素的函数，因此它与线性注意力方法完全兼容。值得一提的是，LRPE-d 的参数可以通过训练进行学习，这为模型提供了更大的灵活性。</li>
+<li><strong>门控机制</strong>：TransNormerLLM 引入了一种新的门控机制，被称为 SGLU（Simple Gated Linear Unit）。SGLU 是一种改进的激活函数，它引入了一个门控参数来控制信息的流动。不同于传统的 GLU，SGLU 去除了激活函数，因为门本身就可以引入非线性，从而使得模型更加高效。</li>
+<li><strong>张量归一化</strong>：在 TransNormerLLM 中，作者引入了一种新的张量归一化方法，称为 SRMSNorm（Simple RMS Norm）。SRMSNorm 是一种更简单的归一化方法，它不依赖于特征维度，因此在处理大规模模型时更为高效。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291115870.png" alt="image-20230729111523716"></p>
+<ul>
+<li><blockquote>
+<p>当然，下面是这些公式的整理以及对应的详细解释：</p>
+<ol>
+<li><p><strong>位置编码 (LRPE-d)</strong>:<br>   $$<br>a_{st} &#x3D; q_s^T k_t \lambda^{s-t} \exp(i\theta(s-t))<br>$$</p>
+<p>  这是 TransNormerLLM 使用的位置编码公式，其中 (q_s) 和 (k_t) 分别是位置 (s) 和 (t) 的查询和键，(\lambda) 是衰减率，(\theta) 是可学习的参数。这个公式表示，模型在计算位置 (s) 和 (t) 之间的注意力时，会考虑它们之间的相对位置，并通过 (\lambda^{s-t}) 和 (\exp(i\theta(s-t))) 来调整这个注意力。</p>
+<ol start="2">
+<li><strong>门控线性注意力 (GLA)</strong>:</li>
+</ol>
+</li>
+</ol>
+<p>$$<br>  O &#x3D; \text{Norm}(QK^TV) \odot U<br>$$</p>
+<pre><code>  这是 TransNormerLLM 的门控机制，其中 \(Q\), \(K\), \(V\) 和 \(U\) 是模型的查询、键、值和门控参数，\(\odot\) 是元素级的乘法，\(\text&#123;Norm&#125;(\cdot)\) 是归一化函数。这个公式表示，模型在计算输出 \(O\) 时，会先计算 \(QK^TV\) 的归一化，然后与门控参数 \(U\) 进行元素级的乘法。
+</code></pre>
+<ol start="3">
+<li><p><strong>简单门控线性单元 (SGLU)</strong>:</p>
+<p>$$<br> O &#x3D; [V \odot U]W_o<br>$$</p>
+<p>   这是 TransNormerLLM 的通道混合机制，其中 (V) 和 (U) 是模型的值和门控参数，(W_o) 是输出的权重矩阵。这个公式表示，模型在计算输出 (O) 时，会先计算 (V) 和 (U) 的元素级乘法，然后乘以权重矩阵 (W_o)。</p>
+</li>
+<li><p><strong>张量归一化 (SRMSNorm)</strong>:</p>
+<p>$$<br> \text{SRMSNorm}(x) &#x3D; \frac{x}{|x|_2&#x2F;\sqrt{d}}<br>$$</p>
+<p>   这是 TransNormerLLM 的张量归一化函数，其中 (x) 是输入的张量，(|x|_2) 是 (x) 的 L2 范数，(d) 是特征的维度。这个公式表示，模型在归一化 (x) 时，会先计算 (x) 的 L2 范数，然后除以 (\sqrt{d})，最后用 (x) 除以这个结果。</p>
+</li>
+</ol>
+<p>以上四个公式是 TransNormerLLM 模型的关键部分，它们分别对应了模型的位置编码、门控机制、通道混合和张量归一化等重要功能。理解这些公式对于理解 TransNormerLLM 模型的工作原理是非常重要的。</p>
+</blockquote>
+</li>
+<li><p>a. 理论背景:</p>
+<ul>
+<li>本文介绍了TransNormerLLM，这是一个基于线性注意力的大型语言模型（LLM），在准确性和效率方面超越了传统的softmax注意力模型。该模型建立在之前的线性注意力架构TransNormer的基础上，并引入了位置嵌入、线性注意力加速、门控机制、张量归一化和推理加速等先进的修改。本文强调了传统Transformer的局限性以及LLM中更高效的序列建模方法的需求。</li>
+</ul>
+</li>
+<li><p>b. 技术路线:</p>
+<ul>
+<li>本文介绍了TransNormerLLM中的架构改进。它引入了将TransNormer的DiagAttention替换为线性注意力，以增强全局交互。本文还引入了具有指数衰减的LRPE来解决注意力稀释问题。在训练过程中，提出了Lightning Attention技术，显著加速线性注意力，将内存使用减少了四倍。本文简化了GLU和归一化，总体加速了20%。通过稳定的推理算法，确保了数值稳定性和恒定的推理速度。本文强调了TransNormerLLM的可扩展性以及在大规模集群上部署的能力。还提到计划开源预训练模型，促进LLM的社区驱动进展。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果-1"><a href="#结果-1" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291141964.png" alt="image-20230729114150913"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291138381.png" alt="image-20230729113850322"></p>
+<p>Transformer vs TransNormerLLM.TransNormerLLM在相同配置下，在385M和1B大小上的性能分别优于Transformer 5%和9%。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291138203.png" alt="image-20230729113857153"></p>
+<p>我们比较原始的TransNormer和改进的TransNormerLLM，结果示于表4中。TransNormerLLM分别表现出2%和1%的增强，同时显著更快。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291142007.png" alt="image-20230729114258960"></p>
+<p>位置编码在位置编码实验中，我们进行了一系列测试，比较了LRPE-d、APE（绝对位置编码）、LRPE和Exp-Decay（指数衰减）。从表5中可以明显看出，我们提出的增强已经显示出对原始模型的改进。此外，最终的方案表现出2%的LRPE方法的改进。</p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>本研究使用PyTorch和Triton在Metaseq框架中实现了TransNormerLLM模型。</li>
+<li>使用Adam优化器进行训练，并使用FSDP将模型扩展到NVIDIA A100 80G集群。还采用了模型并行技术进行性能优化。模型在包含300B个标记的样本语料库上进行训练。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>架构消融实验表明，TransNormerLLM在大小为385M时比Transformer性能提高了5%，在大小为1B时提高了9%。</li>
+<li>对比了不同的位置编码方法，LRPE+LRPE-d组合的效果最优，比LRPE提高了2%。</li>
+<li>对于衰减温度的消融研究表明，添加衰减温度可以降低TransNormerLLM的困惑度。</li>
+<li>TransNormerLLM中引入门控机制可以降低损失值。</li>
+<li>对GLA激活函数进行了不同的测试，结果表明激活函数的选择对最终结果影响很小。</li>
+<li>在Gated Linear Units（GLU）结构中去除激活函数对结果影响微乎其微。</li>
+<li>对于归一化方法进行了多种测试，结果表明这些方法在应用于TransNormerLLM时几乎没有区别。然而，使用Triton实现的修改版SRMSNorm在计算速度上比PyTorch实现方法提供了显著的提升。</li>
+<li>Lightning Attention的计算速度至少比NormAttention的PyTorch实现快2倍。</li>
+<li>Lightning Attention的内存占用随序列长度线性增长，当序列长度为8192时，比基线模型的内存效率提高了4倍。</li>
+<li>模型并行显著降低了内存消耗，当模型并行大小设置为8时，TransNormerLLM-7B模型在单个GPU上只需要24.1GB的内存，相比模型并行大小为1时，内存减少了62.3%。</li>
+<li>TransNormerLLM在训练速度和内存消耗方面始终优于Transformer，即使启用了模型并行。</li>
+<li>TransNormerLLM模型在计算速度上始终优于Transformer模型，即使模型规模更大。</li>
+<li>TransNormerLLM能够以更长的上下文长度进行训练，实现更高的计算速度。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E4%BE%9D%E8%B5%96%E5%9B%BE%E8%AE%BA%E6%96%87%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" data-id="cllkmcmey0008ksu74hs77e3r" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8QLORA%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%89%E6%95%88%E5%89%AA%E6%9E%9DLOMO%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cViL%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F%20/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/">8月第二周剪枝相关</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F/">8月第一周自然语言大模型蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%91%A8%E6%8A%A5%E4%BE%9D%E8%B5%96%E5%9B%BE%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/">7月第四周周报依赖图通用剪枝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

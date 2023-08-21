@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="1title: 自然语言大模型蒸馏    8月第一周自然语言蒸馏论文Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)Basic Information: Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏) Authors: Y">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F%E8%AE%BA%E6%96%87/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1title: 自然语言大模型蒸馏    8月第一周自然语言蒸馏论文Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)Basic Information: Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏) Authors: Y">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061123535.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061238004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061243956.png">
+<meta property="article:published_time" content="2023-08-21T07:31:26.235Z">
+<meta property="article:modified_time" content="2023-08-21T07:43:11.512Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061123535.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-8月第一周自然语言蒸馏论文" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F%E8%AE%BA%E6%96%87/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T07:31:26.235Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title: 自然语言大模型蒸馏</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="8月第一周自然语言蒸馏论文"><a href="#8月第一周自然语言蒸馏论文" class="headerlink" title="8月第一周自然语言蒸馏论文"></a>8月第一周自然语言蒸馏论文</h1><h1 id="Title-Knowledge-Distillation-of-Large-Language-Models-大型语言模型的知识蒸馏"><a href="#Title-Knowledge-Distillation-of-Large-Language-Models-大型语言模型的知识蒸馏" class="headerlink" title="Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)"></a>Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)</h1><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)</li>
+<li>Authors: Yuxian Gu, Li Dong, Furu Wei, Minlie Huang</li>
+<li>Affiliation: The CoAI Group, Tsinghua University (清华大学)</li>
+<li>Keywords: Knowledge Distillation, Large Language Models, Generative Language Models, Reverse Kullback-Leibler Divergence, Optimization Approach</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.08543v1">Paper</a>, <a target="_blank" rel="noopener" href="https://aka.ms/MiniLLM">GitHub Code</a></li>
+</ul>
+<h1 id="论文简要-第一篇自然语言蒸馏-bert蒸馏？"><a href="#论文简要-第一篇自然语言蒸馏-bert蒸馏？" class="headerlink" title="论文简要 :第一篇自然语言蒸馏 bert蒸馏？"></a>论文简要 :第一篇自然语言蒸馏 bert蒸馏？</h1><ul>
+<li>本文提出了一种名为MINILLM的方法，用于从生成型大型语言模型中蒸馏出较小的语言模型。通过使用逆向Kullback-Leibler散度作为目标函数，并引入有效的优化方法，MINILLM模型在指令跟随任务中表现出更高的生成质量、更低的暴露偏差、更好的校准性和更高的长文本生成性能。</li>
+</ul>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 随着大型语言模型的快速发展，知识蒸馏（KD）成为减少计算资源需求的一种常用技术。然而，过去的知识蒸馏方法主要应用于白盒分类模型或训练小模型以模仿ChatGPT等黑盒模型API。如何有效地从白盒生成型语言模型中蒸馏知识仍然未被充分探索，而随着生成型语言模型的繁荣，这变得越来越重要。</li>
+<li>过去方案: 过去的知识蒸馏方法主要应用于白盒分类模型或训练小模型以模仿黑盒模型API。白盒知识蒸馏方法主要研究了小型语言理解模型，而对于生成型语言模型的白盒知识蒸馏尚未被探索。</li>
+<li>论文的Motivation: 随着生成型语言模型的兴起，白盒知识蒸馏对于研究社区和行业部门变得更有价值，因为学生模型可以从白盒教师模型中获得更好的信号，从而潜在地实现更高的性能。然而，白盒知识蒸馏方法主要研究了小型语言理解模型，而对于生成型语言模型的白盒知识蒸馏尚未被探索。因此，本文旨在研究生成型语言模型的白盒知识蒸馏，并提出了一种新的方法MINILLM，通过使用逆向Kullback-Leibler散度作为目标函数，实现了更好的生成质量和性能。</li>
+</ul>
+<h1 id="方法-创新点1：正则化整体样本"><a href="#方法-创新点1：正则化整体样本" class="headerlink" title="方法: 创新点1：正则化整体样本"></a>方法: 创新点1：正则化整体样本</h1><h2 id="可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进"><a href="#可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进" class="headerlink" title="可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进"></a>可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进</h2><p>可能的工作2：法学大模型对垂直领域大模型建设，提出了一个新的方法，包括微调，提示词，langchain，本文提到的蒸馏</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061123535.png" alt="image-20230806112311078"></p>
+<blockquote>
+<ol>
+<li>序列级知识蒸馏（KD）(左图): 这种方法强迫学生模型直接从教师模型生成的序列中学习。前向 KLD (Kullback-Leibler Divergence，库尔巴克-莱布勒散度)用作衡量教师输出和学生输出分布之间的不相似度。<strong>这种方法就像是死记硬背，学生模型本质上是试图复制教师的确切输出序列。</strong>提示 𝒙 输入到两个模型中，然后计算教师输出 𝒚 (从 𝑝 中采样)和学生预测输出之间的差异，以调整学生模型参数（𝜃）。然而，这种方法可能导致学生在语言生成任务中过度估计某些区域，特别是当学生模型缺乏捕获所有教师模型输出分布细微差异的能力时。</li>
+<li>MINILLM (右图): 相比之下，这种方法允许学生模型通过教师模型的反馈来改善其生成能力。与单纯模仿教师输出不同，这种方法旨在帮助学生模型更好地泛化。这是通过最小化反向 KLD 来实现的，本质上是使学生模型的输出分布尽可能地接近教师的，但这样可以使学生模型也能从自己的错误中学习。<strong>提示 𝒙 输入到两个模型中，然后计算教师输出 (从 𝑞! 中采样)和学生预测输出之间的差异，为学生模型提供学习的机会。</strong></li>
+</ol>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061238004.png" alt="image-20230806123825947"></p>
+<blockquote>
+<p>输入包括以下元素：</p>
+<ul>
+<li>条件生成数据集D，包含提示和真实响应</li>
+<li>预训练语料库DPT，包含长文档纯文本</li>
+<li>教师模型，其输出分布为p</li>
+<li>初始学生模型，其输出分布为qθ0</li>
+</ul>
+<p>输出为一个学生模型，其输出分布为qθ。</p>
+<p>这个算法的步骤如下：</p>
+<ol>
+<li>首先在数据集D上对学生模型进行微调，并选择具有最低验证损失的模型θ。</li>
+<li>重复以下步骤直到收敛：<ul>
+<li>从数据集D中抽取一批提示，并从其中收集响应以得到S &#x3D; {(xm, ym)}M m&#x3D;1。</li>
+<li>从DPT中抽取一个小批量D’PT &#x3D; {dm}M m&#x3D;1。</li>
+<li>计算主损失梯度(∇J)Main，这个值取决于学生模型qθ和教师模型pe之间的概率分布差异，详见等式5和等式6。</li>
+<li>计算正则化损失梯度(∇J)Reg，这个值是在所有可能的输出yt中，学生模型qθ和教师模型p的分布差异的梯度，详见等式3。</li>
+<li>计算预训练损失的梯度∇LPT，这个值是学生模型qθ在预训练语料库D’PT上的对数概率的梯度。</li>
+<li>更新模型参数θ，根据计算出的梯度值，来调整模型的参数。</li>
+</ul>
+</li>
+</ol>
+<p>这个算法的核心思想是在模型参数更新过程中引入了一个正则化项，旨在减小学生模型和教师模型在相同输入下的输出分布差异，从而使学生模型更好地模仿教师模型。此外，为了保持模型的泛化能力，还计算了在预训练语料库上的损失，这有助于防止模型过度拟合教师模型的输出。</p>
+</blockquote>
+<p>步骤：</p>
+<p>在这篇论文的实验设置中，研究者们首先在指令-响应数据集 D 上对一个大模型进行微调，将其作为教师模型 p。然后，他们比较了不同的知识蒸馏方法，以在教师模型的指导下对学生模型进行蒸馏，并通过评估蒸馏模型的指令执行性能来进行比较。</p>
+<p>他们蒸馏了三种不同大小的模型：GPT-2，OPT和LLaMA，并分别使用GPT-2-1.5B，OPT-13B和LLaMA-13B作为各模型类型的教师模型。他们还使用GPT-J作为教师模型的结果。</p>
+<p>他们从 databricks-dolly-15k 数据集中构建了训练数据，该数据集由 15K个人工编写的指令-响应对组成。他们随机分配了 14K个样本作为训练集 D，并留下了 500个样本用于验证和测试。对于 DPT，他们为 GPT-2 系列使用了 OpenWebText，而对于其他模型，他们使用了 RoBERTa 训练语料库。</p>
+<p>实验中使用了两个指标来评估模型生成的响应：Rouge-L 分数和GPT-4反馈。</p>
+<p>他们在主要实验中考虑了三个基线：</p>
+<ol>
+<li>SFT w&#x2F;o KD 直接在 D 上对学生模型进行微调，使用金色响应进行监督。</li>
+<li>KD 使用教师分布作为每个标记步骤的监督，对 D 上的学生模型进行微调，也称为单词级别的 KD。</li>
+<li>SeqKD 在教师生成的数据上对学生模型进行微调。</li>
+</ol>
+<p>总结实验步骤：</p>
+<ol>
+<li>在指令-响应数据集上微调大模型作为教师模型。</li>
+<li>对多种大小的学生模型进行知识蒸馏，并评估其在教师模型指导下在数据集上的性能。</li>
+<li>从 databricks-dolly-15k 数据集中构建训练数据。</li>
+<li>使用 OpenWebText 和 RoBERTa 训练语料库进行预训练。</li>
+<li>使用 Rouge-L 和 GPT-4 反馈对模型生成的响应进行评估。</li>
+<li>比较与直接微调学生模型（SFT w&#x2F;o KD）、单词级别知识蒸馏（KD）以及在教师生成数据上微调学生模型（SeqKD）等基线方法的性能。</li>
+<li>报告结果并进行分析。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061243956.png" alt="image-20230806124343892"></p>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文讨论了使用知识蒸馏（KD）来减少大型语言模型（LLM）的计算需求。先前的KD方法主要集中在白盒分类模型或训练小模型以模仿黑盒模型API，而作者提出了一种名为MINILLM的方法，从生成性更大的语言模型中提炼出较小的语言模型。作者认为标准的KD目标对于生成性LLM来说是次优的，并提出了最小化反向Kullback-Leibler散度（KLD）的方法。他们还引入了一种优化方法来学习这个目标。实验结果表明，MINILLM模型生成的响应更精确，整体质量更高，暴露偏差更低，校准性更好，并具有更高的长文本生成性能。该方法适用于不同模型家族，参数大小范围从120M到13B。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>MINILLM方法用于语言模型（LLM）中的知识蒸馏（KD）。与序列级KD不同，MINILLM专注于最小化反向Kullback-Leibler散度（KLD），并鼓励学生模型在其自身能力范围内生成教师模型偏好的样本。使用策略梯度定理进行优化，通过从学生模型中进行采样来计算目标函数的梯度。为了解决高方差和奖励欺骗等问题，提出了三种策略：单步正则化、教师混合采样和长度归一化。提供了MINILLM的训练算法，包括在数据集上微调学生模型、采样提示和响应以及计算梯度。还描述了实验设置和评估指标。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li>a. 详细的实验设置:<ul>
+<li>表1中的评估结果显示，标准的知识蒸馏（KD）方法，SFT w&#x2F;o KD、KD和SeqKD，成功地从教师模型中提取了知识，实现了更好的Rouge-L和GPT-4反馈分数。然而，MINILLM方法在几乎所有情况下都优于基线方法，表明其在提取具有高整体性能的小模型方面的有效性。MINILLM还生成了与真实值具有高重叠度的更精确的响应，并展示了良好的超出分布的泛化能力。MINILLM的改进在不同的模型大小和家族中保持一致，证明了其在大型语言模型（LLM）时代的可扩展性和泛化能力。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>实验结果显示，微调模型的ExAccErr在生成过程中不断增加，而MiniLLM具有较低的ExAccErr，并且错误在长文本生成中停止累积。在两个文本分类数据集SST2和BoolQ上的校准测试显示，使用KD和SeqKD训练的模型与教师模型相比校准性较差。另一方面，MINILLM缩小了学生和教师之间ECE分数的差距。模型的性能根据真实响应的长度而变化，在期望短响应的提示上，所有方法都获得了较低的分数。MINILLM通过保持生成响应中不同的4-gram比例来保持生成多样性，并且不会在测试集上导致语言建模损失的显著增加。消融研究表明，教师混合采样和长度归一化对于稳定训练至关重要，而单步正则化减少了训练过程的方差。在教师混合探索中，α值的选择会影响性能，一般而言，α &#x3D; 0.2是合适的。添加预训练损失有助于在规范NLP任务上保持能力，而不会对指令遵循任务的性能产生显著影响。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F%E8%AE%BA%E6%96%87/" data-id="cllkmcmf0000aksu7cww8epl4" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/21/6%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8RWKV%E6%B8%90%E8%BF%9BpromptLora-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          6月第一周RWKV渐进promptLora
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8QLORA%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%89%E6%95%88%E5%89%AA%E6%9E%9DLOMO%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/">8月第二周剪枝相关</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F/">8月第一周自然语言大模型蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%91%A8%E6%8A%A5%E4%BE%9D%E8%B5%96%E5%9B%BE%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/">7月第四周周报依赖图通用剪枝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>8月第三周HomoDistil | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="8月第三周周报论文1：HomoDistil: Homotopic Task-Agnostic Distillation of Pre-trained Transformersbase ICLR 2023 Chen Liang⋆∗, Haoming Jiang⋄, Zheng Li⋄, Xianfeng Tang⋄, Bin Yin⋄ &amp; Tuo Zhao⋆ ⋆Georgia Insti">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8月第三周HomoDistil">
+<meta property="og:url" content="http://example.com/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="8月第三周周报论文1：HomoDistil: Homotopic Task-Agnostic Distillation of Pre-trained Transformersbase ICLR 2023 Chen Liang⋆∗, Haoming Jiang⋄, Zheng Li⋄, Xianfeng Tang⋄, Bin Yin⋄ &amp; Tuo Zhao⋆ ⋆Georgia Insti">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308201445125.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211622828.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211622525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619521.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619940.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619689.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619638.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211150540.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211154782.png">
+<meta property="article:published_time" content="2023-08-21T08:05:27.000Z">
+<meta property="article:modified_time" content="2023-08-21T08:22:42.940Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="剪枝+蒸馏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308201445125.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-8月第三周" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T08:05:27.000Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      8月第三周HomoDistil
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><ul>
+<li><h1 id="8月第三周周报"><a href="#8月第三周周报" class="headerlink" title="8月第三周周报"></a>8月第三周周报</h1><h2 id="论文1：HomoDistil-Homotopic-Task-Agnostic-Distillation-of-Pre-trained-Transformers"><a href="#论文1：HomoDistil-Homotopic-Task-Agnostic-Distillation-of-Pre-trained-Transformers" class="headerlink" title="论文1：HomoDistil: Homotopic Task-Agnostic Distillation of Pre-trained Transformers"></a>论文1：HomoDistil: Homotopic Task-Agnostic Distillation of Pre-trained Transformers</h2><p>base ICLR 2023</p>
+<p>Chen Liang⋆∗, Haoming Jiang⋄, Zheng Li⋄, Xianfeng Tang⋄, Bin Yin⋄ &amp; Tuo Zhao⋆ ⋆Georgia Institute of Technology, ⋄ Amazon{cliang73,tourzhao}@gatech.edu,{jhaoming,amzzhe,xianft,alexbyin}@amazon.com</p>
+<p>同主题蒸馏</p>
+<h3 id="摘要："><a href="#摘要：" class="headerlink" title="摘要："></a>摘要：</h3><p>知识蒸馏已被证明是一个强大的模型压缩方法，以促进在实践中部署预训练的语言模型。本文侧重于与任务无关的蒸馏。它产生了一个紧凑的预训练模型，可以很容易地在计算成本和内存足迹较小的各种任务上进行微调。尽管具有实际的好处，但与任务无关的蒸馏具有挑战性。由于教师模型比学生模型具有更大的容量和更强的表示能力，因此学生很难在大量开放域训练数据上产生与教师匹配的预测。这种较大的预测差异通常会降低知识蒸馏的好处。为了应对这一挑战，我们提出了同主题蒸馏（HomoDistil），这是一种新的与任务无关的蒸馏方法，配备了迭代修剪。具体来说，我们从教师模型初始化学生模型，并迭代地修剪学生的神经元，直到达到目标宽度。这种方法在整个蒸馏过程中保持了教师和学生的预测之间的微小差异，保证了知识转移的有效性。大量实验表明，HomoDistil 在现有基线上取得了显着的改进。</p>
+<h3 id="摘要总结："><a href="#摘要总结：" class="headerlink" title="摘要总结："></a>摘要总结：</h3><ul>
+<li>(1): 本文介绍一种新型的迭代剪枝算法-Homotopic Distillation。</li>
+<li>(2): 该算法采用结构剪枝技术，通过迭代剪枝来优化模型空间和时间效率。其实现步骤具体如下：</li>
+<li>(3): 在优化模型时，每一次迭代会剪枝掉最不重要的神经元并对剪枝后的模型进行蒸馏。每个参数的重要性得分则可以根据公式进行计算。另外，我们采用SGD算法对学生模型进行权重更新，通过优化其知识蒸馏损失来提高模型的精度和泛化效果。</li>
+<li>(4): 在BERT-base的自然语言理解和问答任务上，该算法在GLUE基准和SQuaD v1.1和v2.0数据集上都取得了优秀的结果，证明了Homotopic Distillation的有效性和可行性。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308201445125.png" alt="1"></p>
+<p>HomoDistil 动机说明（用剪枝给知识蒸馏做初始化，并迭代式地获得最终的学生模型结构）</p>
+<blockquote>
+<p>随着预训练大模型规模的不断增加，任务特定蒸馏（下游微调蒸馏）的成本越来越高，任务无关蒸馏变得越来越重要。然而，由于教师模型的模型容量和表示能力远超学生模型，因此学生很难在大量开放域训练数据上模仿教师的预测。本文提出了同源蒸馏（Homotopic Distillation, HomoDistil）来缓解这一问题，该方法充分利用了蒸馏和剪枝的优势，将两者有机结合在了一起。</p>
+<p>左图:在 HomoDistil 中，学生从老师初始化，并通过蒸馏过程迭代修剪。矩形的宽度表示层的宽度。颜色的深度代表训练的充分性。</p>
+<p>右图：本文用教师模型初始化学生模型，以缓解两者在蒸馏过程中的容量和能力差异，并通过基于蒸馏损失的重要性得分的迭代剪枝，来逐步将学生模型修剪至最终想要的目标结构。在整个蒸馏+剪枝的过程中，教师和学生一直保持着较小的预测差异，这有助于知识更有效的传递。其核心动机如图 1 所示。</p>
+</blockquote>
+<p>该方法可从「蒸馏损失函数」和「迭代剪枝细节」两部分进行介绍。</p>
+<h2 id="2-1-蒸馏损失函数"><a href="#2-1-蒸馏损失函数" class="headerlink" title="2.1 蒸馏损失函数"></a>2.1 蒸馏损失函数</h2><p>本文采用了与 TinyBERT [1] 的通用蒸馏阶段类似的蒸馏损失函数进行任务无关的蒸馏。整体损失函数可以分为三部分：</p>
+<p>a）任务损失：设 是学生模型在开放域数据上预训练的任务损失（例如 BERT 的掩码语言建模损失 ）；</p>
+<p>b）概率蒸馏损失：即 Hinton [2] 经典 KD 论文中的 KL 散度损失；</p>
+<p>c）Transformer 蒸馏损失：具体包括教师和学生的中间层及嵌入层的隐层表示的差异损失，以及中间层的注意力得分差异损失。<br>当然，让我们详细解释上述段落中提到的公式和概念，并尝试回答可能的问题。我们这里讨论的是任务无关的知识蒸馏（Task-Agnostic Distillation），其目的是通过捕捉教师模型的某些内部表示来训练学生模型。</p>
+<h3 id="1-知识蒸馏损失"><a href="#1-知识蒸馏损失" class="headerlink" title="1. 知识蒸馏损失 \"></a>1. 知识蒸馏损失 \</h3><p>$$<br>L_{\text{MLM}} + \alpha_1 D_{\text{KL}}<br>$$</p>
+<h4 id="掩码语言建模损失-L-text-MLM"><a href="#掩码语言建模损失-L-text-MLM" class="headerlink" title="掩码语言建模损失 ( $L_{\text{MLM}} $)"></a>掩码语言建模损失 ( $L_{\text{MLM}} $)</h4><p>这部分损失与BERT等预训练模型的训练方式有关，其中模型试图预测句子中掩盖（或隐去）的词汇。它的目的是确保学生模型能够理解和生成自然语言。</p>
+<h4 id="1-2-Kullback-Leibler-KL-散度损失-D-text-KL"><a href="#1-2-Kullback-Leibler-KL-散度损失-D-text-KL" class="headerlink" title="1.2 Kullback-Leibler (KL) 散度损失 ( $D_{\text{KL}}$ )"></a>1.2 Kullback-Leibler (KL) 散度损失 ( $D_{\text{KL}}$ )</h4><p>KL散度量化了教师模型和学生模型之间概率分布的差异。这有助于学生模型学习教师模型的概率预测行为。</p>
+<h3 id="2-Transformer蒸馏损失"><a href="#2-Transformer蒸馏损失" class="headerlink" title="2. Transformer蒸馏损失"></a>2. Transformer蒸馏损失</h3><h4 id="2-1-隐藏表示的中间层蒸馏损失-L-text-hidn"><a href="#2-1-隐藏表示的中间层蒸馏损失-L-text-hidn" class="headerlink" title="2.1 隐藏表示的中间层蒸馏损失 ( $L_{\text{hidn}}$ )"></a>2.1 隐藏表示的中间层蒸馏损失 ( $L_{\text{hidn}}$ )</h4><p>学生模型和教师模型的隐藏表示在k-th中间层被比较。为了维度匹配，引入了一个可学习的线性投影矩阵( W_k^{\text{hidn}} )，使得学生模型的隐藏表示与教师模型在同一空间内。</p>
+<ul>
+<li>$ H_k^t  和 H_k^s $: 分别表示教师和学生模型在k-th中间层的隐藏表示。</li>
+<li>${MSE}(H_k^t, H_k^s W_k^{\text{hidn}})$: 指的是教师和学生隐藏表示之间的均方误差。</li>
+</ul>
+<h4 id="2-2-嵌入层蒸馏损失-L-text-emb"><a href="#2-2-嵌入层蒸馏损失-L-text-emb" class="headerlink" title="2.2 嵌入层蒸馏损失 ( $L_{\text{emb}}$ )"></a>2.2 嵌入层蒸馏损失 ( $L_{\text{emb}}$ )</h4><p>嵌入层损失类似于中间层损失，但是作用在嵌入层。通过均方误差比较教师和学生模型的嵌入表示，并引入一个线性投影矩阵( $W_{\text{emb}}$ )来进行维度匹配。</p>
+<h4 id="2-3-注意力蒸馏损失-L-text-attn"><a href="#2-3-注意力蒸馏损失-L-text-attn" class="headerlink" title="2.3 注意力蒸馏损失 ($ L_{\text{attn}}$ )"></a>2.3 注意力蒸馏损失 ($ L_{\text{attn}}$ )</h4><p>这一损失比较了教师和学生模型在k-th层的注意力分数矩阵。通过捕捉教师模型的注意力模式，有助于学生模型学习如何将注意力分配给不同的输入部分。</p>
+<h3 id="3-总损失-L-text-total"><a href="#3-总损失-L-text-total" class="headerlink" title="3. 总损失 ($ L_{\text{total}}$ )"></a>3. 总损失 ($ L_{\text{total}}$ )</h3><p>所有这些损失项的加权和形成了总损失，通过优化这个总损失来训练学生模型。权重参数( \alpha_1, \alpha_2, \alpha_3, \alpha_4 ) 允许我们调整每个组件在总损失中的相对重要性。<strong>公式5</strong></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211622828.png" alt="image-20230819113820853"></p>
+<h2 id="2-2-迭代剪枝细节"><a href="#2-2-迭代剪枝细节" class="headerlink" title="2.2 迭代剪枝细节"></a><strong>2.2 迭代剪枝细节</strong></h2><h3 id="1-学生模型的初始化"><a href="#1-学生模型的初始化" class="headerlink" title="1. 学生模型的初始化"></a>1. 学生模型的初始化</h3><p>学生模型从预训练的教师模型初始化，即$\theta_s^{(0)} &#x3D; \theta_t$。这意味着学生模型一开始的权重与教师模型相同。</p>
+<h3 id="2-SGD型算法的更新"><a href="#2-SGD型算法的更新" class="headerlink" title="2. SGD型算法的更新"></a>2. SGD型算法的更新</h3><p>在第(t)次迭代中，学生模型根据总损失($L_{\text{total}}$)（由方程5定义）使用SGD（随机梯度下降）类型的算法进行更新。<strong>公式6</strong>更新规则为：</p>
+<p>$\theta_s^{(t)} \leftarrow \theta_s^{(t-1)} - \eta \nabla_{\theta_s^{(t-1)}} L_{\text{total}}(\theta_s^{(t-1)}, \theta_t),$</p>
+<p>其中($\eta$)是步长，控制每次迭代的更新幅度。</p>
+<h3 id="3-计算重要性得分"><a href="#3-计算重要性得分" class="headerlink" title="3. 计算重要性得分"></a>3. 计算重要性得分</h3><p>接下来计算所有参数的重要性得分($S_j^{(t)}$)。重要性得分与参数的梯度和值有关，可以用来确定哪些神经元可以被剪枝，而不会显著影响模型性能。得分定义为：<br><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211622525.png" alt="image-20230819115152088"></p>
+<h3 id="4-计算权重矩阵的重要性得分"><a href="#4-计算权重矩阵的重要性得分" class="headerlink" title="4. 计算权重矩阵的重要性得分"></a>4. 计算权重矩阵的重要性得分</h3><p>对于学生模型中的任何权重矩阵($W^{(t)}$)，其对应的重要性得分表示为($S^{(t)}_W$。然后定义每一列的重要性得分为$N^{(t)}_W$，<strong>公式7</strong> 其中</p>
+<p>$N^{(t)}_{W_i} &#x3D; \left| S^{(t)}_W[:,i] \right|_1 \quad \forall i &#x3D; 1, \ldots, ds.$</p>
+<p>这一步骤有助于确定哪些列（神经元）对模型最重要。</p>
+<h3 id="5-计算二进制掩码"><a href="#5-计算二进制掩码" class="headerlink" title="5. 计算二进制掩码"></a>5. 计算二进制掩码</h3><p>接下来，计算与权重矩阵相关的二进制掩码($M^{(t)}_W$)，也就是<strong>公式8</strong> 其中</p>
+<p>$M^{(t)}<em>{W[:,i]} &#x3D;<br>\begin{cases}<br>      1 &amp; \text{if } N^{(t)}</em>{W_i} \text{ is in the top } r^{(t)} \text{ of } N^{(t)}_W, \<br>      0 &amp; \text{otherwise}, , \forall i &#x3D; 1, \ldots, ds.<br>\end{cases}$</p>
+<p>这个掩码用于确定哪些列保留，哪些列剪除。</p>
+<h3 id="6-剪枝的时间表"><a href="#6-剪枝的时间表" class="headerlink" title="6. 剪枝的时间表"></a>6. 剪枝的时间表</h3><p>剪枝的速率(r(t))由一个三次递减函数控制，确保稀疏性缓慢增加，列逐渐剪除。参数(rf)代表最终稀疏性，(T)是总训练迭代次数，($0 \leq ti &lt; tf \leq T$)是超参数。</p>
+<p>算法结果：</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619521.png" alt="image-20230819135528828"></p>
+<blockquote>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><ol>
+<li>($\theta_t$)：教师模型的参数。</li>
+<li>($T, t_i, t_f, r_f, \alpha_1, \alpha_2, \alpha_3, \alpha_4$)：超参数。</li>
+</ol>
+<h3 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h3><ol>
+<li>($\theta(T)_s$)：学生模型的参数。</li>
+</ol>
+<h3 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h3><ol>
+<li><p><strong>初始化</strong>：学生模型的参数($\theta(0)_s$)被初始化为教师模型的参数($\theta_t$)。</p>
+</li>
+<li><p><strong>循环训练</strong>：算法进行(T)次迭代，其中每次迭代执行以下步骤：<br>a. <strong>计算总损失</strong>：根据等式5计算总损失($L_{\text{total}}$)。<br>b. <strong>参数更新</strong>：使用梯度下降法更新学生模型的参数。更新规则为($\theta(t)_s \leftarrow \theta(t-1)_s - \eta \nabla \theta(t-1)<em>s L</em>{\text{total}}$)，其中($\eta$)是学习率。<br>c. <strong>计算重要性得分</strong>：根据等式6计算重要性得分(S(t))。<br>d. <strong>计算权重和掩码</strong>：对于学生模型的每个权重矩阵(W(t))：</p>
+<ul>
+<li>计算各列的重要性得分(N(t)_W)，遵循等式7。</li>
+<li>计算二进制掩码(M(t)_W)，遵循等式8。</li>
+<li>使用掩码更新权重矩阵：($W(t) \leftarrow W(t) \odot M(t)_W$)。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p>数据:<strong>语料库</strong>：</p>
+<ul>
+<li><strong>Wikipedia 2</strong>：包含2500M单词的英语维基百科语料库。</li>
+<li><strong>BookCorpus</strong>（Zhu et al., 2015）：包含800M单词。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619940.png" alt="image-20230819135306819"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619689.png" alt="image-20230819142515987"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211619638.png" alt="image-20230819142537042"></p>
+<h1 id="论文2-HOW-I-LEARNED-TO-STOP-WORRYING-AND-LOVERETRAINING"><a href="#论文2-HOW-I-LEARNED-TO-STOP-WORRYING-AND-LOVERETRAINING" class="headerlink" title="论文2 HOW I LEARNED TO STOP WORRYING AND LOVERETRAINING"></a>论文2 HOW I LEARNED TO STOP WORRYING AND LOVERETRAINING</h1><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: How I Learned to Stop Worrying and Love Retraining (我如何学会不再担心并热爱重新训练)</li>
+<li>Authors: Max Zimmer, Christoph Spiegel, Sebastian Pokutta</li>
+<li>Affiliation: Department for AI in Society, Science, and Technology, Zuse Institute Berlin, Germany (柏林祖斯研究所，德国)</li>
+<li>Keywords: Neural Network Pruning, Retraining, Learning Rate Schedule, Budgeted Training</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=xxx">Paper</a> , [GitHub: None]</li>
+<li>ICLR 2023</li>
+</ul>
+<h1 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本研究提出了一种简单而高效的方法，通过使用线性学习率调度来大幅缩短神经网络修剪后的重新训练阶段，并在初始稠密训练阶段上实施预算控制，从而在质量和速度上超越了现有的复杂方法。</li>
+</ul>
+<p>论文动机：</p>
+<ol>
+<li><strong>剪枝的必要性和挑战</strong>：由于现代神经网络通常具有大量的参数，因此需要高内存和计算资源。通过剪枝可以显著减少这些需求，但同时也带来了许多挑战，例如剪枝后的性能下降以及剪枝过程的计算复杂性。</li>
+<li><strong>迭代大小剪枝（IMP）的问题</strong>：虽然IMP是一种有效的剪枝方法，但其计算复杂性和潜在的次优状态引起了关注。作者意图重新审视并改进这种方法，使其更加实用和有效。</li>
+<li><strong>重新思考剪枝和再训练的方法</strong>：作者试图通过在预算训练的背景下重新思考IMP的再训练阶段，找到一种可以大大缩短运行时间并保持性能的方法。</li>
+<li><strong>寻找更有效的学习率计划</strong>：通过提出自适应线性学习速率重启（ALLR），作者试图解决选择线性计划的初始值的问题，并考虑剪枝的影响和整体再训练时间。</li>
+<li><strong>挑战现有观点</strong>：作者挑战了一般认为剪枝稳定方法优于依赖“硬”剪枝和再训练的方法的观点，通过实验和新方法来证明他们的观点。</li>
+<li><strong>提供实用的解决方案</strong>：通过提出预算IMP（BIMP）和其他改进，作者意图提供一种实际、高效的解决方案，以便在不牺牲性能的情况下更有效地剪枝神经网络。</li>
+</ol>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 近年来，神经网络修剪已成为压缩模型的重要方法，但修剪后的网络需要经过重新训练来恢复性能，而这一过程通常非常耗时。</li>
+<li>过去方案: 传统的修剪方法通常需要多次迭代的重新训练，计算资源消耗较大，而现有的稳定修剪方法在训练过程中引入了复杂的参数化，也无法很好地解决这个问题。</li>
+<li>论文的Motivation: 针对修剪后的重新训练阶段的学习率调度问题，以及初始稠密训练阶段的预算控制问题，本研究提出了一种简单而高效的方法，通过线性学习率调度和预算控制，实现了修剪后网络的高质量和快速训练。</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211150540.png" alt="image-20230821115029487"></p>
+<p>提出了几种不同的学习率调度策略来改进迭代式裁剪-重训循环(IMP)中的重训阶段,包括:</p>
+<ul>
+<li>LRW:学习率回绕(Learning Rate Rewinding),使用原训练的后几个学习率进行重训</li>
+<li>SLR:学习率重新启动(Restarting),使用缩放后的原学习率调度进行重训</li>
+<li>CLR:周期性学习率重新启动,使用基于余弦的周期学习率进行重训</li>
+<li>LLR:线性学习率重新启动,使用线性衰减的学习率进行重训</li>
+<li>ALLR:自适应线性学习率重新启动,根据裁剪影响自适应地确定初始学习率</li>
+</ul>
+<h3 id="裁剪稳定性"><a href="#裁剪稳定性" class="headerlink" title="裁剪稳定性"></a>裁剪稳定性</h3><p>提出了 Budgeted IMP (BIMP) 方法,在给定训练epoch次数budget内,首先dense训练,然后进行IMP裁剪和重训,避免额外的隐性偏置,与传统裁剪稳定性方法进行公平比较。</p>
+<h3 id="裁剪方式"><a href="#裁剪方式" class="headerlink" title="裁剪方式"></a>裁剪方式</h3><p>简单采用基于权重大小的全局裁剪方式。</p>
+<p>总体来说,主要贡献在于提出了重新思考重训的学习率调度策略,并在公平的基础上比较了裁剪稳定性方法,为神经网络裁剪的高效训练提供了新思路。</p>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文讨论了现代神经网络架构中过参数化的问题以及修剪模型以压缩这些模型的潜在好处。介绍了迭代幅度修剪（IMP）的概念以及与重新训练阶段相关的挑战。作者提出重新思考重新训练阶段，将其置于预算训练的背景下，并证明可以使用简单的线性学习率调度显著缩短重新训练时间。他们还提出了一种自适应选择学习率初始值的方法。此外，他们建议在IMP的初始密集训练阶段施加预算，以高效地生成稀疏的训练网络。作者强调他们的研究结果质疑了修剪稳定方法通常优于依赖“硬”修剪和重新训练方法的观点。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>本文讨论了修剪神经网络的不同重新训练调度方法。作者提出了几种方法，包括速率回退（LRW）、缩放学习率重启（SLR）、循环学习率重启（CLR）、线性学习率重启（LLR）和自适应线性学习率重启（ALLR）。LRW使用每个周期的最后学习率重新训练修剪后的网络。SLR将原始调度压缩到重新训练时间框架内，并包含一个短暖身阶段。CLR基于1周期学习率调度，并包含一个短暖身阶段。LLR在重新训练期间使用线性学习率调度，而ALLR根据修剪的影响和可用的重新训练时间动态调整重新训练调度的初始值。作者根据Li等人（2020）关于在固定迭代预算内训练神经网络的研究结果提出了这些方法。他们认为重新训练应该考虑预算训练的方面，并且从预算训练中得出的经验通常适用于修剪的背景下。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211154782.png" alt="image-20230821115453710"></p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>实验结果显示，修剪后的重新训练类似于预算训练。线性和余弦学习率调度优于常数和阶梯调度，其中LLR略优于CLR。然而，对于较短的重新训练时间和中等稀疏度，CLR和LLR等固定重启调度与FT和LRW相比不太竞争。ALLR在小的重新训练预算范围内始终改进了以前的方法。实验结果还展示了ALLR在不同重新训练周期下实现高测试准确率的有效性。此外，对于CIFAR-10上的ResNet-56和ImageNet上的ResNet-50的结果显示了BIMP与修剪稳定方法在不同稀疏度水平上的比较。BIMP在准确性、加速比和稀疏度方面与其他方法相比具有竞争力。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>实验结果显示，BIMP方法在测试性能、理论加速比和实现的稀疏度方面优于许多其他修剪稳定方法。对于ImageNet，DNW方法与BIMP相当或更好，但训练时间大约是BIMP的两倍。大多数其他方法与BIMP相比似乎处于劣势，而DPF是一个强有力的竞争对手。BIMP在相同数量的训练周期内实现了这些结果，并且没有一些其他方法的计算开销。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" data-id="cllkmcmf4000eksu756mw56ms" data-title="8月第三周HomoDistil" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          7月第二周cvil多模态知识蒸馏
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">8月第二周剪枝相关</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/">8月第二周剪枝相关</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F/">8月第一周自然语言大模型蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%91%A8%E6%8A%A5%E4%BE%9D%E8%B5%96%E5%9B%BE%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/">7月第四周周报依赖图通用剪枝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

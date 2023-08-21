@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>6月第一周RWKV渐进promptLora | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="6月第一周RWKV&#x2F;渐进prompt&#x2F;Lora论文1：RWKV: Reinventing RNNs for the Transformer EraRWKV：为Transformer时代重塑RNN  2305.13048.pdf (arxiv.org)  摘要  a. 本文的研究背景: 通过介绍RNN和Transformer的优劣势，针对长序列的任务提出了Receptance W">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6月第一周RWKV渐进promptLora">
+<meta property="og:url" content="http://example.com/2023/08/21/6%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8RWKV%E6%B8%90%E8%BF%9BpromptLora-1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="6月第一周RWKV&#x2F;渐进prompt&#x2F;Lora论文1：RWKV: Reinventing RNNs for the Transformer EraRWKV：为Transformer时代重塑RNN  2305.13048.pdf (arxiv.org)  摘要  a. 本文的研究背景: 通过介绍RNN和Transformer的优劣势，针对长序列的任务提出了Receptance W">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230609162340.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110548.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110617.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110845.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110854.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110856.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110903.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110900.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110907.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202306171000958.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230612154037.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211548121.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110917.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110922.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110922.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202306171117865.png">
+<meta property="article:published_time" content="2023-08-21T07:47:51.000Z">
+<meta property="article:modified_time" content="2023-08-21T07:51:06.343Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="线性注意力，promot，lora">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230609162340.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-6月第一周RWKV渐进promptLora-1" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/6%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8RWKV%E6%B8%90%E8%BF%9BpromptLora-1/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T07:47:51.000Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      6月第一周RWKV渐进promptLora
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="6月第一周RWKV-渐进prompt-Lora"><a href="#6月第一周RWKV-渐进prompt-Lora" class="headerlink" title="6月第一周RWKV&#x2F;渐进prompt&#x2F;Lora"></a>6月第一周RWKV&#x2F;渐进prompt&#x2F;Lora</h1><h1 id="论文1：RWKV-Reinventing-RNNs-for-the-Transformer-Era"><a href="#论文1：RWKV-Reinventing-RNNs-for-the-Transformer-Era" class="headerlink" title="论文1：RWKV: Reinventing RNNs for the Transformer Era"></a>论文1：RWKV: Reinventing RNNs for the Transformer Era</h1><p>RWKV：为Transformer时代重塑RNN</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2305.13048.pdf">2305.13048.pdf (arxiv.org)</a></p>
+</blockquote>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230609162340.png" alt="image-20230609162340406"></p>
+<ul>
+<li>a. 本文的研究背景:<ul>
+<li>通过介绍RNN和Transformer的优劣势，针对长序列的任务提出了Receptance Weighted Key Value (RWKV)模型，将Transformer和RNN结合起来，实现并行可扩展性及高效率。</li>
+</ul>
+</li>
+<li>b. 过去的方法及其问题和动机:<ul>
+<li>介绍了替换或修改神经网络中的注意力机制以实现长序列的可扩展性的各种模型，其中包括MLP-Mixer、Attention Free Transformer (AFT)、Recurrent Memory Transformer和Linear Recurrent Units等。</li>
+</ul>
+</li>
+<li>c. 本文提出的研究方法:<ul>
+<li>提出了RWKV模型，利用时间混合组件，将长序列任务的Transformer和RNN的优点相结合，采用线性注意力机制，提高了可扩展性和并行可训练性，同时引入了多种策略以捕捉局部性和长程依赖关系。</li>
+</ul>
+</li>
+<li>d. 方法在任务中的表现:<ul>
+<li>在基准数据集上进行了全面系列的实验，在与相似大小的Transformer相当的性能的同时，在规模从1.69亿到140亿的Pile上训练了一个预先训练模型。</li>
+</ul>
+</li>
+</ul>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景:"></a>背景:</h2><ul>
+<li>a. 主题及其特点:<ul>
+<li>本文的主题为神经网络的注意力机制在处理长序列时面临的挑战，以及RWKV模型的解决方法。</li>
+</ul>
+</li>
+<li>b. 历史发展:<ul>
+<li>在过去的相关研究中，RNNs在序列处理任务中具有高效的计算能力，但由于存在并行性和可扩展性方面的限制，无法达到Transformer的性能表现。对于长序列任务而言，Transformer具有卓越的性能，但由于其内存和计算复杂度随序列长度呈二次增长，其对于大规模模型的处理存在困难。</li>
+</ul>
+</li>
+<li>c. 过去的方法:<ul>
+<li>过去的研究着眼于替换或修改神经网络中的注意力机制。例如，MLP-Mixer等模型将注意力机制替换为多层感知机 (MLPs)；Attention Free Transformer (AFT)将点积自注意力机制替换为计算效率较高的替代机制；Recurrent Memory Transformer和Linear Recurrent Units等模型则将RNN风格的递归组件进行了修改以增加局部上下文的长度；S4等基于状态空间的模型 (SSM) 也被提出。</li>
+</ul>
+</li>
+<li>d. 过去研究的不足:<ul>
+<li>过去的研究中存在的问题包括：替换机制的有效性和性能、长序列的可扩展性、模型的拟合能力、训练效率等问题。</li>
+</ul>
+</li>
+<li>e. 解决当前问题的必要性:<ul>
+<li>随着神经网络在各个领域的应用，越来越多的任务需要处理长序列数据，因此提高神经网络的可扩展性和计算效率尤为重要。</li>
+</ul>
+</li>
+</ul>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h2><ul>
+<li>a. 研究的理论基础:<ul>
+<li>RWKV模型利用时间混合组件融合了Transformer和RNN的优点，采用线性注意力机制提高了可扩展性和并行可训练性。</li>
+</ul>
+</li>
+<li>b. 文章的技术路线:<ul>
+<li>RWKV模型由多个堆叠的残差块组成，在其中包含时间混合和通道混合子块。回归过程的公式化表达如方程14所示，该模型可在时间并行模式下高效并行化。模型的性能在多种NLP任务中进行了基准测试，证明了其训练和内存效率方面的良好表现。</li>
+</ul>
+</li>
+<li>c. 方法的创新性、性能和工作量:<ul>
+<li>RWKV模型通过比较特殊的初始化技巧以及乘性交互方法，使得引入线性复杂度的注意力机制变得可行，同时提供了新技术来捕捉局部性和长程依赖关系， 改进了Transformer的局限性。该方法与以前的相似方法不同，RWKV模型采用可并行化和可扩展训练的形式。它在性能上与Transformer相当，并且展现了处理大规模模型的潜力。</li>
+</ul>
+</li>
+<li>d. 研究结论:<ul>
+<li>RWKV模型的出现解决了长序列任务中RNN和Transformer所面临的各自的限制。但本文也强调了模型的潜在局限性，包括模型的能力可能受限于之前token的数量，以及 prompt engineering的重要性。最后，该文总结了与RWKV的分块计算方案类似的最近工作，并讨论了无注意力模型作为改进Transformer效率的替代方法。RWKV开辟了一扇新门，可用于建模序列数据中的复杂关系。</li>
+</ul>
+</li>
+</ul>
+<h2 id="模型架构图"><a href="#模型架构图" class="headerlink" title="模型架构图"></a>模型架构图</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110548.png" alt="image-20230609204310375"></p>
+<ol>
+<li><p>Time Mixing</p>
+<ol>
+<li><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110617.png" alt="image-20230609204719541"></p>
+</li>
+<li><blockquote>
+<p>这个函数描述了处理一个经过RNN网络后的状态的操作。它针对这个状态进行了三种操作，混合、扩展和归一化，并计算输出。这些操作通过一组输入变量(the current input state(x), last input state(last_x), numerator(last_num), denominator(last_den), exponential decay(decay), bonus值(bonus), mixing_coefficients(mix_k&#x2F;mix_v&#x2F;mix_r), query、key和value的weight(Wk, Wv, Wr)以及输出的weight(Wout))来实现。混合是一种对 <code>x</code> 和 <code>last_x</code> 执行加权操作的方法，其中参数是 <code>mix_k/mix_v/mix_r</code>。对于这个混合的结果计算权重 <code>kw</code>, <code>kw</code>取决于值的相似度和重要性。其中，重要性通过进一步加权得到，这里使用exp函数来实现。接下来，<code>numerator</code>和<code>denominator</code>分别用于计算 <code>kw</code>的平均值和标准差，然后再将这个值乘以查询结果得到输出结果。最后函数返回了两个值，输出结果和更新后的状态值。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>Channel Mixing</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110845.png" alt="image-20230609205438997"></p>
+<blockquote>
+<p>这个函数执行一种基于 <code>x</code>和 <code>last_x</code>的加权和归一化操作，通过一组权重来实现，并返回一个新的值。权重是通过查询值和重要性(用sigmod函数计算)来计算的，其中的值经过了一些加权操作，包括在第二个权重层计算关键值。这个函数仍然返回两个值，输出结果以及状态值。</p>
+</blockquote>
+<h3 id="增加：传统transformer模型：生成长度为T的序列，需要O-T-2-复杂度"><a href="#增加：传统transformer模型：生成长度为T的序列，需要O-T-2-复杂度" class="headerlink" title="增加：传统transformer模型：生成长度为T的序列，需要O(T^2) 复杂度"></a>增加：传统transformer模型：生成长度为T的序列，需要O(T^2) 复杂度</h3><p>令 F[t] 为 t 时刻的系统状态（高维矢量）。</p>
+<p>令 x[t] 为 t 时刻的外部输入信息状态。</p>
+<p>预测 F[t+1] 时，需考虑 F[0], F[1], .. F[t]。因此，生成长度 T 的序列，需 O(T^2) 复杂度。</p>
+<p>简化版本的公式：</p>
+<p>$$<br>F[\mathrm{t}+1]&#x3D;\frac{\sum_{\mathrm{i}&#x3D;0}^{\mathrm{t}} \exp (\mathbf{Q}x[\mathrm{t}] * \mathbf{K}F[\mathrm{i}]) \cdot(\mathbf{V}F[\mathrm{i}])}{\sum_{\mathrm{i}&#x3D;0}^{\mathrm{t}} \exp (\mathbf{Q}x[\mathrm{t}] * \mathbf{K}F[\mathrm{i}])}<br>$$<br>这里 <strong>Q K V</strong> 是三个可训练的矩阵。</p>
+<p>其意义为：</p>
+<ul>
+<li><p>每个状态 i 对于后续的潜在贡献是 <strong>V</strong>F[i]。</p>
+</li>
+<li><p>用 <strong>Q</strong>x[t] 矢量，与此前的所有 <strong>K</strong>F[i] 矢量分别做点乘，再 exp，得到 x[t] 与之前各个 F[i] 状态的匹配度。（为什么复杂度高）</p>
+</li>
+<li><p>如果匹配度<br>$$<br> \exp (\mathbf{Q}x[\mathrm{t}] * \mathbf{K}F[\mathrm{i}])<br>$$</p>
+<p>越大，<strong>V</strong>F[i] 的权重越大。</p>
+</li>
+<li><p>分母为归一化因子。</p>
+</li>
+</ul>
+<h2 id="RWKV-2-模型：生成长度-T-的序列，只需-O-T-复杂度（"><a href="#RWKV-2-模型：生成长度-T-的序列，只需-O-T-复杂度（" class="headerlink" title="RWKV-2 模型：生成长度 T 的序列，只需 O(T) 复杂度（&#x3D;&#x3D;"></a><strong>RWKV-2 模型：生成长度 T 的序列，只需 O(T) 复杂度</strong>（&#x3D;&#x3D;</h2><h2 id="启发：用于图片生成或分类transformer改造-）"><a href="#启发：用于图片生成或分类transformer改造-）" class="headerlink" title="启发：用于图片生成或分类transformer改造&#x3D;&#x3D;）"></a>启发：用于图片生成或分类transformer改造&#x3D;&#x3D;）</h2><p>$$<br>F[\mathrm{t}+1]&#x3D;\sigma(\mathbf{R}x[\mathrm{t}]) \cdot \frac{\sum_{\mathrm{i}&#x3D;0}^{\mathrm{t}} \exp (\mathbf{W} \cdot(\mathrm{t}-\mathrm{i})) \cdot \exp (\mathbf{K}F[\mathrm{i}]) \cdot(\mathbf{V}F[\mathrm{i}])}{\sum_{\mathrm{i}&#x3D;0}^{\mathrm{t}} \exp (\mathbf{W} \cdot(\mathrm{t}-\mathrm{i})) \cdot \exp (\mathbf{K }F[\mathrm{i}])}<br>$$</p>
+<p>这里 <strong>R K V</strong> 是三个可训练的矩阵，<strong>W</strong> 是一个可训练的矢量（代表时间衰减率）。</p>
+<p>其意义为：</p>
+<ol>
+<li><p>每个状态 i 对于后续的潜在贡献&#x3D;&#x3D;是 <strong>V</strong>F[i]。&#x3D;&#x3D;</p>
+</li>
+<li><p>匹配度由</p>
+</li>
+<li><p>$$<br>\exp (\mathbf{Q}x[\mathrm{t}] * \mathbf{K}F[\mathrm{i}]) 改为 \sigma(\mathbf{R}x[\mathrm{t}]) \cdot \exp (\mathbf{W} \cdot(\mathrm{t}-\mathrm{i})) \cdot \exp (\mathbf{K}F[\mathrm{i}])<br>$$</p>
+</li>
+<li><p>决定，其中</p>
+</li>
+<li><p>$$<br>中 \sigma 是非线性函数，经实验采用 sigmoid 函数的效果较好。注意 \sigma(\mathbf{R}x[\mathrm{t}]) 不参与归一化，所以将 R 称为 receptance。<br>$$</p>
+</li>
+<li><p>$$<br>这里 \exp (\mathbf{W} \cdot(\mathrm{t}-\mathrm{i})) 是显式的距离因子<br>$$</p>
+</li>
+<li><p>我们进一步变换，将其变为 RNN 递归形式。即，生成 F[t+1] 时，只需考虑 x[t]，以及固定大小的隐状态 A[t] 和 B[t]（A[t] 和 B[t] 是上一步的分子和分母。），无需与此前 F[i] 都进行计算。因此，生成长度 T 的序列，只需 O(T) 复杂度。</p>
+</li>
+<li><p>$$<br>F[1]&#x3D;\sigma(\mathbf{R }x[0]) \cdot \frac{ \exp (\mathbf{K }F[0]) \cdot(\mathbf{V }F[0])}{\exp (\mathbf{K }F[0])}</p>
+<p>F[2]&#x3D;\sigma(\mathbf{R }x[1]) \cdot \frac{ \exp (\mathbf{K }F[1]) \cdot(\mathbf{V }F[1])+\exp (\mathbf{W} ) \cdot \exp (\mathbf{K }F[0]) \cdot(\mathbf{V }F[0])}{ \exp (\mathbf{K }F[1])+\exp (\mathbf{W} ) \cdot \exp (\mathbf{K }F[0])}<br>$$</p>
+</li>
+<li><p>可以推导得到</p>
+</li>
+<li><p>$$<br>F[t+1]&#x3D;\sigma(\mathbf{R }x[t]) \cdot \frac{\exp (\mathbf{K}F[\mathrm{t}]) \cdot(\mathbf{V}F[\mathrm{t}])+\exp (\mathbf{W}) \cdot A[\mathrm{t}]}{ \exp (\mathbf{K}F[\mathrm{t}])+\exp (\mathbf{W}) \cdot B[\mathrm{t}]}<br>$$</p>
+</li>
+</ol>
+<h3 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h3><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110854.png" alt="image-20230609210057755"></p>
+<p>不同LLM的文本生成期间的累积时间。</p>
+<h2 id="Zero-Shot-Performance-of-the-model-on-Common-Sense-Reasoning-Tasks"><a href="#Zero-Shot-Performance-of-the-model-on-Common-Sense-Reasoning-Tasks" class="headerlink" title="Zero-Shot Performance of the model on Common Sense Reasoning Tasks."></a>Zero-Shot Performance of the model on Common Sense Reasoning Tasks.</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110856.png" alt="image-20230609210350167"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110903.png" alt="image-20230609210608382"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110900.png" alt="image-20230609210627551"></p>
+</li>
+</ol>
+<h1 id="chatpaper相关"><a href="#chatpaper相关" class="headerlink" title="chatpaper相关"></a>chatpaper相关</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/613055271">我把ChatPaper开源了！用来速读PDF和刷ArXiv论文 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7220775341727399991">推荐几个可以免费使用的ChatGPT工具 - 掘金 (juejin.cn)</a></p>
+</blockquote>
+<p>之前准备写一篇专门介绍上述工具类的原理介绍（其实ChatGPT的 插件——chatgpt-retrieval-plugin），但是后来查看了几个项目的源码之后发现，这类工具的主要原理其实比较直观：</p>
+<ul>
+<li>解析相关输入为文本</li>
+<li>将文本分句后获取句子的embedding（这一步目前处理的处理方式大都是根据长度截断）并存储至数据库</li>
+<li>用户输入转换为embedding，并在数据库中召回相关性最高的句子集合langchain</li>
+<li>将召回的句子与用户输入句子组装为ChaptGPT的输入，获取输出</li>
+</ul>
+<p>上述思路虽然直观，但要获取更好的结果，其实除了第三步，其余每一步都有优化的空间：</p>
+<ul>
+<li>文本解析可以针对不同类型的数据针对性解析</li>
+<li>文本分句方式可以采取特殊标点进行分句，同时句子embedding也有很多可选生成方法</li>
+<li>召回的句子与用户输入句子组装为ChaptGPT的输入，结合任务特定的prompt，获取更适合任务的输出</li>
+</ul>
+<p>参考langchain</p>
+<h1 id="论文2：Progressive-Prompts-Continual-Learning-for-Language-Models-《渐进提示：持续学习的语言模型》"><a href="#论文2：Progressive-Prompts-Continual-Learning-for-Language-Models-《渐进提示：持续学习的语言模型》" class="headerlink" title="论文2：Progressive Prompts: Continual Learning for Language Models 《渐进提示：持续学习的语言模型》"></a>论文2：Progressive Prompts: Continual Learning for Language Models 《渐进提示：持续学习的语言模型》</h1><h2 id="启发：经典论文阅读，"><a href="#启发：经典论文阅读，" class="headerlink" title="启发：经典论文阅读，"></a>启发：经典论文阅读，</h2><p>ICLR2023</p>
+<blockquote>
+<p>[[2301.12314] 渐进式提示：语言模型的持续学习 (arxiv.org)](<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2301.12314#:~:text=We">https://arxiv.org/abs/2301.12314#:~:text=We</a> introduce Progressive Prompts - a simple and,replay or a large number of task-specific parameters.)</p>
+</blockquote>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ul>
+<li>a. 这篇文章的研究背景:<ul>
+<li>本文介绍了一种新的连续学习方法Progressive Prompts，用于语言模型的学习。</li>
+</ul>
+</li>
+<li>b. 以往的方法、问题和动机:<ul>
+<li>以往的方法存在遗忘问题，在新增任务学习后，之前学习的任务的性能会下降，这限制了语言模型的应用。</li>
+</ul>
+</li>
+<li>c. 本文提出的研究方法:<ul>
+<li>Progressive Prompts方法，通过重新描述提示嵌入和添加剩余连接，以防止遗忘，提高性能。</li>
+</ul>
+</li>
+<li>d. 方法在任务上达到的性能:<ul>
+<li>在多个数据集上进行测试，结果表明，Progressive Prompts方法在15个文本分类任务中表现优异，比之前的方法平均测试准确率提高20%以上，同时在长序列的任务中也表现出色。</li>
+</ul>
+</li>
+</ul>
+<h1 id="背景-1"><a href="#背景-1" class="headerlink" title="背景:"></a>背景:</h1><ul>
+<li>a. 主题和特征:<ul>
+<li>本文的主题为语言模型的连续学习方法研究，旨在应对以往方法在遗忘问题上的短板。</li>
+</ul>
+</li>
+<li>b. 历史发展:<ul>
+<li>以往的连续学习方法遇到了遗忘问题的挑战，需要一个新的方法来应对。</li>
+</ul>
+</li>
+<li>c. 以往的方法:<ul>
+<li>以往的方法主要采用重放机制，在每个任务后，使用之前学习任务的数据重新训练模型，但是这样有可能会忘记已掌握的知识。</li>
+</ul>
+</li>
+<li>d. 以往研究中的不足:<ul>
+<li>以往的连续学习方法限制了语言模型的应用范围，需要一种能够防止遗忘并提高性能的方法。</li>
+</ul>
+</li>
+<li>e. 当前需要解决的问题:<ul>
+<li>如何解决遗忘问题，并且提高模型性能，以便扩大应用范围。</li>
+</ul>
+</li>
+</ul>
+<h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a>方法:</h1><ul>
+<li>a. 本研究的理论基础:<ul>
+<li>Progressive Prompts方法，通过重新描述提示嵌入和添加剩余连接，以防止遗忘，提高性能。</li>
+</ul>
+</li>
+<li>b. 文章的技术路线 (逐步):<ul>
+<li>(1) 采用模型无关的方式重新描述提示嵌入，使用多层感知器 (MLP) 对提示嵌入进行重新参数化；</li>
+<li>(2) 添加剩余连接，以改进优化和避免学习身份映射；</li>
+<li>(3) 在多个数据集上进行测试，以比较其性能和可扩展性。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110907.png" alt="image-20230610085314675"></p>
+<blockquote>
+<p>第一种方法叫做”progressive networks using prompt tuning”，简称”简单适应法”。这种方法是为每个新任务学习一个单独的提示(prompt)，并且对于每个新任务都会重复使用之前冻结的输入嵌入(frozen input embeddings)。这意味着每个任务都需要重复输入令牌(input tokens)。而第二种方法是”Progressive Prompts”，简称”逐步提示法”。在这种方法中，我们使用相同的输入，并逐步添加新的提示来处理每个新任务。添加新提示时不会修改先前任务的提示。简单来说，逐步提示法是一种更为高效的方法，不需要每次都重复输入令牌，而是逐渐添加新的提示来处理新任务。</p>
+</blockquote>
+<p>体现在公式上：<br>$$<br>\mathcal{L}(\theta_{P_k})&#x3D;-\sum_{x,y\in T_k}\log p(y|[P_k,…,P_1,x],\theta,\theta_{P_1},…,\theta_{P_k})<br>$$</p>
+<blockquote>
+<p>这个公式是用来计算在训练当前任务Tk时，对于当前任务的提示参数θPk进行训练的损失函数。其中，x和y分别是当前任务Tk的输入和输出，[P_k,…,P_1,x]表示在之前所有任务的提示P1到Pk以及当前输入x的基础上产生当前输出y的条件概率，这个概率是由语言模型(LM)的参数θ以及提示参数θPk共同决定的。损失函数的目的是最小化负对数似然(log-likelihood)的值，即最大化对数似然函数值。在这个公式中，θ表示LM的参数，θPk表示当前任务的提示参数，其中θ是不可训练的，而θPk只在学习当前任务的过程中可以训练，之后将被冻结。</p>
+<p>这个方法的主要目的是在每个新任务中，逐步学习一个任务相关的提示，然后将该提示与之前的所有任务的提示拼接起来，并在输入嵌入前加入该提示。对于每个任务，都需要训练相应的提示参数θPk，以最大化预测正确的概率。可以通过逐步改变所有提示参数的值来使预测输出更准确。此外，在学习每个新任务时，之前学习的任务提示参数将会被冻结，只有当前任务的提示参数可以进行训练。</p>
+</blockquote>
+<h1 id="增加：公式解读："><a href="#增加：公式解读：" class="headerlink" title="增加：公式解读："></a>增加：公式解读：</h1><p>首先是prompt tuning常使用的目标函数如下：<br>$$<br>\max_{\theta, \theta_P} \log p_{\theta, \theta_P}(y | [P; x])<br>$$</p>
+<p>$$</p>
+<p>$$</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202306171000958.png" alt="image-20230617095731351"></p>
+<p>在这项工作中，我们关注的是一种连续学习的设置，其中语言模型将连续地面对一系列的文本分类任务（T_1, \ldots, T_m）。在每个任务中，我们有一组独立同分布的训练样本 (x_i, y_i)<em>{i&#x3D;1}^N，其中 x_i 是输入文本，y_i 是与任务 T_k 相关联的一组预定义标签 Y_k 中的一个标签。我们假设模型的参数为 \Theta，并且在训练和推断过程中可以获得任务的标识信息。因此，跨所有任务的学习目标可以表示为：<br>$$<br>\max</em>{\Theta} \sum_{k&#x3D;1}^m \sum_{(x,y)\in T_k} \log p_{\Theta}(y|x)<br>$$<br>连续学习中最直接的方法是微调（finetuning），它通过按顺序更新所有模型参数来逐个优化每个任务 k（其中 k 的范围是从 1 到 m）的损失函数。任务 k 的损失函数，记为 L_k(\Theta)，可以表示为:<br>$$<br>L_k(\Theta) &#x3D; -\sum_{(x,y)\in T_k} \log p(y|x, \Theta)<br>$$<br>尽管连续微调可以向未来任务传递前向知识，但它经常导致灾难性遗忘。灾难性遗忘是指在学习新任务后，之前任务的性能下降，并最终导致更高的泛化损失。</p>
+<p>Progressive Prompts是一种连续学习方法，它为每个新任务Tk逐步学习一个提示P<sub>k</sub>（见图1）。通过Progressive Prompts，我们为任务Tk学习一个独立的提示P<sub>k</sub>，并将其与之前学习的所有提示P<sub>i</sub>（其中i &lt; k）连接起来，然后将其添加到输入嵌入之前。在训练过程中，语言模型的参数θ始终保持冻结，而与提示P<sub>k</sub>相关的参数θP<sub>k</sub>仅在学习任务Tk时可训练，然后冻结。</p>
+<p>任务Tk（其中k ∈ {1…m}）的训练目标是找到提示参数θP<sub>k</sub>，使得在我们的逐步提示和冻结的基础模型下，训练样本的负对数概率最小化：</p>
+<p>$$<br>L(θPk) &#x3D; − Σ(log p(y|[Pk, …, P1, x], θ, θP1, …, θPk))<br>$$</p>
+<p>其中x,y∈Tk表示任务Tk中的训练示例，p(y|[Pk, …, P1, x], θ, θP1, …, θPk)表示在给定提示序列[Pk, …, P1]、模型参数θ和提示参数θP1, …, θPk的情况下预测目标y的条件概率。</p>
+<p>简而言之，Progressive Prompts通过学习逐步添加的提示序列，将每个任务的特定信息引入到语言模型中，同时保持之前任务的知识。这种方法通过冻结基础模型的参数，只训练特定任务的提示参数，从而避免了对整个模型进行大规模调整，提高了模型的可扩展性和效果。</p>
+<p>不同点：</p>
+<ol>
+<li>渐进学习：Progressive Prompts通过逐步学习的方式处理每个新任务。对于每个新任务Tk，系统学习一个独立的提示P_k，该提示包含了任务特定的信息。这种渐进的学习方式允许模型在处理新任务时逐步积累知识。</li>
+<li>提示序列：Progressive Prompts引入了一个提示序列[P_k, …, P_1]，其中P_k是针对任务Tk的提示，P_i是之前任务Ti的提示（i &lt; k）。在模型输入中，将提示序列与输入嵌入进行连接，以将任务特定的信息引入到模型中。</li>
+<li>提示参数：与渐进学习相对应的是冻结和可训练的参数。在Progressive Prompts中，模型参数θ是冻结的，不进行训练，而与每个任务相关的提示参数θPk只在学习任务Tk期间进行训练，然后被冻结。这种方式保持了基础模型的稳定性，只对特定任务的提示参数进行更新，避免了对整个模型进行大规模调整。</li>
+</ol>
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论:"></a>结论:</h1><ul>
+<li>a. 工作的意义:<ul>
+<li>本文介绍了一种新的连续学习方法Progressive Prompts，解决了以往方法遗忘问题和性能下降问题，具有重要的实际应用价值。</li>
+</ul>
+</li>
+<li>b. 创新、性能和工作量:<ul>
+<li>Progressive Prompts方法只需要训练语言模型总参数的0.1%，是传统连续学习方法的轻量级替代方法，具有更好的性能和扩展性。</li>
+</ul>
+</li>
+<li>c. 研究结论:<ul>
+<li>在多个数据集上的测试结果表明，Progressive Prompts方法在15个文本分类任务中表现优异，能够防止遗忘并提高性能。在长序列的任务中，也比之前的方法表现出色。</li>
+</ul>
+</li>
+</ul>
+<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230612154037.png" alt="image-20230610090348552"></p>
+<blockquote>
+<p>Finetune：在任务序列上训练所有模型参数（不添加任何正则化约束或重放来自先前任务的样本）。</p>
+<p>· EWC：使用正则化损失来微调整个模型，以防止更新可能干扰先前学习的任务的参数。</p>
+<p>· A-GEM：保存过去任务中的示例，并基于检索到的示例限制用于在新任务上更新模型的梯度。·</p>
+<p>体验回放：使用内存缓冲区微调整个模型，并在学习新任务时重放旧任务的样本以避免遗忘。·</p>
+<p>MBPA++（de Masson D ‘Autume等人，2019）：用情景记忆增强BERT，保存所有看到的例子。在训练期间执行回放，在测试期间执行本地调整。· </p>
+<p>IDBR（Huang等人，2021）：BERT特定的方法，使用数据重放和正则化损失连续训练整个模型，将句子表示分解应用到特定于任务的空间和任务通用空间。当前SOTA对BERT的CL基准测试。·</p>
+<p>progprompt：为每个任务训练单独的软提示，同时保持原始模型冻结。这种设置将消除灾难性遗忘，因为当学习新任务时，每个任务的参数不会改变，但不会导致向前传输。</p>
+<p>·PromptTuning：在所有任务上按顺序训练共享软提示，同时保持原始模型参数冻结。</p>
+<p>· LFPT5：连续地训练软提示，该软提示同时学习解决任务并生成训练样本，该训练样本随后用于体验重放。当前SOTA对T5的CL基准测试。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308211548121.png" alt="image-20230610090708450"></p>
+<blockquote>
+<p>表2比较了常见的CL方法，包括T5和BERT模型的SOTA方法（Qin &amp; Joty，2021; Huang等人，2021年），连续学习15个任务。我们报告了T5-Large和BERT-base模型获得的三个任务订单（8，9和10）的平均结果。我们在附录B.1中提供了每个订单的完整非平均结果。为了研究有限数据设置的影响，我们在不同的数据集大小上进行训练，每个类有20，200和1000个样本。</p>
+<p>MTL表示多任务学习。标有 * 的方法只训练一个软提示，同时保持模型冻结，其他方法训练整个模型。</p>
+</blockquote>
+<h1 id="论文3-LORA-LOW-RANK-ADAPTATION-OF-LARGE-LANGUAGE-MODELS"><a href="#论文3-LORA-LOW-RANK-ADAPTATION-OF-LARGE-LANGUAGE-MODELS" class="headerlink" title="论文3 LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS"></a>论文3 LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</h1><h2 id="LoRA-大模型的低秩自适应微调模型-qlora"><a href="#LoRA-大模型的低秩自适应微调模型-qlora" class="headerlink" title="LoRA:大模型的低秩自适应微调模型 qlora"></a>LoRA:大模型的低秩自适应微调模型 qlora</h2><h3 id="启发：用在cv-qlora-怎么找到分解的矩阵"><a href="#启发：用在cv-qlora-怎么找到分解的矩阵" class="headerlink" title="启发：用在cv qlora 怎么找到分解的矩阵"></a>启发：用在cv qlora 怎么找到分解的矩阵</h3><h1 id="基本信息："><a href="#基本信息：" class="headerlink" title="基本信息："></a>基本信息：</h1><ul>
+<li>标题： LORA：大型语言模型的低秩适应 （LORA： 大型语言模型的低秩自适应）</li>
+<li>作者：Edward Hu， Yelong Shen， Phillip Wallis， Zeyuan Allen-Zhu， Yuan， Yuanzhi Li， Shean Wang， Lu Wang， Weizhu Chen</li>
+<li>隶属关系： 微软公司</li>
+<li>关键词：自然语言处理;预培训;微调;低秩适配</li>
+<li>网址： <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2106.09685%EF%BC%8C">https://arxiv.org/abs/2106.09685，</a> GitHub： <a target="_blank" rel="noopener" href="https://github.com/microsoft/LoRA">https://github.com/microsoft/LoRA</a></li>
+</ul>
+<h1 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h1><ul>
+<li>a. 本文研究背景：<ul>
+<li>简述了适用于下游任务大型预训练语言模型的低秩自适应方法LoRA的提出</li>
+</ul>
+</li>
+<li>b. 过去的方法、问题和动机：<ul>
+<li>描述了adapter层和prompt直接优化等现有方法的缺点，以及提出本文方法的动机</li>
+</ul>
+</li>
+<li>c. 本文提出的研究方法：<ul>
+<li>本文提出了在预训练模型的每个层中引入可训练秩分解矩阵的方法，从而大大降低下游任务的可训练参数数量</li>
+</ul>
+</li>
+<li>d. 方法在下游任务中的表现：<ul>
+<li>在RoBERTa、DeBERTa、GPT-2和GPT-3等模型下，本文提出的方法可以使可训练参数和GPU内存需求分别减少10，000倍和3倍，并保持达到或超过模型质量的水平。本文所提出的方法计算和内存效率均优于完全微调方法，无需增加推理延迟，与其他方法兼容</li>
+</ul>
+</li>
+</ul>
+<h1 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h1><ul>
+<li>a. 主题和特点：<ul>
+<li>本文主题是下游任务大型预训练语言模型的自适应问题，特点在于提出了使用可训练秩分解矩阵的方法</li>
+</ul>
+</li>
+<li>b. 历史发展：<ul>
+<li>描述了早期下游任务自适应方法的缺点和局限性</li>
+</ul>
+</li>
+<li>c. 过去的方法：<ul>
+<li>描述了adapter层和prompt直接优化等现有方法的问题，以及本文方法的创新之处</li>
+</ul>
+</li>
+<li>d. 过去研究的缺陷：<ul>
+<li>描述了现有方法的推理延迟、计算和内存效率不高等问题</li>
+</ul>
+</li>
+<li>e. 当前需要解决的问题：<ul>
+<li>描述了大规模生产中的适应问题，如何提高计算和内存效率</li>
+</ul>
+</li>
+</ul>
+<h1 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h1><ul>
+<li>a. 研究的理论基础：<ul>
+<li>描述了使用可训练秩分解矩阵的理论基础</li>
+</ul>
+</li>
+<li>b. 文章的技术路线（步骤）：<ul>
+<li>对于预训练模型的注意力权重，本文利用了低秩参数化和秩分解矩阵的方法</li>
+<li>本文方法对每个预训练模型层进行秩分解，有效减少可训练参数数量</li>
+<li>本文方法可以切换在下游任务中是否冻结MLP和LayerNorm层</li>
+</ul>
+</li>
+<li>c. 实现效果：<ul>
+<li>描述了在RoBERTa、DeBERTa、GPT-2和GPT-3等模型下，本文所提出的方法可以使可训练参数和GPU内存需求分别减少10，000倍和3倍，并保持达到或超过模型质量的水平</li>
+<li>描述了本文所提出的方法计算和内存效率均优于完全微调方法，无需增加推理延迟，与其他方法兼容</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110917.png" alt="image-20230610092930638"></p>
+<blockquote>
+<p><strong>对于预训练的权重矩阵W0，可以让其更新受到用低秩分解表示后者的约束:</strong><br>$$<br>W_{0}+\Delta W &#x3D;W_0+BA,<br>$$<br><strong>在训练过程中，W0被冻结，不接受梯度更新，而A和B包含可训练参数。当h&#x3D;W0x时，修正后的正向传播变为:</strong><br>$$<br>h&#x3D;W_0x+\Delta Wx&#x3D;W_0x+BAx<br>$$<br><strong>对A使用随机高斯初始化，对B使用零初始化，因此ΔW&#x3D;BA在训练开始时为零（这点需要注意）。</strong></p>
+<p><strong>这种方法的一个优点是，当部署到生产环境中时，只需要计算和存储W&#x3D;W0+BA，并像往常一样执行推理。与其他方法相比，没有额外的延迟，因为不需要附加更多的层。</strong></p>
+<p><strong>在Transformer体系结构中，自关注模块中有四个权重矩阵(Wq、Wk、Wv、Wo)， MLP模块中有两个权重矩阵。LoRA只对下游任务调整关注权重，并冻结MLP模块。所以对于大型Transformer，使用LoRA可减少高达2&#x2F;3的VRAM使用量。比如在GPT-3 175B上，使用LoRA可以将训练期间的VRAM消耗从1.2TB减少到350GB。</strong></p>
+</blockquote>
+<p>补充公式解释：</p>
+<blockquote>
+<ol>
+<li>神经网络中的权重矩阵：神经网络包含多个密集层，这些层执行矩阵乘法操作。这些操作涉及权重矩阵，该矩阵在每一层中都有不同的值。</li>
+<li>全秩权重矩阵和内在维度：通常情况下，这些权重矩阵是全秩的，即它们的秩等于它们的最小维度。然而，Aghajanyan等人（2020）的研究表明，预训练的语言模型具有较低的”内在维度”，即尽管权重矩阵具有全秩，但它们在实际学习中可以被投影到较小的子空间中。</li>
+<li>假设和约束：基于上述观察，论文假设权重矩阵在适应期间也具有较低的”内在秩”。为了约束权重的更新，他们使用了低秩分解。对于预训练的权重矩阵W0，它被分解为W0 + ΔW，其中B和A是较低秩的矩阵（B的维度为d×r，A的维度为r×k），并且秩r远小于min(d, k)。这样的低秩分解有助于减少模型参数和计算成本。</li>
+<li>参数更新和冻结：在训练期间，原始的预训练权重矩阵W0被冻结，不接收梯度更新，而A和B成为可训练的参数。因此，更新的权重矩阵为W0 + ΔW，其中ΔW &#x3D; BA。这样的约束确保了更新的权重矩阵仍然具有较低的秩。</li>
+<li>前向传播和缩放：在前向传播过程中，对于输入x，修改后的权重矩阵的前向传播计算为h &#x3D; W0x + ΔWx &#x3D; W0x + BAx。这样的修改确保了权重矩阵与原始输入相乘后，它们各自的输出向量在坐标方向上相加。</li>
+<li>缩放因子αr：在训练开始时，ΔW &#x3D; BA为零，通过对A使用随机高斯初始化，对B使用零初始化。然后，用常数αr来缩放ΔWx，其中α是r中的常数。在使用Adam等优化算法进行训练时，适当缩放初始化可以使α的调整类似于学习率的调整。因此，只需将α设置为第一个尝试的r值，而不进行进一步的调整。这样的缩放有助于减少重新调整超参数的需求。</li>
+</ol>
+</blockquote>
+<h2 id="低秩分解用于transformer架构的好处"><a href="#低秩分解用于transformer架构的好处" class="headerlink" title="低秩分解用于transformer架构的好处"></a>低秩分解用于transformer架构的好处</h2><blockquote>
+<p>将低秩分解应用于Transformer模型中的注意力权重矩阵的好处和限制。</p>
+<ol>
+<li>权重矩阵子集：在Transformer架构中，自注意力模块包含四个权重矩阵（Wq、Wk、Wv、Wo），而MLP模块包含两个权重矩阵。这里的讨论限制在仅调整注意力权重，即Wq（或Wk、Wv），并将MLP模块冻结，不对其进行训练。</li>
+<li>好处：最显著的好处是减少内存和存储使用量。对于大型的Transformer模型，在使用Adam优化器训练时，如果秩r远小于注意力权重矩阵的维度dmodel，那么VRAM（显存）的使用量可以减少2&#x2F;3，因为不需要存储优化器状态的冻结参数。例如，在GPT-3175B模型上，训练期间的VRAM消耗从1.2TB减少到350GB。此外，当r&#x3D;4且仅调整查询和值投影矩阵时，检查点文件的大小约减少了10000倍，从350GB减少到35MB。这使得可以使用较少的GPU进行训练，并避免I&#x2F;O瓶颈。另一个好处是，在部署时可以以更低的成本切换任务，只需交换低秩分解的权重，而不需要交换所有参数。这允许创建许多定制模型，可以在将预训练权重存储在VRAM中的机器上进行动态切换。此外，相对于完全微调（fine-tuning）的方法，观察到GPT-3175B在训练期间的速度提高了25%，因为不需要计算大多数参数的梯度。</li>
+<li>限制：这种方法的限制是它仅适用于调整注意力权重，而不调整MLP模块的权重。这意味着MLP模块在下游任务中不会被训练，可能会限制其适应性和性能。此外，低秩分解的方法也会引入近似误差，因为原始的全秩权重矩阵被近似为低秩的矩阵。</li>
+</ol>
+<p>总之，将低秩分解应用于Transformer模型中的注意力权重矩阵可以减少内存和存储使用量，并提高训练速度。这种方法还允许在部署时以较低的成本切换任务，并创建定制模型。然而，它的限制是仅适用于注意力权重，而MLP模块不会进行训练，并且近似误差可能会对模型性能产生影响。</p>
+</blockquote>
+<h3 id="问题补充1：什么是低秩分解？"><a href="#问题补充1：什么是低秩分解？" class="headerlink" title="问题补充1：什么是低秩分解？"></a>问题补充1：什么是低秩分解？</h3><blockquote>
+<p>低秩分解是一种矩阵分解的技术，它将一个高维矩阵分解为两个或多个低维矩阵的乘积。这种分解可以帮助我们降低数据的维度，提取数据中的重要信息，并减少存储和计算的成本。</p>
+<p>下面是一步一步详细解释低秩分解的过程：</p>
+<ol>
+<li>原始矩阵：我们首先有一个原始矩阵，通常表示为一个m行n列的矩阵，记作M。</li>
+<li>目标：我们的目标是将原始矩阵M分解为两个低秩矩阵的乘积，以便能够在降低维度的同时保留尽可能多的信息。</li>
+<li>假设：假设我们将原始矩阵M分解为两个低秩矩阵U和V的乘积，其中U是一个m行k列的矩阵，V是一个k行n列的矩阵。k是一个较小的值，通常远小于m和n，表示我们希望降低的维度。</li>
+<li>乘积：根据上述假设，我们得到分解后的矩阵表达式为M ≈ UV，其中≈表示近似等于。U和V的乘积近似地重构了原始矩阵M。</li>
+<li>低秩性：由于U和V的维度较小，因此它们的秩也较小。这意味着它们包含的信息量较少，而丢弃的信息则通过U和V的乘积进行近似重构。</li>
+<li>参数学习：我们的目标是找到合适的U和V，使得它们的乘积近似地重构原始矩阵M。这涉及到通过优化方法（如最小二乘法、梯度下降等）来学习U和V的参数。</li>
+<li>选择低秩：选择合适的低秩值k是低秩分解的关键。较小的k可以帮助我们减少数据的维度，但可能会导致信息的损失。而较大的k可以更好地重构原始矩阵，但会增加存储和计算的成本。因此，需要在维度降低和信息保留之间进行权衡。</li>
+</ol>
+<p>总之，低秩分解是通过将原始矩阵分解为两个或多个低秩矩阵的乘积来降低数据维度并提取重要信息的技术。这种分解可以通过学习适当的参数来实现。</p>
+</blockquote>
+<h2 id="问题补充2：什么是矩阵的秩？"><a href="#问题补充2：什么是矩阵的秩？" class="headerlink" title="问题补充2：什么是矩阵的秩？"></a>问题补充2：什么是矩阵的秩？</h2><blockquote>
+<p>矩阵的秩是指矩阵中线性无关的行或列的最大数量。简单来说，它表示矩阵中包含的独立信息的维度。</p>
+<p>具体来说，对于一个m行n列的矩阵，它的秩可以通过以下方式确定：</p>
+<ol>
+<li>将矩阵转化为行简化阶梯形式（也称为行最简形式）或列简化阶梯形式。</li>
+<li>计算行（或列）简化阶梯形式中非零行（或列）的数量。</li>
+</ol>
+<p>这个数量就是矩阵的秩。在行简化阶梯形式中，非零行的数量即为矩阵的行秩；在列简化阶梯形式中，非零列的数量即为矩阵的列秩。</p>
+<p>矩阵的秩具有一些重要的性质：</p>
+<ol>
+<li>矩阵的行秩和列秩是相等的，它们都是矩阵的秩。</li>
+<li>矩阵的秩不会超过它的行数或列数。即秩的最大值为min(m, n)。</li>
+<li>当矩阵的秩等于min(m, n)时，该矩阵被称为满秩矩阵。</li>
+</ol>
+<p>矩阵的秩在线性代数和矩阵计算中具有广泛的应用。它可以用于判断矩阵的线性相关性、解决线性方程组、计算矩阵的逆、确定矩阵的特征值等。秩的概念也扩展到更一般的线性空间中，不仅仅适用于矩阵。</p>
+</blockquote>
+<h1 id="结论："><a href="#结论：" class="headerlink" title="结论："></a>结论：</h1><ul>
+<li>a. 研究工作的意义：<ul>
+<li>描述了本文所提出的方法可以在大型预训练语言模型自适应任务中显著减少计算和内存开销，同时达到或超过原有微调方法的模型质量水平</li>
+</ul>
+</li>
+<li>b. 创新性、性能和工作量：<ul>
+<li>描述了本文所提出的方法可以将下游任务的可训练参数数量降低数千倍，提高计算效率；而在模型质量上的表现达到或超过了原有微调方法</li>
+</ul>
+</li>
+<li>c. 研究结论（列出重要点）：<ul>
+<li>描述了低秩自适应方法可以使计算和内存效率显著提高，同时保证模型质量可达到或超过原有微调方法的水平</li>
+<li>描述了超参优化需在不同任务中分别进行</li>
+<li>描述了本文作者提供了代码和模型，方便其他学者和开发者使用</li>
+</ul>
+</li>
+</ul>
+<p>本文介绍了一种名为LoRA的低秩自适应方法，用于大型预训练语言模型的下游任务。相较于当前已有的方法，本文所提出的方法可以大幅减少可训练参数数量和GPU内存需求，同时保持达到或超过原有微调方法的模型质量水平，使计算和内存效率大幅提高，无需增加推理延迟，与其他方法兼容。本文的贡献在于在下游任务自适应问题中提出一种更加精细化的自适应方法，有望在大规模生产中得到更广泛的应用。回顾历史发展，早期下游任务自适应方法的推理效率较低，而当前的adapter层和prompt直接优化等现有方法仍存在效率和质量问题。未来工作中，需要在不同任务和不同模型上继续优化超参和算法，开发更有效的自适应策略，以面对不断增长的大规模自然语言处理任务。</p>
+<h1 id="实验-1"><a href="#实验-1" class="headerlink" title="实验"></a>实验</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110922.png" alt="image-20230610094344439"></p>
+<ol>
+<li>MNLI (Multi-Genre Natural Language Inference) - 包含来自不同来源和类型的句子对，用于推断它们之间的关系。</li>
+<li>SST-2 (Stanford Sentiment Treebank) - 包含电影评论，用于情感分析任务。</li>
+<li>MRPC (Microsoft Research Paraphrase Corpus) - 包含语义相似度匹配的句子对，用于文本匹配任务。</li>
+<li>CoLA (Corpus of Linguistic Acceptability) - 包含含有不自然或不合乎语法的句子，用于句法分析的任务。</li>
+<li>QNLI (Question NLI) - 包含问题和答案段落，用于推断问题和答案之间的关系，类似于MNLI数据集。</li>
+<li>QQP (Quora Question Pairs) - 包含Quora上的问题对，目的是判断两个问题是否语义上相似。</li>
+<li>RTE (Recognizing Textual Entailment) - 包含语言推理任务中的句子对，用于推断逻辑关系。</li>
+<li>STS-B (Semantic Textual Similarity Benchmark) - 包含语义相似度匹配的句子对，用于评估不同模型在语义相似性任务上的表现。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/img/20230611110922.png" alt="image-20230610094538158"></p>
+<blockquote>
+<p>E2E NLG Challenge是一个用于测试和评估自然语言生成（NLG）系统的国际评估比赛。 E2E代表End-to-End，因为该竞赛关注的是完整的NLG系统，即从输入到输出的完整流程，而不仅仅是一个单一的任务。该比赛目标是推动NLG系统的发展和进步，包括对话系统、虚拟助手、智能个人助理等各种应用。竞赛的任务是将给定的语言输入转换为文本输出，例如在餐馆推荐中自动产生口头和书面指南。竞赛数据集基于各种领域来反映不同应用场景，包括餐馆、旅游、酒店等。评估基于多个自动生成描述的相关度和多样性的质量，以及诸如BLEU，NIST，METEOR，ROUGE - L和CIDEr等常见NLG评估指标。 E2E NLG Challenge自2017年以来已经成为自然语言生成研究中的重要活动，吸引了来自全球各地的研究人员和团队的广泛参与。</p>
+<ul>
+<li>Trainable Parameters：模型的可训练参数数量。</li>
+<li>BLEU：一种常用的评估机器翻译质量的指标，使用n-gram重叠度来计算预测文本与参考文本之间的相似度。</li>
+<li>NIST：另一种机器翻译质量的指标，比BLEU更加复杂，使用变换权重计算机生成文本与参考文本之间的相似度。</li>
+<li>METEOR：综合评估指标，考虑机器翻译的准确率和流畅性，以及文本中出现的词汇、短语或实体名称等。</li>
+<li>ROUGE-L：用于评估机器生成文本与参考文本之间的相似度的指标。它基于最长公共子序列（LCS）的概念，考虑到了长短不一的文本之间的差异。</li>
+<li>CIDEr：评估多个自动生成描述的相对质量，并鼓励生成多样性和质量的指标。</li>
+</ul>
+</blockquote>
+<h1 id="论文4-pile-of-law"><a href="#论文4-pile-of-law" class="headerlink" title="论文4 pile of law"></a>论文4 pile of law</h1><h1 id="基本信息：-1"><a href="#基本信息：-1" class="headerlink" title="基本信息："></a>基本信息：</h1><ul>
+<li>题目：从法律和256GB开源法律数据集中学习负责任的数据过滤</li>
+<li>作者：Peter Henderson，Mark S. Krass，Lucia Zheng，Neel Guha，Christopher D. Manning，Dan Jurafsky，Daniel E. Ho</li>
+<li>隶属关系：斯坦福大学（Peter Henderson，Mark S. Krass，Lucia Zheng，Christopher D. Manning，Dan Jurafsky），斯坦福法学院（Daniel E. Ho）</li>
+<li>关键词：大语言模型，负责任的数据过滤，预训练，法律，数据审查</li>
+<li>网址：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2207.00220%E3%80%81https://github.com/PileFoundation/pile">https://arxiv.org/abs/2207.00220、https://github.com/PileFoundation/pile</a></li>
+</ul>
+<p>注意：该论文尚未正式出版，但预印本可在arXiv上找到。GitHub 代码包含 256GB Pile of Law 数据集、用于训练模型的代码以及用于探索数据集的 Jupyter 笔记本。</p>
+<h1 id="摘要："><a href="#摘要：" class="headerlink" title="摘要："></a>摘要：</h1><ul>
+<li>a. 本文的研究背景：<ul>
+<li>本文研究大型语言模型对于基于既定偏见或不当材料的预训练所带来的风险，同时探讨了现有的内容过滤方法存在的问题。本文提供了一个新的数据集，称为Pile of Law，包含256GB的开源英语法律和行政数据，可以供研究者预训练法律领域语言模型，提高人们获取司法方面的信息的准确性和便利性。同时，本文将法律领域对有毒内容和隐私信息处理的规范转化成可操作的经验教训，指导研究者们开发更加细致的过滤机制。另外，本文提供了一种新的基于模型的处理方法，通过学习Pile of Law中的隐式卫生规则，向研究模型过滤提供了一个新的方向。</li>
+</ul>
+</li>
+<li>b. 过去的方法、问题和动机：<ul>
+<li>过去的内容过滤方法存在不少问题，如偏见或者会给下游应用带来威胁。一些团队采取了内容过滤处理的流程，但是其他团队则没有采取。过滤有毒内容或隐私信息会涉及到一些复杂的权衡，在透明性和保护隐私之间寻求平衡的挑战是很大的。</li>
+</ul>
+</li>
+<li>c. 本文提出的研究方法：<ul>
+<li>本文提供了一个新的数据集Pile of Law，用于解决大型语言模型预训练过程中的过滤问题，并从法律和行政的规范出发，探讨内容过滤机制的实现方法。本文指出，从法律标准出发去制定过滤机制可能是提供更透明、更有责任感的过滤方法的一种途径。</li>
+</ul>
+</li>
+<li>d. 本文方法所获得的结果和性能：<ul>
+<li>Pile of Law数据集包含35个公共法律记录、行政规则和立法记录的数据源。通过研究数据过滤问题和相关挑战，本文提出了一种更全面更细致的过滤机制，使用上下文来确定是否包含可能涉及到隐私或有毒的信息。通过三个案例研究，本文展示了Pile of Law如何被用来识别特定场景下的隐私和有毒信号。研究结果表明，基于上下文的过滤机制或许能够帮助确保生成模型的准确性同时保护隐私权。</li>
+</ul>
+</li>
+</ul>
+<h1 id="背景：-1"><a href="#背景：-1" class="headerlink" title="背景："></a>背景：</h1><ul>
+<li>a. 主题和特征：<ul>
+<li>本文的主题是大型语言模型的训练和过滤问题。</li>
+</ul>
+</li>
+<li>b. 历史发展：<ul>
+<li>本文并没有涉及到历史发展部分的描述。</li>
+</ul>
+</li>
+<li>c. 过去的方法：<ul>
+<li>本文提到，过去的内容过滤方法存在一些问题，但并没有具体介绍。</li>
+</ul>
+</li>
+<li>d. 过去研究的不足：<ul>
+<li>本文并未进一步具体描述过去研究的不足在何处。</li>
+</ul>
+</li>
+<li>e. 当前需要解决的问题：<ul>
+<li>当前需要解决的问题围绕大型语言模型的内容过滤方法展开，同时需要考虑透明度和隐私保护之间的平衡问题。</li>
+</ul>
+</li>
+</ul>
+<h1 id="方法：-1"><a href="#方法：-1" class="headerlink" title="方法："></a>方法：</h1><ul>
+<li>a. 研究的理论基础：<ul>
+<li>本文研究基于法律和行政规范的内容过滤方法，具有较强的实践应用价值。</li>
+</ul>
+</li>
+<li>b. 本文的技术路线：<ul>
+<li>本文提出了一个新的数据集Pile of Law，同时对过去研究中存在的问题进行了探究，总结了法律标准对于内容过滤的经验教训。为此，本文首先描述了数据集的构建方法，同时对数据集的使用范围、特点和可能的应用做了具体介绍;其次，本文提出了一种基于上下文的过滤方法，借鉴了Pile of Law中的卫生规则;同时，本文阐述了如何使用Pile of Law数据集在有毒和隐私数据过滤中加入规则。总体而言，本文提供了一种完整的、跨学科的解决方案，可以帮助研究人员学习将法律准则应用于内容过滤，实现透明性和隐私保护之间的平衡。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结论：-1"><a href="#结论：-1" class="headerlink" title="结论："></a>结论：</h1><ul>
+<li>a. 研究的意义：<ul>
+<li>本文的研究意义在于提供了一个新的数据集和基于法律标准的内容过滤机制，可以用于更准确、更可靠的大型语言模型的训练。</li>
+</ul>
+</li>
+<li>b. 创新、性能和工作量：<ul>
+<li>本文提出了大型语言模型预训练过程中从法律角度出发制定过滤机制的新思路，为解决文本数据中隐私和有毒的问题提供了新的方法和思路；同时，借助Pile of Law数据集，本文演示了如何开发基于上下文的过滤器，以平衡准确性和隐私保护；同时还特别强调了研究如何实现准确的、价值导向的有毒信息过滤，以防止内容过滤机制因意识形态偏见而不稳定的情况出现。</li>
+</ul>
+</li>
+<li>c. 研究结论：<ul>
+<li>本文的研究结论主要有三点：一是，Pile of Law数据集是一个适用于大型语言模型预训练的重要数据集，为语言模型的应用提供了更加准确、更有信任的文本数据;二是，从法律标准出发制定过滤机制的思路不仅可以解决大型语言模型训练过程中存在的问题，同时也有助于制定更可靠、更负责任的内容过滤规则;三是，通过借鉴Pile of Law中的卫生规则，采用基于上下文的过滤方式，可以在保护隐私权的前提下实现更精准的过滤机制。</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据集细分"><a href="#数据集细分" class="headerlink" title="数据集细分"></a>数据集细分</h2><blockquote>
+<ol>
+<li>法律的案例意见和归档<ol>
+<li>法院意见书、法院备审记录和法院文件。</li>
+<li>美国最高法院案卷条目和法院文件。</li>
+<li>美国退伍军人上诉委员会决定。</li>
+<li>美国联邦贸易委员会咨询意见</li>
+<li>美国国家劳工关系委员会的决定。</li>
+<li>美国司法部移民审查移民和国籍决定执行办公室。</li>
+<li>美国税务法院PLR语料库。</li>
+<li>美国劳工部雇员补偿上诉委员会的决定。</li>
+<li>欧洲人权法院的意见</li>
+<li>加拿大法院意见。</li>
+</ol>
+</li>
+<li>Legal Analyses法律分析<ol>
+<li>美国法律的顾问办公室备忘录。</li>
+<li>美国司法部监察长报告。</li>
+</ol>
+</li>
+<li>Laws<ol>
+<li>美国联邦法规美国州代码美国联邦证据规则联邦民事诉讼法。</li>
+<li>美钞，美钞联邦登记册。 U.S. Bills, U.S. Federal Register.</li>
+<li>美国创始人信。U.S. Founders Letters.</li>
+<li>世界宪法。World Constitutions.</li>
+<li>EUR-Lex.’</li>
+</ol>
+</li>
+<li>合同&#x2F;业务文件<ol>
+<li>信用卡协议，服务条款，埃德加Contracts，Atticus Contracts。</li>
+</ol>
+</li>
+<li>Conversations 谈话？<ol>
+<li>美国国会听证会。</li>
+<li>欧洲议会议事平行语料库。</li>
+<li>U.S. Supreme Court Oral Argument Transcripts.美国最高法院口头辩论记录。</li>
+<li>联合国一般性辩论语料库。</li>
+<li>Reddit r&#x2F;legaladvice &amp; r&#x2F;legaladviceofftopic. <ol>
+<li>由于大多数法律的语言对于外行人来说通常难以理解，并且无法对简单的法律问题进行明确的回答，因此我们试图找到一个产生“简单英语”问答格式的数据集。我们选择了两个子标题r&#x2F;legaladvice和r&#x2F;legaladviceofftopic。由于存在对不正确的法律的建议进行编码的风险，我们对数据进行了严格的过滤。我们使用profanity-check过滤掉任何带有亵渎的帖子[130]。我们也只包括至少有一个答案的帖子，得分超过8净赞成票。然后，我们将数据重构为：标题：[文章标题]问题：[帖子内容]主题：[Post Flair]答案#[N]：[热门答案]…我们使用PushShift API来抓取每个subreddit的全部内容[9]。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Study Materials<ol>
+<li>律师资格考试大纲。</li>
+<li>开源案例簿。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202306171117865.png" alt="image-20230617111706742"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/6%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8RWKV%E6%B8%90%E8%BF%9BpromptLora-1/" data-id="cllkmcmew0004ksu7a1apb7gr" data-title="6月第一周RWKV渐进promptLora" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8QLORA-%E6%9C%89%E6%95%88%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          7月第一周QLORA/有效剪枝/lomo全参数微调
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F%E8%AE%BA%E6%96%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/">8月第二周剪枝相关</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F/">8月第一周自然语言大模型蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%91%A8%E6%8A%A5%E4%BE%9D%E8%B5%96%E5%9B%BE%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/">7月第四周周报依赖图通用剪枝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

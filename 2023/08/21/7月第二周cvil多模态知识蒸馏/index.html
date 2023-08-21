@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>7月第二周cvil多模态知识蒸馏 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="7月第二周cViL跨语言多模态知识蒸馏 论文1：cViL: Cross-Lingual Training of Vision-LanguageModels using Knowledge Distillation ??自然语言蒸馏Basic Information: Title: cViL: Cross-Lingual Training of Vision-Language Models usin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7月第二周cvil多模态知识蒸馏">
+<meta property="og:url" content="http://example.com/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="7月第二周cViL跨语言多模态知识蒸馏 论文1：cViL: Cross-Lingual Training of Vision-LanguageModels using Knowledge Distillation ??自然语言蒸馏Basic Information: Title: cViL: Cross-Lingual Training of Vision-Language Models usin">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151433262.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151639382.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151442421.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151446190.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151443893.png">
+<meta property="article:published_time" content="2023-08-21T08:16:36.000Z">
+<meta property="article:modified_time" content="2023-08-21T08:17:22.019Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="跨语言多模态知识蒸馏">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151433262.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-7月第二周cvil多模态知识蒸馏" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T08:16:36.000Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      7月第二周cvil多模态知识蒸馏
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="7月第二周cViL跨语言多模态知识蒸馏-论文1：cViL-Cross-Lingual-Training-of-Vision-Language"><a href="#7月第二周cViL跨语言多模态知识蒸馏-论文1：cViL-Cross-Lingual-Training-of-Vision-Language" class="headerlink" title="7月第二周cViL跨语言多模态知识蒸馏 论文1：cViL: Cross-Lingual Training of Vision-Language"></a>7月第二周cViL跨语言多模态知识蒸馏 论文1：cViL: Cross-Lingual Training of Vision-Language</h1><p>Models using Knowledge Distillation</p>
+<h2 id="自然语言蒸馏"><a href="#自然语言蒸馏" class="headerlink" title="??自然语言蒸馏"></a>??自然语言蒸馏</h2><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: cViL: Cross-Lingual Training of Vision-Language Models using Knowledge Distillation (cViL: 跨语言视觉-语言模型的知识蒸馏训练)</li>
+<li>Authors: Kshitij Gupta, Devansh Gautam, Radhika Mamidi</li>
+<li>Affiliation: IIIT Hyderabad (印度国际信息技术研究所)</li>
+<li>Keywords: Vision-Language Models, Cross-Lingual Training, Knowledge Distillation</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.03354v2">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/kshitij98/cViL">GitHub</a></li>
+</ul>
+<h1 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本文提出了一种使用知识蒸馏的方法，通过跨语言训练英语视觉-语言模型来训练目标语言的单语模型，并在日语和印地语的视觉问答任务中取得了相对提升4.4%和13.4%的最新成果。</li>
+</ul>
+<h1 id="创新点总结："><a href="#创新点总结：" class="headerlink" title="创新点总结："></a>创新点总结：</h1><blockquote>
+<ol>
+<li><p><strong>使用mBERT初始化模型和分词器</strong>：作者选择了mBERT而非传统的BERT来初始化模型和分词器。mBERT是一个多语言版本的BERT，能处理多种语言，这使得模型有能力从一开始就处理多语言数据。</p>
+</li>
+<li><p><strong>数据增强的应用</strong>：作者通过将大量的英语数据集翻译为其他语言，从而扩大了非英语语言的数据集。这有助于改善数据稀缺问题，提高模型的性能。</p>
+</li>
+<li><p><strong>多方面的知识蒸馏</strong>：作者提出了一套全面的知识蒸馏方案，包括CLS标记蒸馏、图像标记蒸馏、对象标签蒸馏、混合代码蒸馏和中间层蒸馏。这些不同的蒸馏方法都试图最小化教师模型和学生模型在相应部分的差异，从而更好地将教师模型的知识迁移到学生模型中。</p>
+</li>
+<li><p><strong>引入混合代码蒸馏</strong>：作者提出了一个创新的混合代码蒸馏方法，通过生成具有上下文信息的双语词对齐，然后在目标语言中随机替换一部分词为英语对齐词，创建了混合语言的数据集。</p>
+</li>
+<li><p><strong>中间层蒸馏</strong>：作者试验了在模型的中间层应用蒸馏损失，这是一种新的尝试，可以帮助模型更好地理解语言。</p>
+</li>
+</ol>
+</blockquote>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 视觉-语言任务在研究界越来越受关注，但主要集中在英语上。本文旨在利用仅使用英语的视觉-语言模型来训练目标语言的单语模型。</li>
+<li>过去方案: 过去的方法主要是通过在预训练数据中使用多种语言来训练多语言模型，但初始训练成本高，不适合训练多种语言的多种架构的多语言模型。</li>
+<li>论文的Motivation: 为了解决这些问题，本文提出了一种直接在目标语言中使用英语模型作为监督来训练单语多模态模型的方法，并通过知识蒸馏技术将高资源英语模型的知识转移到其他语言，从而减少资源消耗。</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h1><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151433262.png" alt="image-20230715143350223" style="zoom:150%;" />
+
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151639382.png" alt="image-20230715163918321"></p>
+<ol>
+<li><p><strong>CLS标记蒸馏</strong>：公式为 </p>
+<p>$$<br>L_{CLS} &#x3D; MSE(C_S, C_T)<br>$$</p>
+<p>这里的 (C_S) 和 (C_T) 分别是学生网络和教师网络的CLS标记嵌入。MSE() 是均方误差损失函数，它计算的是学生网络和教师网络的CLS标记嵌入之间的均方误差。</p>
+</li>
+<li><p>？？什么技巧，具体怎么用 <strong>图像标记蒸馏</strong>：公式为 </p>
+<p>$$L_{img} &#x3D; \frac{1}{p}\sum_{i&#x3D;1}^{p}MSE(I_{S_i}, I_{T_i})$$</p>
+<p>这里的 (I_{S_i}) 和 (I_{T_i}) 分别是学生网络和教师网络的第i个图像标记嵌入，(p) 是输入中图像标记的数量。</p>
+</li>
+<li><p><strong>对象标签蒸馏</strong>：公式为 </p>
+</li>
+<li><p>$$<br>L_{tag} &#x3D; \frac{1}{t^2}\sum_{i&#x3D;1}^{t}\sum_{j&#x3D;1}^{t}A_{ij}MSE(O_{S_i}, O_{T_j})<br>$$</p>
+<p>这里的 (O_{S_i}) 和 (O_{T_j}) 分别是学生网络和教师网络的第i个和第j个对象标签嵌入，(A_{ij}) 是一个二值矩阵，表示第i个和第j个对象标签是否匹配和对齐，(t) 是输入中对象标签的数量。</p>
+</li>
+<li><p><strong>混合代码蒸馏</strong>：公式为<br>$$<br>L_{CM} &#x3D; \frac{1}{n^2}\sum_{i&#x3D;1}^{n}\sum_{j&#x3D;1}^{n}B_{ij}MSE(H_{S_i}, H_{T_j})<br>$$</p>
+<p>这里的 (H_{S_i}) 和 (H_{T_j}) 分别是学生网络和教师网络的第i个和第j个文本标记嵌入，(B_{ij}) 是一个二值矩阵，表示第i个和第j个文本标记是否匹配和对齐，(n) 是输入中文本标记的数量。</p>
+</li>
+<li><p><strong>中间层蒸馏</strong>：对于选定的每一层 (m)，公式为<br>$$<br>L_{distil} &#x3D; \sum_{m \in L}\lambda_m(L_{CLS} + L_{img} + L_{tag} + L_{CM})<br>$$</p>
+<p>这里的 (L) 是需要应用损失的层的集合，(\lambda_m) 是第m层的权重，(L_{CLS})、(L_{img})、(L_{tag}) 和 (L_{CM}) 分别是CLS标记蒸馏、图像标记蒸馏、对象标签蒸馏和混合代码蒸馏的损失。</p>
+</li>
+</ol>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文提出了一种在目标语言中使用仅英语模型训练单语视觉语言模型的流程。作者扩展了OSCAR+模型，该模型使用对象标签进行图像-文本对齐，并在不同语言的视觉问答数据集上进行训练。作者引入了一种新颖的知识蒸馏方法，使用平行句子将知识从英语模型转移到资源较少的目标语言模型。作者还发布了一个日语和印地语的视觉问答数据集。该流程在日语和印地语的准确性上分别比最先进的模型提高了4.4%和13.4%。模型架构基于OSCAR方法，并使用mBERT处理非英语语言。通过将大型英语数据集进行翻译来进行数据增强，以减轻数据稀缺和语言偏差。知识蒸馏过程旨在将图像-问题对映射到跨语言的语义空间中的相同位置。知识蒸馏的目标函数被最小化以训练学生模型。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>该方法涉及使用知识蒸馏技术训练学生模型。实验中使用的教师模型是预训练于OSCAR+语料库并针对英语视觉问答进行微调的OSCAR+B检查点。学生模型使用不同类型的蒸馏，包括分类令牌蒸馏、图像令牌蒸馏、对象标签蒸馏、混合代码蒸馏和中间层蒸馏。<strong>每种类型的蒸馏都涉及最小化特定的目标函数，以对齐学生模型和教师模型的嵌入。</strong>蒸馏损失应用于学生模型的一部分层。提出了两种训练方法：CVILAUG，涉及数据增强技术；CVILKD，涉及知识蒸馏技术。模型在英语的任务特定数据集上进行训练，然后翻译到目标语言进行评估。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151442421.png" alt="image-20230715144236380"></p>
+</li>
+<li><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151446190.png" alt="image-20230715144639144"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307151443893.png" alt="image-20230715144336857"></p>
+</li>
+<li><blockquote>
+<ol>
+<li><strong>日语视觉问题回答</strong>：作者的模型（CVILAUG和CVILKD）在日语Visual Genome VQA数据集上的性能超过了当前的最佳模型，包括PCATT、UNITERCC和UC2。作者还注意到，在覆盖数据集的情况下，模型的正确分类率为48.02%，但由于数据集覆盖率只有74.39%，最终的准确率降低到了35.72%。</li>
+<li><strong>印地语视觉问题回答</strong>：作者的模型（CVILKD）在印地语VQA v2.0数据集上的性能显著优于没有使用知识蒸馏的基线模型，准确率相对提高了7.3%。在印地语VQA v1.0数据集上，作者的系统也显著优于当前的最佳模型，包括BUTD、Bi-linear Attention和Multimodal Fusion。</li>
+<li><strong>训练成本</strong>：作者的模型能够在17小时内使用知识蒸馏从零开始训练，这明显比预训练步骤需要的资源要少。</li>
+<li><strong>消融研究</strong>：通过移除每一个蒸馏目标并比较模型在日语Visual Genome VQA数据集上的性能，作者发现所有的蒸馏目标都对系统的性能有所贡献。中间层蒸馏对系统的性能影响最大，而对象标签蒸馏也起到了重要的作用。</li>
+</ol>
+</blockquote>
+</li>
+<li><p>. 详细的实验设置:</p>
+<ul>
+<li>模型在4个Nvidia GeForce RTX 2080 Ti GPU上进行训练，每个GPU的批量大小为32个问题-答案对。使用了具体参数的AdamW优化器，以及dropout和attention dropout。在将文本输入模型之前，将其转换为小写。采用了混合精度训练以提高效率。对于CVILAUG和CVILKD两个系统，详细描述了训练方法。</li>
+</ul>
+</li>
+<li><p>b. 详细的实验结果:</p>
+<ul>
+<li>研究的主要结果是对系统在最先进模型上的性能进行比较。模型在日语和印地语视觉问答数据集上的准确性优于基线，并取得了比以前模型更好的准确性。还讨论了系统在不同问题类型上的性能。通过t-SNE可视化了图像-问题对的学习特征。比较了模型生成的图像和单词令牌的嵌入，显示嵌入对齐良好，并形成了每个对象类别的可区分聚类。进行了消融研究，以调查不同蒸馏目标的贡献。移除了每个蒸馏目标，并比较了系统在日语视觉基因组数据集的测试集上的性能。根据提供的表格，不同模型在VQA数据集上的准确性显示。具有所有蒸馏目标的CVILKD模型达到了最高的35.72的准确性。消融研究表明，每个蒸馏目标对系统的性能都很重要。最关键的蒸馏目标是中间层蒸馏，其次是对象标签蒸馏。基线模型的准确性为33.75。</li>
+</ul>
+</li>
+</ul>
+<h1 id="论文2：MMLU-Measuring-massive-multitask-language-understanding-in-Chinese"><a href="#论文2：MMLU-Measuring-massive-multitask-language-understanding-in-Chinese" class="headerlink" title="论文2：MMLU: Measuring massive multitask language understanding in Chinese"></a>论文2：MMLU: Measuring massive multitask language understanding in Chinese</h1><h1 id="Basic-Information-1"><a href="#Basic-Information-1" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: CMMLU: Measuring massive multitask language understanding in Chinese (CMMLU：测量中文大规模多任务语言理解)</li>
+<li>Authors: Haonan Li, Yixuan Zhang, Fajri Koto, Yifei Yang, Hai Zhao, Yeyun Gong, Nan Duan, Timothy Baldwin</li>
+<li>Affiliation: MBZUAI (Mohamed bin Zayed University of Artificial Intelligence) (MBZUAI)</li>
+<li>Keywords: large language models, Chinese benchmark, language understanding, performance evaluation, knowledge and reasoning abilities</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.09212v1">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/haonan-li/CMMLU">GitHub</a></li>
+</ul>
+<h1 id="论文简要-1"><a href="#论文简要-1" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本文介绍了CMMLU，这是一个全面的中文评估基准，旨在评估大规模语言模型在不同主题和环境下的性能。通过对18个先进的多语言和中文导向的语言模型进行评估，发现大多数模型在给定上下文示例和思维链提示的情况下，难以达到50%的平均准确率，而随机基准为25%。此外，通过广泛的实验，还分析了影响模型性能的因素，并提出了增强语言模型的方向。</li>
+</ul>
+<h1 id="背景信息-1"><a href="#背景信息-1" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 随着大型语言模型（LLMs）的能力不断提升，评估其性能变得越来越重要和具有挑战性。然而，评估这些模型中编码的知识和推理能力变得越来越具有挑战性，尤其是对于生成流畅和合理回答的LLMs的普及。</li>
+<li>过去方案: 为了解决这个问题，研究人员从不同的角度创建了各种基准，如MMLU和CLUE。然而，这些基准主要针对英语，限制了对其他语言的LLMs进行评估的能力。</li>
+<li>论文的Motivation: 鉴于中文是全球使用人数最多的语言，为了评估中文语言模型，需要提出一个全面的中文评估套件。本文的动机就是设计和介绍了CMMLU，这是一个专门针对中文语言和文化背景的综合评估套件，旨在评估LLMs的高级知识和推理能力。CMMLU涵盖了广泛的主题，包括自然科学、社会科学、工程和人文学科，并通过对ChatGPT和其他先进的中文导向LLMs进行评估，揭示了LLMs在中文知识和语言理解方面的改进空间。</li>
+</ul>
+<h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a>方法:</h1><ul>
+<li>a. 理论背景:<ul>
+<li>本文介绍了CMMLU，这是一个综合性的中文基准，用于评估大型语言模型（LLMs）在各个学科中的性能。评估了18个先进的多语言和中文导向的LLMs，结果显示大多数模型难以达到50%的平均准确率，表明LLMs需要改进。本文还进行了实验，以确定影响模型性能的因素，并提出了增强LLMs的方向。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>本文提出了CMMLU作为一个综合性的中文评估套件，涵盖了广泛的学科，并在中文语言和文化背景下评估LLMs。文中强调了LLMs在中文知识和语言理解方面的改进空间。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果-1"><a href="#结果-1" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li>a. 详细的实验设置:<ul>
+<li>本研究使用的数据集包含67个学科的11,528个多项选择题。这些问题由四名注释员手动从免费资源中收集，每小时50元人民币的费率。收集过程大约耗时250小时，并努力防止问题出现在语言模型的训练集中。数据集被分为包含5个问题的few-shot开发集和包含100多个问题的测试集。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>本研究评估了18个不同大小、语言导向和阶段（预训练或微调）的先进语言模型（LLMs），以评估它们在知识为中心的基准测试中的性能。评估包括零样本和少样本设置，并根据模型理解和利用知识的能力对模型进行评估。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" data-id="cllkmcmex0005ksu72xzt0ecu" data-title="7月第二周cvil多模态知识蒸馏" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">8月第三周HomoDistil</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/">8月第二周剪枝相关</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F/">8月第一周自然语言大模型蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%91%A8%E6%8A%A5%E4%BE%9D%E8%B5%96%E5%9B%BE%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/">7月第四周周报依赖图通用剪枝</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
