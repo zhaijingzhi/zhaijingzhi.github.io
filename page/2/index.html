@@ -73,6 +73,706 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-8月第一周自然语言蒸馏论文" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F%E8%AE%BA%E6%96%87/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T07:31:26.235Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title: 自然语言大模型蒸馏</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="8月第一周自然语言蒸馏论文"><a href="#8月第一周自然语言蒸馏论文" class="headerlink" title="8月第一周自然语言蒸馏论文"></a>8月第一周自然语言蒸馏论文</h1><h1 id="Title-Knowledge-Distillation-of-Large-Language-Models-大型语言模型的知识蒸馏"><a href="#Title-Knowledge-Distillation-of-Large-Language-Models-大型语言模型的知识蒸馏" class="headerlink" title="Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)"></a>Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)</h1><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: Knowledge Distillation of Large Language Models (大型语言模型的知识蒸馏)</li>
+<li>Authors: Yuxian Gu, Li Dong, Furu Wei, Minlie Huang</li>
+<li>Affiliation: The CoAI Group, Tsinghua University (清华大学)</li>
+<li>Keywords: Knowledge Distillation, Large Language Models, Generative Language Models, Reverse Kullback-Leibler Divergence, Optimization Approach</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.08543v1">Paper</a>, <a target="_blank" rel="noopener" href="https://aka.ms/MiniLLM">GitHub Code</a></li>
+</ul>
+<h1 id="论文简要-第一篇自然语言蒸馏-bert蒸馏？"><a href="#论文简要-第一篇自然语言蒸馏-bert蒸馏？" class="headerlink" title="论文简要 :第一篇自然语言蒸馏 bert蒸馏？"></a>论文简要 :第一篇自然语言蒸馏 bert蒸馏？</h1><ul>
+<li>本文提出了一种名为MINILLM的方法，用于从生成型大型语言模型中蒸馏出较小的语言模型。通过使用逆向Kullback-Leibler散度作为目标函数，并引入有效的优化方法，MINILLM模型在指令跟随任务中表现出更高的生成质量、更低的暴露偏差、更好的校准性和更高的长文本生成性能。</li>
+</ul>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 随着大型语言模型的快速发展，知识蒸馏（KD）成为减少计算资源需求的一种常用技术。然而，过去的知识蒸馏方法主要应用于白盒分类模型或训练小模型以模仿ChatGPT等黑盒模型API。如何有效地从白盒生成型语言模型中蒸馏知识仍然未被充分探索，而随着生成型语言模型的繁荣，这变得越来越重要。</li>
+<li>过去方案: 过去的知识蒸馏方法主要应用于白盒分类模型或训练小模型以模仿黑盒模型API。白盒知识蒸馏方法主要研究了小型语言理解模型，而对于生成型语言模型的白盒知识蒸馏尚未被探索。</li>
+<li>论文的Motivation: 随着生成型语言模型的兴起，白盒知识蒸馏对于研究社区和行业部门变得更有价值，因为学生模型可以从白盒教师模型中获得更好的信号，从而潜在地实现更高的性能。然而，白盒知识蒸馏方法主要研究了小型语言理解模型，而对于生成型语言模型的白盒知识蒸馏尚未被探索。因此，本文旨在研究生成型语言模型的白盒知识蒸馏，并提出了一种新的方法MINILLM，通过使用逆向Kullback-Leibler散度作为目标函数，实现了更好的生成质量和性能。</li>
+</ul>
+<h1 id="方法-创新点1：正则化整体样本"><a href="#方法-创新点1：正则化整体样本" class="headerlink" title="方法: 创新点1：正则化整体样本"></a>方法: 创新点1：正则化整体样本</h1><h2 id="可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进"><a href="#可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进" class="headerlink" title="可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进"></a>可能的工作：在视觉蒸馏上使用正则化减少过拟合增加泛化能力，针对序列蒸馏改进</h2><p>可能的工作2：法学大模型对垂直领域大模型建设，提出了一个新的方法，包括微调，提示词，langchain，本文提到的蒸馏</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061123535.png" alt="image-20230806112311078"></p>
+<blockquote>
+<ol>
+<li>序列级知识蒸馏（KD）(左图): 这种方法强迫学生模型直接从教师模型生成的序列中学习。前向 KLD (Kullback-Leibler Divergence，库尔巴克-莱布勒散度)用作衡量教师输出和学生输出分布之间的不相似度。<strong>这种方法就像是死记硬背，学生模型本质上是试图复制教师的确切输出序列。</strong>提示 𝒙 输入到两个模型中，然后计算教师输出 𝒚 (从 𝑝 中采样)和学生预测输出之间的差异，以调整学生模型参数（𝜃）。然而，这种方法可能导致学生在语言生成任务中过度估计某些区域，特别是当学生模型缺乏捕获所有教师模型输出分布细微差异的能力时。</li>
+<li>MINILLM (右图): 相比之下，这种方法允许学生模型通过教师模型的反馈来改善其生成能力。与单纯模仿教师输出不同，这种方法旨在帮助学生模型更好地泛化。这是通过最小化反向 KLD 来实现的，本质上是使学生模型的输出分布尽可能地接近教师的，但这样可以使学生模型也能从自己的错误中学习。<strong>提示 𝒙 输入到两个模型中，然后计算教师输出 (从 𝑞! 中采样)和学生预测输出之间的差异，为学生模型提供学习的机会。</strong></li>
+</ol>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061238004.png" alt="image-20230806123825947"></p>
+<blockquote>
+<p>输入包括以下元素：</p>
+<ul>
+<li>条件生成数据集D，包含提示和真实响应</li>
+<li>预训练语料库DPT，包含长文档纯文本</li>
+<li>教师模型，其输出分布为p</li>
+<li>初始学生模型，其输出分布为qθ0</li>
+</ul>
+<p>输出为一个学生模型，其输出分布为qθ。</p>
+<p>这个算法的步骤如下：</p>
+<ol>
+<li>首先在数据集D上对学生模型进行微调，并选择具有最低验证损失的模型θ。</li>
+<li>重复以下步骤直到收敛：<ul>
+<li>从数据集D中抽取一批提示，并从其中收集响应以得到S &#x3D; {(xm, ym)}M m&#x3D;1。</li>
+<li>从DPT中抽取一个小批量D’PT &#x3D; {dm}M m&#x3D;1。</li>
+<li>计算主损失梯度(∇J)Main，这个值取决于学生模型qθ和教师模型pe之间的概率分布差异，详见等式5和等式6。</li>
+<li>计算正则化损失梯度(∇J)Reg，这个值是在所有可能的输出yt中，学生模型qθ和教师模型p的分布差异的梯度，详见等式3。</li>
+<li>计算预训练损失的梯度∇LPT，这个值是学生模型qθ在预训练语料库D’PT上的对数概率的梯度。</li>
+<li>更新模型参数θ，根据计算出的梯度值，来调整模型的参数。</li>
+</ul>
+</li>
+</ol>
+<p>这个算法的核心思想是在模型参数更新过程中引入了一个正则化项，旨在减小学生模型和教师模型在相同输入下的输出分布差异，从而使学生模型更好地模仿教师模型。此外，为了保持模型的泛化能力，还计算了在预训练语料库上的损失，这有助于防止模型过度拟合教师模型的输出。</p>
+</blockquote>
+<p>步骤：</p>
+<p>在这篇论文的实验设置中，研究者们首先在指令-响应数据集 D 上对一个大模型进行微调，将其作为教师模型 p。然后，他们比较了不同的知识蒸馏方法，以在教师模型的指导下对学生模型进行蒸馏，并通过评估蒸馏模型的指令执行性能来进行比较。</p>
+<p>他们蒸馏了三种不同大小的模型：GPT-2，OPT和LLaMA，并分别使用GPT-2-1.5B，OPT-13B和LLaMA-13B作为各模型类型的教师模型。他们还使用GPT-J作为教师模型的结果。</p>
+<p>他们从 databricks-dolly-15k 数据集中构建了训练数据，该数据集由 15K个人工编写的指令-响应对组成。他们随机分配了 14K个样本作为训练集 D，并留下了 500个样本用于验证和测试。对于 DPT，他们为 GPT-2 系列使用了 OpenWebText，而对于其他模型，他们使用了 RoBERTa 训练语料库。</p>
+<p>实验中使用了两个指标来评估模型生成的响应：Rouge-L 分数和GPT-4反馈。</p>
+<p>他们在主要实验中考虑了三个基线：</p>
+<ol>
+<li>SFT w&#x2F;o KD 直接在 D 上对学生模型进行微调，使用金色响应进行监督。</li>
+<li>KD 使用教师分布作为每个标记步骤的监督，对 D 上的学生模型进行微调，也称为单词级别的 KD。</li>
+<li>SeqKD 在教师生成的数据上对学生模型进行微调。</li>
+</ol>
+<p>总结实验步骤：</p>
+<ol>
+<li>在指令-响应数据集上微调大模型作为教师模型。</li>
+<li>对多种大小的学生模型进行知识蒸馏，并评估其在教师模型指导下在数据集上的性能。</li>
+<li>从 databricks-dolly-15k 数据集中构建训练数据。</li>
+<li>使用 OpenWebText 和 RoBERTa 训练语料库进行预训练。</li>
+<li>使用 Rouge-L 和 GPT-4 反馈对模型生成的响应进行评估。</li>
+<li>比较与直接微调学生模型（SFT w&#x2F;o KD）、单词级别知识蒸馏（KD）以及在教师生成数据上微调学生模型（SeqKD）等基线方法的性能。</li>
+<li>报告结果并进行分析。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202308061243956.png" alt="image-20230806124343892"></p>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文讨论了使用知识蒸馏（KD）来减少大型语言模型（LLM）的计算需求。先前的KD方法主要集中在白盒分类模型或训练小模型以模仿黑盒模型API，而作者提出了一种名为MINILLM的方法，从生成性更大的语言模型中提炼出较小的语言模型。作者认为标准的KD目标对于生成性LLM来说是次优的，并提出了最小化反向Kullback-Leibler散度（KLD）的方法。他们还引入了一种优化方法来学习这个目标。实验结果表明，MINILLM模型生成的响应更精确，整体质量更高，暴露偏差更低，校准性更好，并具有更高的长文本生成性能。该方法适用于不同模型家族，参数大小范围从120M到13B。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>MINILLM方法用于语言模型（LLM）中的知识蒸馏（KD）。与序列级KD不同，MINILLM专注于最小化反向Kullback-Leibler散度（KLD），并鼓励学生模型在其自身能力范围内生成教师模型偏好的样本。使用策略梯度定理进行优化，通过从学生模型中进行采样来计算目标函数的梯度。为了解决高方差和奖励欺骗等问题，提出了三种策略：单步正则化、教师混合采样和长度归一化。提供了MINILLM的训练算法，包括在数据集上微调学生模型、采样提示和响应以及计算梯度。还描述了实验设置和评估指标。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li>a. 详细的实验设置:<ul>
+<li>表1中的评估结果显示，标准的知识蒸馏（KD）方法，SFT w&#x2F;o KD、KD和SeqKD，成功地从教师模型中提取了知识，实现了更好的Rouge-L和GPT-4反馈分数。然而，MINILLM方法在几乎所有情况下都优于基线方法，表明其在提取具有高整体性能的小模型方面的有效性。MINILLM还生成了与真实值具有高重叠度的更精确的响应，并展示了良好的超出分布的泛化能力。MINILLM的改进在不同的模型大小和家族中保持一致，证明了其在大型语言模型（LLM）时代的可扩展性和泛化能力。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>实验结果显示，微调模型的ExAccErr在生成过程中不断增加，而MiniLLM具有较低的ExAccErr，并且错误在长文本生成中停止累积。在两个文本分类数据集SST2和BoolQ上的校准测试显示，使用KD和SeqKD训练的模型与教师模型相比校准性较差。另一方面，MINILLM缩小了学生和教师之间ECE分数的差距。模型的性能根据真实响应的长度而变化，在期望短响应的提示上，所有方法都获得了较低的分数。MINILLM通过保持生成响应中不同的4-gram比例来保持生成多样性，并且不会在测试集上导致语言建模损失的显著增加。消融研究表明，教师混合采样和长度归一化对于稳定训练至关重要，而单步正则化减少了训练过程的方差。在教师混合探索中，α值的选择会影响性能，一般而言，α &#x3D; 0.2是合适的。添加预训练损失有助于在规范NLP任务上保持能力，而不会对指令遵循任务的性能产生显著影响。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F%E8%AE%BA%E6%96%87/" data-id="cllkmcmf0000aksu7cww8epl4" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-7月第一周QLORA大模型有效剪枝LOMO全参数微调减少内存占用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8QLORA%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%89%E6%95%88%E5%89%AA%E6%9E%9DLOMO%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T07:31:26.231Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">title: 翟景治周报0626-0702</span><br><span class="line">date: 2023-07-05</span><br><span class="line">tags:</span><br><span class="line">    - Qlora</span><br><span class="line">    - 模型剪枝</span><br><span class="line">    - Lomo</span><br><span class="line">categories:</span><br><span class="line">    - 翟景治</span><br><span class="line">    - 微调</span><br><span class="line">    - 剪枝</span><br><span class="line">author:</span><br><span class="line">    - 翟景治</span><br></pre></td></tr></table></figure>
+
+<h1 id="7月第一周QLORA-大模型有效剪枝-LOMO-全参数微调减少内存占用"><a href="#7月第一周QLORA-大模型有效剪枝-LOMO-全参数微调减少内存占用" class="headerlink" title="7月第一周QLORA&#x2F;大模型有效剪枝&#x2F;LOMO:全参数微调减少内存占用"></a>7月第一周QLORA&#x2F;大模型有效剪枝&#x2F;LOMO:全参数微调减少内存占用</h1><h1 id="论文1：QLORA：量化LLM的有效微调"><a href="#论文1：QLORA：量化LLM的有效微调" class="headerlink" title="论文1：QLORA：量化LLM的有效微调"></a>论文1：QLORA：量化LLM的有效微调</h1><h1 id="基本信息："><a href="#基本信息：" class="headerlink" title="基本信息："></a>基本信息：</h1><ul>
+<li>题目：QLORA：量化LLM的有效微调 （QLORA：高效微调量化语言模型）</li>
+<li>作者：蒂姆·德特默斯、阿蒂多罗·帕格诺尼、阿里·霍尔茨曼、卢克·泽特勒莫耶 （蒂姆·德特默斯、阿蒂多罗·帕格诺尼、阿里·霍尔茨曼、卢克·泽特尔莫耶）</li>
+<li>隶属关系： 华盛顿大学</li>
+<li>关键词：语言模型，微调，量化，低秩适配器（LLA），NormalFloat，双重量化，分页优化器，指令遵循，聊天机器人性能</li>
+<li>网址：纸张：<a target="_blank" rel="noopener" href="https://arxiv.org/abs/2305.14314v1%EF%BC%8CGitHub%EF%BC%9Ahttps://github.com/artidoro/qlora">https://arxiv.org/abs/2305.14314v1，GitHub：https://github.com/artidoro/qlora</a> 和 <a target="_blank" rel="noopener" href="https://github.com/TimDettmers/bitsandbytes">https://github.com/TimDettmers/bitsandbytes</a></li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h1><ul>
+<li>a. 理论背景：<ul>
+<li>本文讨论了QLORA和LoRA这两种参数高效的神经网络微调方法，以减少训练过程中的内存需求。LoRA通过分解投影来增强线性投影，而QLORA则使用4位NormalFloat量化和双量化来减少内存使用。QLORA还引入了分页优化器来防止梯度检查点过程中的内存溢出错误。</li>
+</ul>
+</li>
+<li>b. 技术路线：<ul>
+<li>QLORA使用LoRA方法在每个网络层引入适配器，以避免先前工作中出现的准确性折衷。QLORA使用4位NormalFloat（NF4）作为新的数据类型，该类型对于正态分布的权重是最优的。双量化用于量化量化常数，并使用分页优化器来管理内存峰值。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307020927766.png" alt="image-20230625110446430"></p>
+<blockquote>
+<ol>
+<li>LoRA（Low-Rank Adaptation）：这是一种微调方法，它通过低秩适应（low-rank adaptation）的技术来减少微调过程中的内存需求。具体而言，LoRA使用低秩矩阵分解的方法来近似和压缩原始的Transformer模型，以减少参数数量和内存占用。</li>
+<li>QLORA（Quantized Low-Rank Adaptation）：这是QLORA对LoRA的改进。QLORA通过对Transformer模型进行量化，将模型参数的精度减少到4位，并使用分页式优化器（paged optimizers）来处理内存峰值，从而减少内存需求。</li>
+</ol>
+<p>关于QLORA相对于LoRA的改进，主要有两个方面：</p>
+<ol>
+<li>量化（Quantization）：QLORA使用较低的位精度（4位）来表示模型参数，从而降低了内存需求。通过减少每个参数的位数，可以大幅度减少存储参数所需的内存空间。</li>
+<li>分页式优化器（Paged Optimizers）：QLORA使用分页式优化器来处理内存峰值问题。分页式优化器将模型参数分成多个页（pages），每次只加载一部分参数到内存中进行计算，以减少内存使用量。通过逐页加载和计算参数，可以处理大型模型在微调过程中可能产生的内存峰值问题。</li>
+</ol>
+</blockquote>
+<h2 id="背景知识"><a href="#背景知识" class="headerlink" title="背景知识"></a>背景知识</h2><blockquote>
+<p><strong>Block-wise k-bit Quantization</strong> 量化是将输入从保持更多信息的表示离散化到具有更少信息的表示的过程。这通常意味着将具有更多位的数据类型转换为更少位，例如从32位浮点数转换为8位整数。为了确保使用低位数据类型的整个范围，输入数据类型通常通过由输入元素的绝对最大值进行归一化而被重新缩放到目标数据类型范围中，输入元素通常被构造为张量。例如，将32位浮点（FP 32）张量量化为Int 8张量，范围为[-127，127]：<br>$$<br>\begin{aligned}<br>&amp; \<br>&amp;\mathbf{X}^{\mathrm{Int}}&amp; {}^{8}&#x3D;\mathrm{round}\left(\frac{127}{\mathrm{absmax}(\mathbf{X}^{\mathrm{FP32}})}\mathbf{X}^{\mathrm{FP32}}\right)&#x3D;\mathrm{round}(c^{\mathrm{FP32}}\cdot\mathbf{X}^{\mathrm{FP32}}),<br>\end{aligned}<br>$$</p>
+<p>$$<br>\mathbf{dequant}(c^{\mathrm{FP32}},\mathbf{X}^{\mathrm{Int8}})&#x3D;{\frac{\mathbf{X}^{\mathrm{Int8}}}{c^{\mathrm{FP32}}}}&#x3D;\mathbf{X}^{\mathrm{FP32}}<br>$$</p>
+<p><strong>Low-rank Adapters</strong>  低阶适配器（LoRA）微调是一种通过使用一小组可训练参数（通常称为适配器）来降低内存需求的方法，同时不更新保持固定的完整模型参数。随机梯度下降期间的梯度通过固定的预训练模型权重传递到适配器，该适配器被更新以优化损失函数。LoRA通过额外的因子分解投影来增强线性投影。</p>
+<p>在参数高效微调（PEFT）方法中，LLM微调的大部分存储器占用来自激活梯度而不是来自学习的LoRA参数。对于在批量大小为1的FLAN v2上训练的7B LLaMA模型，LoRA权重相当于常用的原始模型权重的0.2%[28，37]，LoRA输入梯度的内存占用量为567 MB，而LoRA参数仅占用26 MB。使用梯度检查点[9]，输入梯度减少到每个序列平均18 MB，使其比所有LoRA权重组合更占用内存。相比之下，4位基本模型消耗5，048 MB内存。这突出了梯度检查点设置是重要的，但也突出了积极地减少LoRA参数的量仅产生较小的存储器益处。这意味着我们可以使用更多的适配器，而不会显著增加整体训练内存占用（详细的分类请参见附录G）。如后所述，这对于恢复完整的16位精度性能至关重要。</p>
+</blockquote>
+<h2 id="方法-1"><a href="#方法-1" class="headerlink" title="方法"></a>方法</h2><p>QLORA包含两个组件：4-bit NormalFloat量化和Double Quantization。其中：4-bit NormalFloat数据类型是基于Quantile Quantization技术开发的，通过估计输入张量的分位数来保证每个量化区间分配相等的值。Double Quantization是将额外的量化常数进行量化以减小内存开销的过程。</p>
+<h3 id="4-bit-NormalFloat量化"><a href="#4-bit-NormalFloat量化" class="headerlink" title="4-bit NormalFloat量化"></a>4-bit NormalFloat量化</h3><p>NormalFloat（NF）数据类型建立在分位数量化[15]的基础上，这是一种信息理论上的最佳数据类型，可确保每个量化二进制具有从输入张量分配的相等数量的值。分位数量化通过经验累积分布函数估计输入张量的分位数来工作。分位数量化的主要限制是分位数估计的过程是昂贵的。因此，快速分位数近似算法，如SRAM分位数[15]，用于估计它们。由于这些分位数估计算法的近似性质，数据类型对于离群值具有较大的量化误差，离群值通常是最重要的值。当输入张量来自固定到量化常数的分布时，可以避免昂贵的分位数估计和近似误差。在这种情况下，输入张量具有相同的分位数，使得精确的分位数估计在计算上可行。</p>
+<p>NF数据类型基于Quantile Quantization方法，它是一种信息论上最优的数据类型，可以确保将输入张量中的每个量化区间分配相等数量的值。Quantile quantization通过估计输入张量的分位数来实现，估计过程基于经验累积分布函数。Quantile quantization的主要限制在于分位数估计的过程比较昂贵。因此，需要使用快速的分位数近似算法（如SRAM quantiles）来进行估计。由于这些分位数估计算法是近似的，所以对于异常值（通常是最重要的值），数据类型存在较大的量化误差。当输入张量来自一个固定到量化常数的分布时，可以避免昂贵的分位数估计和近似误差。在这种情况下，输入张量具有相同的分位数，因此可以通过精确的分位数估计来降低计算成本。由于预训练的神经网络权重通常具有以零为中心的正态分布，标准差为σ（参见附录F），我们可以通过缩放σ来将所有权重转换为单个固定分布，使得该分布完全适配于我们的数据类型范围。对于我们的数据类型，我们将其范围设置为[-1, 1]。因此，数据类型的分位数和神经网络权重都需要被归一化到该范围内。对于零均值正态分布，标准差为σ且落在[-1, 1]范围内的情况，信息论上最优的数据类型计算步骤如下：（1）估计理论N(0, 1)分布的2k+1个分位数，以获得正态分布的k位量化数据类型；（2）将该数据类型的值归一化到[-1, 1]范围内；（3）通过绝对最大重缩放，将输入的权重张量归一化到[-1, 1]范围内。一旦权重范围和数据类型范围匹配，就可以像通常一样进行量化。步骤（3）等价于将权重张量的标准差重新缩放以匹配k位数据类型的标准差。<br>$$<br>q_i&#x3D;\frac{1}{2}\left(Q_X\left(\frac{i}{2^k+1}\right)+Q_X\left(\frac{i+1}{2^k+1}\right)\right),<br>$$</p>
+<h3 id="Double-Quantization"><a href="#Double-Quantization" class="headerlink" title="Double Quantization"></a>Double Quantization</h3><p>这段文本介绍了一种称为Double Quantization (DQ) 的过程，用于对量化常数进行量化以实现更高的内存节省。精确的4位量化通常需要较小的块大小，但同时也会带来相当大的内存开销。例如，对于权重W，使用32位常数和块大小为64，平均每个参数需要增加32&#x2F;64 &#x3D; 0.5位的内存。Double Quantization可以帮助减少量化常数的内存占用。</p>
+<p>具体而言，Double Quantization将第一次量化的量化常数cFP32作为第二次量化的输入。第二次量化得到了量化后的量化常数cFP8和第一层量化常数cFP32。我们在第二次量化中使用了8位浮点数（Floats），块大小为256，因为研究人员发现8位量化不会降低性能，这与Dettmers和Zettlemoyer的研究结果一致。</p>
+<p>由于cFP32为正值，我们在量化之前从c2中减去均值，使值围绕零对称分布，以实现对称量化。平均而言，对于块大小为64，这种量化将每个参数的内存占用从32&#x2F;64 &#x3D; 0.5位减少到8&#x2F;64 + 32&#x2F;(64 · 256) &#x3D; 0.127位，每个参数减少了0.373位的内存占用。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307020927895.png" alt="image-20230625141917832"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307020927319.png" alt="image-20230625142005506"></p>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li>a. 详细的实验设置：<ul>
+<li>使用QLORA，Guanaco模型系列在Vicuna基准测试中表现优于所有先前发布的模型，达到ChatGPT性能的99.3%，仅需要在单个GPU上进行24小时的微调。</li>
+<li>QLORA用于微调超过1，000个模型，并对8个指令数据集、多个模型类型（LLaMA、T5）和模型规模进行了详细的指令跟随和聊天机器人性能分析。</li>
+<li>结果表明，使用QLORA在小型高质量数据集上进行微调可以获得最先进的结果，即使使用比先前最先进的模型更小的模型。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果：<ul>
+<li>QLORA在三种架构类型上的实验评估表明，其性能与完整模型微调相当，并优于16位适配器微调。</li>
+<li>4位NormalFloat数据类型减少了量化误差，而双量化减少了内存开销，使QLORA成为一种有效且内存高效的微调方法。</li>
+</ul>
+</li>
+</ul>
+<h1 id="论文2：A-Simple-and-Effective-Pruning-Approach-for-Large-Language-Models"><a href="#论文2：A-Simple-and-Effective-Pruning-Approach-for-Large-Language-Models" class="headerlink" title="论文2：A Simple and Effective Pruning Approach for Large Language Models"></a>论文2：A Simple and Effective Pruning Approach for Large Language Models</h1><blockquote>
+<ul>
+<li>Title: A Simple and Effective Pruning Approach for Large Language Models (大型语言模型的简单有效修剪方法)</li>
+<li>Authors: Mingjie Sun, Zhuang Liu, Anna Bair, J. Zico Kolter</li>
+<li>Affiliation: Carnegie Mellon University (卡内基梅隆大学)</li>
+<li>Keywords: Large Language Models, Network pruning, Weight reconstruction, Sparsity, Magnitude pruning (大型语言模型，网络修剪，权重重构，稀疏性，幅度修剪)</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.11695v1">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/locuslab/wanda">GitHub</a></li>
+<li>2023.06</li>
+</ul>
+</blockquote>
+<h3 id="摘要："><a href="#摘要：" class="headerlink" title="摘要："></a>摘要：</h3><p>本研究提出了一种简单而有效的修剪方法，名为Wanda（基于权重和激活的修剪），用于大型语言模型（LLMs），通过在预训练的LLMs中修剪具有最小幅度的权重乘以相应的输入激活来诱导稀疏性。该方法无需重新训练或权重更新，并且修剪后的LLM可以直接使用。实验证明，Wanda在各种语言基准测试中明显优于幅度修剪，并与涉及大量权重更新的最新方法竞争激烈。</p>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 大型语言模型（LLMs）在复杂语言基准测试中表现出色，但由于其庞大的参数规模，需要大量的计算资源。为了降低LLMs的计算成本，研究人员一直在努力寻找有效的压缩方法。</li>
+<li>过去方案: 以往的修剪方法要么需要重新训练，这对于规模庞大的LLMs来说很少可行，要么需要解决依赖于二阶信息的权重重构问题，这可能也会带来计算负担。这些方法在压缩LLMs方面的应用相对较少，这与在LLM之前的模型压缩领域的趋势相矛盾。</li>
+<li>论文的Motivation: 鉴于以往方法的局限性，本研究旨在提出一种简单而有效的修剪方法，用于直接从预训练的LLMs中找到高效的稀疏网络，而无需重新训练或权重更新。通过观察LLMs中出现的大幅度特征，作者提出了一种基于权重和激活的修剪度量，并在每个输出上比较权重，以实现对LLMs的稀疏化。作者通过实验证明，该方法在性能上明显优于幅度修剪，并且在计算成本上要低于最新的LLMs修剪方法。</li>
+<li>幅度修剪（Magnitude Pruning）：是一种剪枝技术，用于稀疏化神经网络中的权重参数。该技术通过保留模型中最重要的权重，将较小幅度的权重置为零或接近零的值，以达到减少模型复杂度和提高推理速度的目的。</li>
+<li>Emergent Large Magnitude Features：（ELM特征）是指在训练神经网络时，由于网络的非线性特性和优化过程中的相互作用，某些具有较大幅度的特征或神经元在网络的上层逐渐变得重要。</li>
+</ul>
+<h1 id="方法-2"><a href="#方法-2" class="headerlink" title="方法:"></a>方法:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307021429688.png" alt="image-20230702142920614"></p>
+<blockquote>
+<p>举个例子说明传统剪枝的额局限性：考虑一个具有两个输入和相应权重的神经元，其中y &#x3D; w1x1 + w2x2，且|w1| ≤ |w2|。传统的幅度剪枝方法总是会选择移除权重w1，但是在LLMs中，输入特征x1和x2的尺度可能存在显著差异。在某些情况下，可能有|x1| ≫ |x2|，导致|w1x1| ≫ |w2x2|。因此，在这种情况下，我们应该选择移除权重w2，因为相比于移除权重w1，它对神经元输出y的影响更小。</p>
+<p>为了解决幅度剪枝方法的这个局限性，该段介绍了一种针对LLMs设计的剪枝度量。对于完全连接的线性层，考虑形状为(Cout, Cin)的权重W，输入激活为形状为(N × L, Cin)的X。对于每个权重，作者提出通过其幅度和相应输入特征范数的乘积来评估其重要性。具体地，当前权重Wij的得分由以下公式定义： Sij &#x3D; |Wij| · ∥Xj∥2 其中|·|表示绝对值运算符，∥Xj∥2计算了聚合在N × L个不同标记上的第j个特征的ℓ2范数，最终得分由这两个标量值的乘积计算而得。作者发现，ℓ2范数在衡量激活幅度时往往比其他范数函数（如ℓ1和ℓ∞范数）效果更好。</p>
+<p>2范数（L2 norm），也称为欧几里德范数，用于计算向量的长度或矩阵的平方和的平方根。对于一个向量x&#x3D;(x1, x2, …, xn)，其ℓ2范数定义如下：</p>
+<p>∥x∥2 &#x3D; sqrt(x1^2 + x2^2 + … + xn^2)</p>
+</blockquote>
+<ul>
+<li>a. 理论背景:<ul>
+<li>大型语言模型（LLMs）的重要性和由于其规模和计算要求而带来的挑战。</li>
+<li>网络修剪方法的需求，以减小LLMs的规模。</li>
+<li>现有方法要么需要重新训练，要么需要计算昂贵的权重重构。</li>
+<li>引入一种名为Wanda的新型修剪方法，根据权重的大小乘以相应的输入激活来修剪权重。</li>
+<li>Wanda不需要重新训练或权重更新，可以直接用于预训练的LLMs。</li>
+<li>Wanda在性能和计算成本方面优于幅度修剪和其他最近的方法。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>Wanda是为修剪大型语言模型（LLMs）而设计的。</li>
+<li>引入了一种修剪度量，根据输入特征激活的范数向量和权重的绝对值的点积来计算权重的重要性。</li>
+<li>这种度量是稳健的，并且可以使用适量的校准样本进行估计。</li>
+<li>Wanda建议使用更局部的修剪粒度级别，按输出逐个比较和删除权重。</li>
+<li>修剪过程可以在LLM模型的单次前向传递中无缝实现，无需权重更新或进一步训练。</li>
+<li>Wanda还可以扩展到结构化的N:M稀疏性，其中每M个连续权重中最多有N个非零。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果-1"><a href="#结果-1" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307021447017.png" alt="image-20230702144742941"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307021459806.png" alt="image-20230702145942743"></p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>在LLaMA模型系列上评估了Wanda方法，该系列包括各种参数级别的Transformer语言模型。</li>
+<li>将修剪方法应用于四个LLaMA模型：LLaMA-7B，LLaMA-13B，LLaMA-30B和LLaMA-65B。</li>
+<li>通过在保留验证集上计算困惑度来评估修剪网络的性能。</li>
+<li>使用128个从C4训练数据中采样的序列作为校准数据，用于估计输入统计信息。</li>
+<li>Perplexity: 是一种用于评估语言模型性能的指标。它衡量模型对给定序列的预测能力和不确定性。较低的困惑度表示模型在给定序列上的预测更准确和更自信。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>将Wanda与两种先前的修剪方法（幅度修剪和SparseGPT）进行比较。</li>
+<li>Wanda保持了幅度修剪的简单性，但在发现预训练LLMs中的稀疏网络方面非常有效。</li>
+<li>Wanda比SparseGPT更快，因为它不涉及逆计算。</li>
+<li>SparseGPT（稀疏GPT）是一种基于稀疏注意力机制的语言模型，它是对GPT（Generative Pre-trained Transformer）模型的改进和扩展。SparseGPT使用稀疏的注意力权重矩阵，其中只有少数非零元素，而其他元素为零。这种稀疏性允许SparseGPT在保持相对较低的计算成本的同时，仍能保持较好的模型性能。</li>
+<li>提供了一个比较表，显示每种方法使用的时间复杂度和修剪度量。</li>
+</ul>
+</li>
+</ul>
+<h1 id="论文3：LOMO-Full-Parameter-Fine-tuning-for-Large-Language-Models-with-Limited-Resources"><a href="#论文3：LOMO-Full-Parameter-Fine-tuning-for-Large-Language-Models-with-Limited-Resources" class="headerlink" title="论文3：LOMO:Full Parameter Fine-tuning for Large Language Models with Limited Resources"></a>论文3：LOMO:Full Parameter Fine-tuning for Large Language Models with Limited Resources</h1><p><strong>论文：LOMO：利用有限的资源对大型语言模型进行全参数微调</strong></p>
+<blockquote>
+<p>ArXiv: <a href="https://link.zhihu.com/?target=https://arxiv.org/pdf/2306.09782.pdf">https://arxiv.org/pdf/2306.09782.pdf</a><br>机构：复旦大学<br>时间：2023.6.16<br>Github：<a href="https://link.zhihu.com/?target=https://github.com/OpenLMLab/LOMO">https://github.com/OpenLMLab/LOMO</a></p>
+</blockquote>
+<h2 id="摘要：-1"><a href="#摘要：-1" class="headerlink" title="摘要："></a>摘要：</h2><p>大型语言模型（LLMs）已经彻底改变了自然语言处理（NLP），但是训练LLMs需要大量的GPU资源。降低LLMs训练的门槛将鼓励更多研究人员参与，从而使学术界和社会受益。虽然现有的方法着重于参数高效微调，即微调或添加少量参数，但很少有人解决了有限资源下调整LLMs的全部参数的挑战。在本文中，我们提出了一种新的优化器LOw-Memory Optimization（LOMO），它将梯度计算和参数更新融合在一步中以减少内存使用。通过将LOMO与现有的内存节省技术集成，我们将内存使用降低到10.8％，与标准方法（DeepSpeed解决方案）相比。因此，我们的方法使单台机器上的65B模型的全参数微调成为可能，该机器配有8×RTX 3090，每个显存为24GB。</p>
+<h2 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h2><blockquote>
+<p>分析了SGD可以finetune LLM的原因，不用Adam改用SGD，在SGD的基础上提出了一个LOw-Memory Optimization（LOMO）的优化器，来全参数finetune LLM，并在下游任务上获得了比lora等更好的效果。（可能因为资源问题没对比Adam的全参数finetune的结果，这个还不够有说服力）8张3090能微调65B的模型了</p>
+</blockquote>
+<h2 id="背景知识："><a href="#背景知识：" class="headerlink" title="背景知识："></a>背景知识：</h2><blockquote>
+<h3 id="1-SGD代表随机梯度下降（Stochastic-Gradient-Descent），是一种用于训练机器学习模型的优化算法。它是一种迭代算法，用于最小化损失函数，以便模型能够更好地拟合训练数据。"><a href="#1-SGD代表随机梯度下降（Stochastic-Gradient-Descent），是一种用于训练机器学习模型的优化算法。它是一种迭代算法，用于最小化损失函数，以便模型能够更好地拟合训练数据。" class="headerlink" title="1.SGD代表随机梯度下降（Stochastic Gradient Descent），是一种用于训练机器学习模型的优化算法。它是一种迭代算法，用于最小化损失函数，以便模型能够更好地拟合训练数据。"></a>1.SGD代表随机梯度下降（Stochastic Gradient Descent），是一种用于训练机器学习模型的优化算法。它是一种迭代算法，用于最小化损失函数，以便模型能够更好地拟合训练数据。</h3><p>下面是SGD的详细解释：</p>
+<ol>
+<li><p>梯度下降：梯度下降是一种优化算法，用于找到函数的局部最小值或全局最小值。在机器学习中，我们使用梯度下降来最小化模型的损失函数。梯度表示函数在给定点的变化率方向，通过朝着梯度的反方向调整模型参数，我们可以逐步降低损失函数的值，从而找到最优参数。</p>
+</li>
+<li><p>随机梯度下降：随机梯度下降是梯度下降的一种变种，其目标是加速收敛过程。与传统的梯度下降一次性使用整个训练数据来计算损失函数的梯度相比，随机梯度下降每次迭代仅使用一个训练样本来估计梯度。这样做的好处是计算成本较低，特别是在大规模数据集上，同时它也使得算法更具随机性，有助于避免陷入局部最优解。</p>
+</li>
+<li><p>迭代过程：SGD的迭代过程如下：</p>
+<ul>
+<li>初始化模型参数，例如权重和偏置。</li>
+<li>将训练数据打乱顺序，以随机顺序遍历样本。</li>
+<li>对于每个训练样本，计算损失函数关于模型参数的梯度。</li>
+<li>使用梯度来更新模型参数，通常是通过将梯度乘以一个学习率来确定更新步长。</li>
+<li>重复以上步骤，直到达到指定的迭代次数或满足停止准则（例如损失函数的收敛）。</li>
+</ul>
+</li>
+<li><p>学习率：学习率是SGD算法中的一个重要参数，用于控制参数更新的步长。较大的学习率可能导致参数更新过大，错过最优解；而较小的学习率可能导致收敛速度缓慢。因此，选择合适的学习率是使用SGD的关键之一。在实践中，可以使用学习率调度策略来逐步减小学习率，以获得更好的收敛性能。</p>
+</li>
+<li><p>批量大小：除了使用单个样本计算梯度外，SGD还支持使用多个样本计算梯</p>
+</li>
+</ol>
+<p>度。将一批样本一起计算梯度称为小批量随机梯度下降（mini-batch SGD）。小批量SGD通常比单个样本的SGD更稳定，因为它可以减少参数更新的方差，并利用并行计算的优势。批量大小是一个需要调整的超参数，通常根据可用的计算资源和训练数据的规模进行选择。</p>
+<p>总结来说，SGD是一种基于梯度下降的优化算法，通过每次迭代使用一个样本（或一小批样本）的梯度来更新模型参数。它是一种高效的训练算法，特别适用于大规模数据集和复杂模型。然而，SGD也有一些缺点，例如可能陷入局部最优解和对学习率的敏感性。因此，在使用SGD时需要进行适当的参数调整和正则化技术的应用。</p>
+</blockquote>
+<blockquote>
+<p>2.Adam算法</p>
+<p>Adam是一种优化算法，全称为自适应矩估计优化算法（Adaptive Moment Estimation）。它是一种基于梯度的优化算法，结合了梯度下降和动量优化的思想。Adam算法具有较快的收敛速度和良好的性能，在深度学习领域广泛使用。</p>
+<p>下面是Adam算法的详细解释：</p>
+<ol>
+<li><p>梯度下降：梯度下降是一种基本的优化算法，用于最小化损失函数。它通过计算损失函数关于模型参数的梯度，并朝着梯度的反方向更新参数，以逐步降低损失函数的值。</p>
+</li>
+<li><p>动量优化：动量优化是一种改进的梯度下降算法，引入了动量（momentum）的概念。动量表示模型更新的惯性，使得参数更新在当前梯度方向的基础上，还考虑了历史梯度的影响。这有助于加速收敛，尤其在存在平坦区域或峡谷的情况下。</p>
+</li>
+<li><p>自适应学习率：Adam算法引入了自适应学习率的概念，通过自动调整学习率的大小来适应每个参数的变化情况。它基于梯度的一阶矩估计（mean）和二阶矩估计（variance）来自适应地调整学习率。</p>
+</li>
+<li><p>Adam算法的更新步骤：</p>
+<ul>
+<li>初始化模型参数和累计变量（一阶和二阶矩估计的初始值）。</li>
+<li>在每次迭代中，计算当前的梯度。</li>
+<li>更新一阶矩估计和二阶矩估计。</li>
+<li>根据一阶和二阶矩估计计算参数更新的方向和大小。</li>
+<li>更新模型参数。</li>
+<li>重复以上步骤，直到达到指定的迭代次数或满足停止准则。</li>
+</ul>
+</li>
+<li><p>Adam算法的优点：</p>
+<ul>
+<li>自适应学习率：Adam算法可以自适应地调整每个参数的学习率，根据梯度的一阶和二阶矩估计进行缩放。这有助于在训练过程中平衡收敛速度和参数稳定性。</li>
+<li>适用于大规模数据和高维参数：Adam算法对于大规模数据和高维参数的训练具有较好的效果，因为它可以有效地利用梯度信息和自适应学习率。</li>
+<li>低内存要求：相对于其他优化算法（如基于Hessian矩阵的方法），Adam算法的内存要求较低，因为它仅需要存储一阶和二阶矩估计。</li>
+</ul>
+<p>需要注意的是，Adam算法也有一些超参数需要调整，如学习率、动量系数和指数衰减率等，这些超参数的选择可能会对算法的性能产生影响。因此，在实践中，常常需要进行超参数调优来获得最佳的性能。</p>
+</li>
+</ol>
+</blockquote>
+<h2 id="方法："><a href="#方法：" class="headerlink" title="方法："></a>方法：</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307020953125.png" alt="image-20230702095337036"></p>
+<p>为什么会用SGD：以前的研究经常讨论SGD的三个挑战：1）大曲率损失表面，2）局部最优解，以及3）鞍点（Ruder，2016; Sun等，2020）。现代优化器已经显示出处理1）问题的有效性，并且在某些情况下可以减轻2）和3）问题。然而，当我们将范围限定为微调LLM时，这三个挑战可能会有所不同。</p>
+<p>更平滑的损失面（<strong>Smoother loss surface</strong>）</p>
+<p>一个重要的假设是LLM的参数空间非常平滑，对参数进行小的扰动不会显着改变损失。有实证结果和理论分析支持这一假设（Hao等，2019）。如果我们相信更大的模型具有更平滑的损失曲面，那么我们可以得出结论：由于LLM的损失表面不应具有很大的曲率，因此1）的问题不是问题。请注意，仅当我们教LLM基于自然语言的任务（或者像以前一样用代码预训练）时，才有效。与预训练任务无关的合成损失函数确实会面临大曲率问题。</p>
+<p>局部最优解已经足够（<strong>Local optimum is good enough</strong>）</p>
+<p>微调的目标是将LLM调整到新任务和领域中，并且不会显着改变模型本身。因此，局部最优解通常是足够好的解决方案，并且有限的训练数据（与预训练语料库相比）使其难以将模型推向遥远的全局最优解。</p>
+<p>算法： LOMO中的融合更新</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307021044049.png" alt="image-20230702104423997"></p>
+<blockquote>
+<ol>
+<li><p>输入：模型f(·)具有L层和p个参数，参数θ ∈ Rp，学习率α，最大步数T，训练数据集D，损失函数L。</p>
+</li>
+<li><p>对于每个步骤t &#x3D; 1, . . . , T 进行以下操作：</p>
+<p>2.1 从训练数据集D中随机抽取一个批次B &#x3D; (x, y)，其中x是输入数据，y是对应的目标标签。</p>
+<p>2.2 通过模型f(·)进行前向传播，计算预测值ŷ： ŷ ← f(x, θ) 这一步骤用于获取模型的输出。</p>
+<p>2.3 计算损失函数ℓ： ℓ ← L(y, ŷ) 这一步骤用于计算模型预测值ŷ与真实标签y之间的差异。</p>
+<p>2.4 对于每一层l &#x3D; L, . . . , 1 进行以下操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">1 反向传播（Backward propagation）：</span><br><span class="line">      获取当前层的参数集合θl。</span><br><span class="line">2 计算当前层的梯度gl：</span><br><span class="line">      gl ← ∂ℓ/∂θl</span><br><span class="line">      这一步骤通过计算损失函数ℓ关于当前层参数θl的偏导数来获取梯度。</span><br><span class="line"></span><br><span class="line">3 参数更新：</span><br><span class="line">      θl ← θl - α * gl</span><br><span class="line">      使用梯度下降的方式更新当前层的参数θl。学习率α确定了参数更新的步长。</span><br><span class="line">4 清除梯度：</span><br><span class="line">      将当前层的梯度gl设置为None，以清除梯度信息。</span><br></pre></td></tr></table></figure>
+
+<p>2.5 结束当前步骤的循环。</p>
+</li>
+<li><p>结束算法。</p>
+</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>这个算法是LOMO中的融合更新算法，它使用随机梯度下降（SGD）的方式对模型的参数进行更新。它在每个步骤中，通过随机抽取一个批次样本进行前向传播和损失计算，然后进行反向传播来计算梯度，并使用梯度下降的方式更新模型的参数。整个过程重复T个步骤，直到达到最大步数T。</p>
+</blockquote>
+<h2 id="实验："><a href="#实验：" class="headerlink" title="实验："></a>实验：</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307021046738.png" alt="image-20230702104644688"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307021048215.png" alt="image-20230702104809171"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8QLORA%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%9C%89%E6%95%88%E5%89%AA%E6%9E%9DLOMO%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83%E5%87%8F%E5%B0%91%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8/" data-id="cllkmcmev0003ksu711yk9go2" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-7月第四周依赖图论文通用剪枝" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E4%BE%9D%E8%B5%96%E5%9B%BE%E8%AE%BA%E6%96%87%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" class="article-date">
+  <time class="dt-published" datetime="2023-08-21T07:31:26.228Z" itemprop="datePublished">2023-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">title: 7月第四周依赖图论文通用剪枝</span><br><span class="line">date: 202308</span><br><span class="line">tags: 依赖图通用剪枝</span><br><span class="line">categories: 剪枝</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+
+<h1 id="7月第四周依赖图论文通用剪枝"><a href="#7月第四周依赖图论文通用剪枝" class="headerlink" title="7月第四周依赖图论文通用剪枝"></a>7月第四周依赖图论文通用剪枝</h1><h1 id="论文1-DepGraph-Towards-Any-Structural-Pruning"><a href="#论文1-DepGraph-Towards-Any-Structural-Pruning" class="headerlink" title="论文1 DepGraph: Towards Any Structural Pruning"></a>论文1 DepGraph: Towards Any Structural Pruning</h1><h1 id="DepGraph：面向任何结构修剪"><a href="#DepGraph：面向任何结构修剪" class="headerlink" title="DepGraph：面向任何结构修剪"></a>DepGraph：面向任何结构修剪</h1><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: DepGraph: Towards Any Structural Pruning (DepGraph: 通向任意结构剪枝)</li>
+<li>Authors: Gongfan Fang, Xinyin Ma, Mingli Song, Michael Bi Mi, Xinchao Wang</li>
+<li>Affiliation: National University of Singapore, Zhejiang University, Huawei Technologies Ltd.</li>
+<li>Keywords: structural pruning, neural networks, dependency graph, automatic method, generalizability</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2301.12900v2">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/VainF/Torch-Pruning">GitHub</a></li>
+</ul>
+<h1 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li><p>提出了一种非深度图算法DepGraph，实现了架构通用的结构化剪枝，适用于CNNs, Transformers, RNNs, GNNs等网络。DepGraph能够自动地分析复杂的结构耦合，从而正确地移除参数实现网络加速。基于DepGraph算法，我们开发了PyTorch结构化剪枝框架 <a href="https://link.zhihu.com/?target=https://github.com/VainF/Torch-Pruning">Torch-Pruning</a>。不同于依赖Masking实现的“模拟剪枝”，该框架能够实际地移除参数和通道，降低模型推理成本。在DepGraph的帮助下，研究者和工程师无需再与复杂的网络结构斗智斗勇，可以轻松完成复杂模型的一键剪枝。</p>
+<p>论文标题：DepGraph: Towards Any Structural Pruning<br>论文链接：<a href="https://link.zhihu.com/?target=https://arxiv.org/abs/2301.12900">https://arxiv.org/abs/2301.12900</a><br>项目地址：<a href="https://link.zhihu.com/?target=https://github.com/VainF/Torch-Pruning">https://github.com/VainF/Torch-</a></p>
+</li>
+</ul>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 近年来，边缘计算应用的出现使得深度神经网络压缩变得必要。剪枝作为一种网络压缩方法已被证明是高效且实用的。然而，现有的剪枝方法往往依赖于手动设计的分组方案，限制了其在新的网络架构上的通用性。</li>
+<li>过去方案: 传统的剪枝方法可以大致分为结构剪枝和非结构剪枝两种。结构剪枝通过物理上移除参数来改变神经网络的结构，而非结构剪枝则通过将特定权重置零来实现。然而，现有的结构剪枝方法往往需要针对不同网络进行个案分析，且无法直接推广到其他网络架构，限制了其在实际应用中的使用。</li>
+<li>论文的Motivation: 鉴于现有结构剪枝方法的局限性，本文旨在提出一种通用的剪枝方案，能够适用于任意网络架构。为了解决结构剪枝中的依赖性问题，作者引入了Dependency Graph (DepGraph)方法，通过显式建模不同层之间的依赖关系，实现了全自动的剪枝过程。通过在多个网络架构上的实验证明了DepGraph的有效性和通用性。</li>
+</ul>
+<h1 id="论文摘要"><a href="#论文摘要" class="headerlink" title="论文摘要"></a>论文摘要</h1><blockquote>
+<p>结构剪枝能够通过从神经网络中移除结构性分组的参数来加速模型。然而，不同模型中的参数分组模式各不相同，这使得依赖于手动设计的分组方案的特定架构的剪枝器无法泛化到新的架构。在这项工作中，我们研究了一个极具挑战性但鲜少被探索的任务，即<strong>任意结构剪枝</strong>，以解决诸如CNNs、RNNs、GNNs和Transformers等任意架构的通用结构剪枝。实现这个目标的最大难题在于<strong>结构耦合</strong>，它不仅强制不同的层同时被剪枝，还期望所有被移除的参数在重要性上保持一致，从而避免剪枝后出现结构问题和显著的性能下降。为解决这个问题，我们提出了一种通用且全自动的方法，依赖图（Dependency Graph，DepGraph），用以明确地建模层与层之间的依赖关系，以及为剪枝全面地组合耦合参数。在这项工作中，我们对多种架构和任务进行了广泛的评估，包括用于图像的ResNe(X)t、DenseNet、MobileNet和Vision transformer，用于图的GAT，用于3D点云的DGCNN，以及用于语言的LSTM，并表明，即使采用简单的基于规范的判别准则，所提出的方法也能够持续产生令人满意的性能。</p>
+</blockquote>
+<blockquote>
+<ol>
+<li>什么是结构耦合（structural coupling），并且它如何影响神经网络的剪枝？</li>
+<li>结构耦合是指<strong>神经网络中不同层之间的关联性</strong>，这种关联性强制同时剪枝不同的层，同时也期望所有被剪枝的参数都一致地不重要，这样可以避免剪枝后出现结构问题和明显的性能下降。具体来说，如果一个参数被剪枝，那么它的耦合参数也应该被剪枝，以保持网络的结构完整性。</li>
+</ol>
+</blockquote>
+<h2 id="图片1：不同神经网络模型结构耦合和剪枝策略的对比"><a href="#图片1：不同神经网络模型结构耦合和剪枝策略的对比" class="headerlink" title="图片1：不同神经网络模型结构耦合和剪枝策略的对比"></a>图片1：不同神经网络模型结构耦合和剪枝策略的对比</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221403214.png" alt="image-20230722140353693"></p>
+<blockquote>
+<p>a: 在”a”部分（CNNs）中，例如，为了剪枝Conv2，块内的所有其他层（如Conv1, BN1, BN2）也必须被剪枝。这强调了在剪枝过程中，如果要剪枝某个层，则必须同时剪枝块内的所有其他层。</p>
+<p>b: b部分中，如果要对Transform的MLP模块进行剪枝，也就必须要对Norm和多头注意力进行剪枝，这种情况的出现是由于神经网络中的结构耦合。在神经网络中，不同层的参数是彼此依赖的，这种依赖关系迫使一旦一个层（如MLP）被剪枝，那么它的耦合层（如Norm和多头注意力机制）也必须被剪枝。各层之间的信息流动是相互依赖的。如果你剪掉了一个层，那么它的输出就不再能够作为下一层的输入。因此，下一层也就失去了它的输入源，相当于也被”剪掉”了。而这些层可能又是其他层的输入源，因此，剪枝一个层可能会导致多个层被剪掉。这就是为什么在剪枝MLP的同时，必须剪掉Norm和多头注意力机制。</p>
+<p>c 一样的道理 RNNS</p>
+<p>d GNNS  进行剪枝时，不仅要考虑节点或边的重要性，还需要考虑剪枝操作对整个网络结构的影响。例如，如果剪枝的节点或边是信息传播路径的一部分，那么剪枝可能会阻断信息的流动，从而影响网络的性能。</p>
+</blockquote>
+<h1 id="相关工作部分"><a href="#相关工作部分" class="headerlink" title="相关工作部分"></a>相关工作部分</h1><blockquote>
+<ol>
+<li><strong>结构剪枝和非结构剪枝</strong>：结构剪枝的目标是物理上移除一组参数，从而减少神经网络的大小。相比之下，非结构剪枝涉及将特定的权重置零，但不改变网络结构。非结构剪枝在实践中易于实施，并且本质上能够适应各种网络。然而，它通常需要专门的AI加速器或软件进行模型加速。相反，结构剪枝通过从网络中物理上移除参数来改善推理开销，从而在更广泛的应用领域中找到应用。</li>
+<li><strong>剪枝分组参数</strong>：在复杂的网络结构中，参数组之间可能存在依赖性，需要同时进行剪枝。例如，当剪枝两个连续的卷积层时，从第一层移除一个过滤器需要剪枝下一层的关联核。虽然手动分析参数依赖性是可行的，但当应用于复杂的网络时，这个过程可能非常耗费人力。此外，这样的手动方案本质上不能转移到新的架构，这严重限制了剪枝的应用。最近，一些初步的工作已经被提出来解密层与层之间的复杂关系。不幸的是，现有的技术仍然依赖于经验规则或预定义的架构模式，使它们对所有结构剪枝应用的通用性不足。</li>
+<li>作者指出了他们的工作目标：提出一种通用的方法来解决这个挑战，证明有效地处理参数依赖性可以使结构剪枝在各种网络中通用，从而在多个任务上得到满意的性能。</li>
+</ol>
+<p>在卷积神经网络（CNNs）中，一层的输出通常作为下一层的输入，这种依赖关系也适用于卷积层。如果你移除了Conv2的一个过滤器，那么Conv2的输入（也就是Conv1的输出）就会少了一个特征映射。为了保持网络的结构完整性，你需要同时剪掉Conv1中对应的输出通道。</p>
+<p><strong>具体来说，Conv1的每个过滤器都会输出一个特征映射，这些特征映射被堆叠在一起，形成Conv2的输入。每个Conv2的过滤器都会在这些输入特征映射上进行卷积操作。如果你移除了Conv2的一个过滤器，那么那个过滤器对应的输入特征映射就不再需要了。这个输入特征映射是Conv1的一个输出特征映射，所以对应的Conv1的过滤器也就可以被剪掉了。</strong></p>
+<p>这就是为什么在剪枝Conv2的时候，也需要剪掉Conv1。这是由于Conv1和Conv2之间的结构耦合，也就是他们的输出和输入之间的依赖关系。</p>
+</blockquote>
+<h1 id="方法-21、29"><a href="#方法-21、29" class="headerlink" title="方法:21、29"></a>方法:21、29</h1><ol>
+<li><h2 id="Dependency-in-Neural-Networks神经网络中的依赖"><a href="#Dependency-in-Neural-Networks神经网络中的依赖" class="headerlink" title="Dependency in Neural Networks神经网络中的依赖"></a>Dependency in Neural Networks神经网络中的依赖</h2></li>
+<li><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221459077.png" alt="image-20230722145939026"></p>
+</li>
+<li><p>在不同结构中具有相互依赖性的分组参数。必须同时修剪所有高亮显示的参数。</p>
+</li>
+<li><blockquote>
+<p>在许多神经网络优化任务中，结构修剪是一种常用的技术，通过移除不重要的神经元来使网络更加高效。在这里，作者使用了一个由三个连续层组成的线性神经网络作为例子，每一层都由二维权重矩阵（wl, wl+1和wl+2）参数化。</p>
+<p>当通过修剪神经元来瘦身网络时，参数之间的依赖性就显现出来了。在这里，wl和wl+1的依赖性是这样的：如果你想修剪连接wl和wl+1的第k个神经元，那么你就必须同时移除wl[k, :] 和 wl+1[:, k]。这就是所谓的“依赖性”，因为这两个参数（即wl和wl+1）必须一起修剪，不能单独修剪。</p>
+<p>在现有的文献中，研究人员通常使用手动设计的、模型特定的方案来处理层依赖性并对深度神经网络进行结构修剪。然而，这个过程中存在着各种类型的依赖性，如作者所示。手动分析所有的依赖性并不可行，尤其是当简单的依赖性可能会嵌套或组合形成更复杂的模式时。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="Dependency-Graph依赖图"><a href="#Dependency-Graph依赖图" class="headerlink" title="Dependency Graph依赖图"></a>Dependency Graph依赖图</h2><p>1.分组：为了执行结构修剪（结构修剪是一种优化神经网络的方法，通过删除不重要的神经元或连接来减少网络的复杂性），我们首先需要将网络层按照它们的依赖关系进行分组。在这里，他们提出了一个分组矩阵G，它是一个L×L的矩阵，其中L是网络层的数量。在这个矩阵中，如果第i层和第j层之间存在依赖关系，那么Gij就是1。</p>
+<p>然而，现代的深度网络可能由成千上万个具有复杂连接的层组成，这使得从神经网络中获取分组模式变得非常困难。也就是说，得到的分组矩阵G可能会非常大而复杂，其中Gij的值不仅取决于第i层和第j层，还会受到它们之间所有中间层的影响。在大多数情况下，这种非局部的、隐式的关系不能用简单的规则来处理。</p>
+<p>因此，作者提出了一个新的解决方案：<strong>他们不直接估计分组矩阵G，而是提出了一个更易于估计的依赖模型方法，即依赖图。依赖图是从分组矩阵G中有效地提取出来的，它能更好地处理和展示层之间复杂的依赖关系。</strong></p>
+<p> 1 分组矩阵的定义：<br>$$<br>G \in {0,1}^{L \times L}<br>$$</p>
+<ol start="2">
+<li><p>如果第i层和第j层之间存在依赖关系，那么：<br>$$<br>G_{ij} &#x3D; 1<br>$$</p>
+</li>
+<li><p>如果不存在依赖关系，则：</p>
+</li>
+</ol>
+<p>$$<br>G_{ij} &#x3D; 0<br>$$</p>
+<ol start="4">
+<li>对角线元素的设置，即自依赖性：</li>
+</ol>
+<p>$$<br>Diag(G) &#x3D; \mathbf{1}_{1 \times L}<br>$$</p>
+<p>其中$\mathbf{1}_{1 \times L}$是长度为L的全1向量。</p>
+<ol start="5">
+<li>表示与第i层有依赖关系的所有层的集合：</li>
+</ol>
+<p>$$<br>g(i) &#x3D; {j | G_{ij} &#x3D; 1}<br>$$</p>
+<p>2 Dependency Graph ：介绍了一种新的图形数据结构——依赖图Dependency Graph，这是一种有效的分组矩阵G的压缩方式。依赖图D记录了具有直接连接的相邻层之间的本地依赖关系，与分组矩阵G的区别在于，它仅记录了直接连接的相邻层之间的依赖关系。依赖图D可以被视为分组矩阵G的传递性简化，即<strong>包含与G相同的顶点，但尽可能少的边</strong>。</p>
+<p>在介绍Dependency Graph之前，首先用一个例子解释了依赖关系的冗余。考虑一个依赖组g &#x3D; {w1, w2, w3}，它有依赖关系w1 ⇔ w2，w2 ⇔ w3，和w1 ⇔ w3。经过仔细观察，可以发现这个依赖模型存在一些冗余。例如，依赖关系w1 ⇔ w3可以通过递归过程从w1 ⇔ w2和w2 ⇔ w3推导出来。开始时，我们以w1为起点，检查它与其他层（如w1 ⇔ w2）的依赖关系。然后，w2提供了一个新的起点，用于递归地扩展依赖关系，这反过来又“触发”了w2 ⇔ w3。这个递归过程最终以一个传递关系w1 ⇔ w2 ⇔ w3结束。在这种情况下，我们只需要两个依赖关系就可以描述组g中的关系。</p>
+<p>同样的，3.2节中讨论的分组矩阵G对于依赖性建模也是冗余的，因此可以被压缩为一个形式更紧凑，边更少，但保留相同信息的形式。这就引出了依赖图。</p>
+<p>依赖图D的正式构造规则是：对于所有的Gij &#x3D; 1，在D中存在从顶点i到j的路径。因此，Gij可以通过检查D中顶点i和j之间是否存在路径来推导出来。</p>
+<blockquote>
+<p>依赖图Dependency Graph的构造过程分步骤解释：</p>
+<ol>
+<li><strong>定义所有节点</strong>：首先，我们在图中定义每一层网络为一个节点。这些节点相当于我们要考虑的网络层。</li>
+<li><strong>检查并添加直接的边</strong>：然后，我们仔细观察网络中每一层之间的直接连接。如果第i层和第j层之间有直接连接（即第i层的输出是第j层的输入），我们就在依赖图中添加一条从i到j的边。这样，我们就得到了所有直接相邻层之间的依赖关系。</li>
+</ol>
+<p>现在我们来考虑一个更为复杂的依赖关系：如果有第i层→第j层→第k层的依赖关系。在原始的分组矩阵G中，我们会同时标记Gij和Gjk为1，还需要标记Gik为1，表示第i层和第k层也存在依赖关系。</p>
+<p>然而，在依赖图D中，我们不需要直接标记Gik。只要有从节点i到节点k的路径（在这种情况下，路径就是i→j→k），就认为Gik存在。这样，依赖图D只需要记录直接的依赖关系，而所有间接的依赖关系可以通过检查路径的存在来推导。这大大减少了需要记录的依赖关系的数量。</p>
+<p>依赖图D的主要目标就是将分组矩阵G压缩为更简洁的形式，便于处理复杂的依赖关系。这种压缩是有效的，因为我们只关心是否存在从一个节点到另一个节点的路径，而不关心路径的具体形状。这种方法可以在保留所有重要信息的同时，大大简化了依赖关系的表示。</p>
+</blockquote>
+<p>3 Network Decomposition 网络分解</p>
+<blockquote>
+<p>这一段的主要内容是说，在实际操作中，仅仅在网络层级别上建立依赖图可能存在一些问题，因为某些基础层（如全连接层）可能有两种不同的修剪方案，比如 w[k, :] 和 w[:, k]，它们分别压缩了输入和输出的维度。此外，网络还包含一些非参数化的操作，比如跳过连接（skip connections），它们也会影响层之间的依赖关系。</p>
+<p>为了解决这些问题，作者提出了一种新的表示法，将网络 F(x; w) 分解为更细的基本组件，表示为 F &#x3D; {f1, f2, …, fL}，其中每个组件 f 可以是参数化的层（如卷积）或非参数化的操作（如残差加法）。他们不再专注于层级别的关系，而是集中于层的输入和输出之间的依赖关系。特别地，他们将组件 fi 的输入和输出分别表示为 f- i 和 f+ i。对于任何网络，最终的分解可以被形式化为 F &#x3D; {f- 1 , f+ 1 , …, f- L , f+ L }。这种表示法使得依赖关系的建模更为容易，并允许同一层有不同的修剪方案。</p>
+</blockquote>
+<p>4 Dependency Modeling 依赖模型</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221521004.png" alt="image-20230722152158933"></p>
+<blockquote>
+<p>层分组是通过从f+ 4开始在DepGraph上递归传播来实现的。在该示例中，由于上面所示的发散修剪方案，在卷积输入f-4和输出f+ 4之间不存在层内依赖性。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221523007.png" alt="image-20230722152330970"></p>
+<p>算法1 解释</p>
+<blockquote>
+<p>用于构建所“依赖图”，它是一个二维矩阵，用于表示网络中的层之间的依赖关系。</p>
+<p>以下是这个算法的步骤：</p>
+<ol>
+<li><p>输入一个神经网络F(x; w)。</p>
+</li>
+<li><p>将网络F分解为两组组件：f− 和 f+。这些组件分别代表每一层的输入和输出。</p>
+</li>
+<li><p>初始化依赖图DepGraph D，这是一个 2L x 2L 的零矩阵，其中 L 是网络中层的数量。</p>
+</li>
+<li><p>双重循环遍历所有的 i 和 j，对于每一对 (i, j)，根据公式计算 D(f- i, f+ j) 和 D(f+ j, f- i) 的值。</p>
+<ul>
+<li><p>如果 f- i 与 f+ j 是相连的，或者它们位于同一层并且有相同的剪枝方案（sch(f- i) &#x3D; sch(f+ j)），则值为1；</p>
+</li>
+<li><p>否则，值为0。</p>
+</li>
+</ul>
+</li>
+<li><p>返回依赖图D。</p>
+</li>
+</ol>
+<p>简单来说，这个算法通过检查网络中每一层的输入和输出，建立了一个表征层间和层内依赖关系的二维矩阵。</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221524708.png" alt="image-20230722152425671"></p>
+<blockquote>
+<p>这个算法是用来在神经网络中创建一组分组，每一组中的层有依赖关系。</p>
+<p>以下是这个算法的步骤：</p>
+<ol>
+<li><p>输入依赖图DepGraph D。</p>
+</li>
+<li><p>初始化一个空的集合G，这将存储分组。</p>
+</li>
+<li><p>遍历所有层i。</p>
+</li>
+<li><p>对于每个i，初始化一个包含i的新组g。</p>
+</li>
+<li><p>在一个循环中，持续更新g，直到没有新的元素可以添加进g为止：</p>
+<ul>
+<li><p>创建一个未见过的层的集合UNSEEN，这些层还没有被添加到g中。</p>
+</li>
+<li><p>创建一个新的集合g’，包含那些在UNSEEN中并且与g中的某个层k有依赖关系的层（即Dkj &#x3D; 1）。</p>
+</li>
+<li><p>更新g，将g’中的所有层添加到g中。</p>
+</li>
+</ul>
+</li>
+<li><p>将g添加到G中。</p>
+</li>
+<li><p>返回所有的分组G。</p>
+</li>
+</ol>
+<p>简单来说，这个算法是通过遍历网络中的所有层，并查看哪些层与已经在组中的层有依赖关系，从而创建一系列分组。每个分组中的所有层都有相互依赖关系。</p>
+</blockquote>
+<h2 id="3-3-组级剪枝"><a href="#3-3-组级剪枝" class="headerlink" title="3.3 组级剪枝"></a>3.3 组级剪枝</h2><p>这部分主要讨论了如何在神经网络中实现组级别的剪枝。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221527044.png" alt="image-20230722152727989"></p>
+<blockquote>
+<p>比较了三种不同的剪枝方法，即如何选择神经网络中应该删除的权重（即神经元之间的连接）。每种方法都有自己的优点和缺点，主要的区别在于他们如何定义哪些权重是“重要的”。</p>
+<ol>
+<li>方法(a) 是非结构化剪枝：在这种方法中，每个权重都被独立地看待。换句话说，我们只关注每个单独权重的重要性，而不考虑它们之间的关系。这种方法的优点是简单直观，缺点是它可能忽略了权重之间的依赖关系。</li>
+<li>方法(b) 是结构化剪枝：这种方法在评估权重重要性时，会考虑到一层内的结构关系，即在同一层内的权重将会一起被考虑。但是，它依然忽视了在不同层之间可能存在的关联关系。</li>
+<li>方法(c) 是本文提出的组级剪枝：这种方法考虑到了权重之间的依赖关系，无论这些权重是在同一层还是在不同层。它的目标是将所有关联的参数（即一组）一起设置为零，这样就可以很容易地通过一个简单的幅度方法（magnitude method）来识别它们。</li>
+</ol>
+<p>这三种方法的主要区别在于他们处理权重之间关系的方式。在组级剪枝中，作者认为在神经网络中，权重之间的关系是非常重要的，应该被一同考虑，从而得到更好的剪枝效果。</p>
+</blockquote>
+<p>在前面的部分中，作者们已经开发了一种用于分析神经网络内部依赖性的通用方法，这自然引导出了组级别剪枝问题。评估组合参数的重要性对于剪枝来说是一个重大的挑战，因为它涉及到几个关联的层。在这个部分中，作者们利用一个简单的基于范数的标准来为组级别剪枝建立了一个实用的方法。</p>
+<p>给定一个参数组g &#x3D; {w1, w2, …, w|g|}，现有的标准，如L2范数的重要性I(w) &#x3D; w2，可以为g中的每个w产生独立的评分。估计组的重要性的一个自然的方式是计算一个聚合的评分I(g) &#x3D; ∑w∈g I(w)。但不幸的是，独立地在不同层上估计的重要性评分可能由于分布和大小的差异而不可加，因此没有意义。为了使这个简单的聚合适用于重要性估计，<strong>作者们提出了一个稀疏训练方法</strong>，用于在组级别上稀疏化参数，这样，那些被零化的组就可以从网络中安全地移除。</p>
+<blockquote>
+<p>作者在这一部分讨论了如何对神经网络进行“组级别”的剪枝，这是一种对网络进行优化的方法，用以删除网络中不重要或者冗余的部分，以减少网络的复杂性。</p>
+<p>在这里，他们提到的”组”指的是一组相关的神经网络参数，比如，这些参数可能来自同一层，或者在不同层间有一些依赖关系。这些参数被看作是一个整体，而不是独立处理，因为他们在网络中的作用是相互关联的。</p>
+<p>那么，问题来了，我们应该如何决定哪个“组”重要，哪个不重要呢？作者在这里提出了一种方法，即通过计算组内所有参数的L2范数（一种衡量参数重要性的方法）的总和来判断。如果一个组的总重要性得分低，那么这个组可能就不太重要，可以被剪枝掉。</p>
+<p>但是，这个方法有个问题，就是不同层的参数可能具有不同的规模或分布，所以我们不能简单地将他们的重要性得分加在一起。为了解决这个问题，作者提出了一种“稀疏训练”的方法。这种方法的目标是尽量让不重要的组的参数变为0，这样这些参数就不会对网络的输出产生影响，可以安全地被剪枝掉。</p>
+<p>作者使用了一个特定的公式，通过对参数进行“惩罚”，使得不重要的参数趋向于0，这就是所谓的”正则化项”。这个公式涉及一些复杂的数学概念，简单来说，就是根据每个参数的重要性对其进行加权，重要性越低的参数，其“惩罚”越大。</p>
+<p>在进行了这种“稀疏训练”后，作者再用一个简单的公式来决定哪些参数是不重要的，即他们的分数低于某个阈值，然后将这些参数删除。</p>
+<p>最后，作者通过实验证明，这种方法在剪枝效果上能达到与其他现代方法相当的水平，即使它的原理比较简单。</p>
+</blockquote>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><ul>
+<li><h2 id="a-详细的实验设置-作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。-“Model-Data”-ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。-“Method”-这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法-“Ours”-。-“Base”-这是未进行剪枝的模型在测试数据集上的准确率。-“Pruned”-这是使用特定剪枝方法后的模型在测试数据集上的准确率。-“∆-Acc-”-这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。-“Speed-Up”-这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。"><a href="#a-详细的实验设置-作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。-“Model-Data”-ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。-“Method”-这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法-“Ours”-。-“Base”-这是未进行剪枝的模型在测试数据集上的准确率。-“Pruned”-这是使用特定剪枝方法后的模型在测试数据集上的准确率。-“∆-Acc-”-这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。-“Speed-Up”-这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。" class="headerlink" title="a. 详细的实验设置:- 作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。- - &gt; - “Model &#x2F; Data”: ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。  &gt; - “Method”: 这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法(“Ours”)。  &gt; - “Base”: 这是未进行剪枝的模型在测试数据集上的准确率。  &gt; - “Pruned”: 这是使用特定剪枝方法后的模型在测试数据集上的准确率。  &gt; - “∆ Acc.”: 这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。  &gt; - “Speed Up”: 这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。"></a>a. 详细的实验设置:<br>- 作者在CIFAR数据集上进行了实验，评估了他们修剪算法的性能。<br>- <img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221531158.png" alt="image-20230722153111108"><br>- &gt; - “Model &#x2F; Data”: ResNet56和VGG19都是常见的深度学习模型，它们在许多任务上都表现出色。CIFAR-10和CIFAR-100是两个常用的图像分类数据集，分别包含10个和100个类别。<br>  &gt; - “Method”: 这是正在测试的剪枝方法。表中列出了一系列的剪枝方法，包括本文作者的方法(“Ours”)。<br>  &gt; - “Base”: 这是未进行剪枝的模型在测试数据集上的准确率。<br>  &gt; - “Pruned”: 这是使用特定剪枝方法后的模型在测试数据集上的准确率。<br>  &gt; - “∆ Acc.”: 这是剪枝前后模型准确率的变化，可以看作是剪枝对模型性能的影响。负值表示准确率下降，正值表示准确率提高。<br>  &gt; - “Speed Up”: 这是通过剪枝实现的加速比例，表示剪枝后的模型与原始模型相比，执行速度提高了多少倍。这是剪枝的主要目标之一，因为更快的模型可以更有效地处理数据和做出预测。</h2><ul>
+<li>报告了修剪模型的准确性和理论加速比。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:</li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307221534860.png" alt="image-20230722153445775"></li>
+<li><blockquote>
+<p>这个表格展示了对各种网络结构（如ResNet-56、VGG-19、DenseNet-121、MobileNetv2和GoogleNet）进行不同策略的剪枝时的精确度结果。策略包括随机剪枝、不进行分组剪枝、只对卷积层进行剪枝、以及全分组剪枝。并且分别对比了统一的剪枝和学习到的剪枝的效果。</p>
+<p>每行的数据对应一种剪枝策略对应的结果。</p>
+<ul>
+<li>“Architecture”: 这是正在测试的模型的名称。</li>
+<li>“Strategy”: 这是正在测试的剪枝策略。表中列出了一系列的剪枝策略，包括随机剪枝（”Random”）、不进行分组剪枝（”No grouping”）、只对卷积层进行剪枝（”Conv-only”）以及全分组剪枝（”Full Grouping”）。</li>
+<li>“Pruned Accuracy with Uniform &#x2F; Learned Sparsity”: 这是剪枝后的模型在测试数据集上的准确率，其中包括了使用统一的剪枝策略和学习到的剪枝策略的结果。剪枝策略分别对应了不同的速度提升比例，例如1.5倍、3.0倍、6.0倍、12倍。</li>
+<li>“Avg.”: 这是各个速度提升比例下的平均精确度。</li>
+</ul>
+<p>表格的主要目的是展示在使用不同的剪枝策略以及不同的速度提升比例时，各个网络模型的精确度的变化情况，以此来评估和比较不同剪枝策略的效果。</p>
+</blockquote>
+<ul>
+<li>结果显示，他们的方法在所有分组层（包括卷积、批归一化和全连接层）上都能促进稀疏性，从而提高修剪模型的准确性。</li>
+<li>作者还可视化了他们的方法学习到的分组参数的范数，显示了组内的稀疏性。</li>
+<li>进行了消融研究以验证分组的有效性，结果表明忽略分组信息会显著降低他们方法的性能。</li>
+<li>作者还比较了均匀稀疏性和学习稀疏性，发现学习稀疏性通常优于均匀稀疏性，尽管有时会导致过度修剪和准确性下降。</li>
+<li>他们还将其框架应用于包括DenseNet和GoogleNet在内的各种卷积神经网络，展示了其框架的通用性。</li>
+<li>提供了DepGraph可视化，显示了参数的分组，为大型神经网络的修剪过程提供了便利。</li>
+</ul>
+</li>
+</ul>
+<h1 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h1><p><a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/1TRvELQDNj9PwM-EERWbF3IQOyxZeDepp?usp=sharing#scrollTo=yaoMwy86Vhxz">Torch-Pruning-Demo.ipynb - Colaboratory (google.com)</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">model_dict = &#123;</span><br><span class="line">    <span class="string">&#x27;resnet50&#x27;</span>: torchvision.models.resnet50,</span><br><span class="line">    <span class="string">&#x27;resnet18&#x27;</span>: torchvision.models.resnet18,</span><br><span class="line">    <span class="string">&#x27;convnext&#x27;</span>: torchvision.models.convnext_base,</span><br><span class="line">    <span class="string">&#x27;vgg_19_bn&#x27;</span>: torchvision.models.vgg19_bn,</span><br><span class="line">    <span class="string">&#x27;regnet_x_1_6gf&#x27;</span>: torchvision.models.regnet_x_1_6gf,</span><br><span class="line">    <span class="string">&#x27;efficientnet_b4&#x27;</span>: torchvision.models.efficientnet_b4,</span><br><span class="line">    <span class="string">&#x27;densenet121&#x27;</span>: torchvision.models.densenet121,</span><br><span class="line">    <span class="string">&#x27;vit_b_32&#x27;</span>: torchvision.models.vit_b_32,</span><br><span class="line">    <span class="string">&#x27;mobilenet_v3_large&#x27;</span>: torchvision.models.mobilenet_v3_large,</span><br><span class="line">    <span class="comment"># Register your models here. This demo only covers classification models.</span></span><br><span class="line">    <span class="comment"># Swin Transformers are not supported.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">model = model_dict[<span class="string">&#x27;vit_b_32&#x27;</span>](pretrained=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">imp = tp.importance.MagnitudeImportance(p=<span class="number">2</span>) </span><br><span class="line"><span class="comment"># 创建一个重要性估计器，这基于权重的L2范数来评估神经网络各部分的重要性。</span></span><br><span class="line"></span><br><span class="line">ignored_layers = []</span><br><span class="line"><span class="comment"># 创建一个空的列表，用于保存我们不想剪裁的神经网络层。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> model.modules():</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">isinstance</span>(m, torch.nn.Linear) <span class="keyword">and</span> m.out_features == <span class="number">1000</span>: </span><br><span class="line">  <span class="comment"># 遍历模型中的所有模块。如果模块是线性层且输出特征数为1000（即分类器），则忽略这一层，不进行剪裁。</span></span><br><span class="line">    ignored_layers.append(m)</span><br><span class="line"></span><br><span class="line">round_to = <span class="literal">None</span></span><br><span class="line"><span class="comment"># 创建一个变量，用于设定剪裁的粒度。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">isinstance</span>( model, torchvision.models.vision_transformer.VisionTransformer):</span><br><span class="line">  round_to = model.encoder.layers[<span class="number">0</span>].num_heads </span><br><span class="line">  <span class="comment"># 模型是视觉变换器，则将round_to设为变换器的头部数量，这是模型特定的剪裁限制。</span></span><br><span class="line"></span><br><span class="line">pruner = tp.pruner.MagnitudePruner(</span><br><span class="line">    model = model,</span><br><span class="line">    <span class="comment"># 待剪裁的模型</span></span><br><span class="line"></span><br><span class="line">    example_inputs = torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>),</span><br><span class="line">    <span class="comment"># 输入的样例，用于模型的前向传播</span></span><br><span class="line"></span><br><span class="line">    importance = imp,     </span><br><span class="line">    <span class="comment"># 重要性估计器，用于评估哪些部分可以剪裁</span></span><br><span class="line"></span><br><span class="line">    global_pruning=<span class="literal">False</span>, </span><br><span class="line">    <span class="comment"># 设置全局剪裁为False，这意味着不是对整个网络进行剪裁，而是对各层独立进行剪裁。</span></span><br><span class="line"></span><br><span class="line">    ch_sparsity = <span class="number">0.5</span>,    </span><br><span class="line">    <span class="comment"># 设置剪裁后的稀疏度为0.5，即剪裁后每层保留的神经元或通道的比例。</span></span><br><span class="line"></span><br><span class="line">    iterative_steps = <span class="number">1</span>,  </span><br><span class="line">    <span class="comment"># 设置迭代步骤数为1，即达到目标稀疏度所需的剪裁步骤数。</span></span><br><span class="line"></span><br><span class="line">    ignored_layers = ignored_layers,        </span><br><span class="line">    <span class="comment"># 指定要忽略的层，这些层在剪裁过程中不会被剪裁。</span></span><br><span class="line"></span><br><span class="line">    round_to = round_to,  </span><br><span class="line">    <span class="comment"># 设置剪裁的粒度，即剪裁后的通道数需要是这个数的倍数。</span></span><br><span class="line">)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Model size before pruning</span></span><br><span class="line">base_macs, base_nparams = tp.utils.count_ops_and_params(model, torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line"><span class="comment"># 计算剪裁前的模型大小。使用的度量包括MACs（乘加操作数）和参数数量。输入数据是随机生成的张量。</span></span><br><span class="line"></span><br><span class="line">pruner.step()</span><br><span class="line"><span class="comment"># 执行剪裁操作。在之前的代码中，已经对pruner对象进行了初始化，并设置了剪裁参数。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># modify some inferece-related attributes if necessary</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">isinstance</span>(model, torchvision.models.vision_transformer.VisionTransformer):</span><br><span class="line"><span class="comment"># 如果模型是视觉变换器（ViT），那么在剪裁后需要修改一些与推理相关的属性。</span></span><br><span class="line">    model.hidden_dim = model.conv_proj.out_channels</span><br><span class="line"><span class="comment"># 对于视觉变换器，剪裁后其隐藏维度（hidden_dim）需要被修改为卷积投影层的输出通道数。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Parameter &amp; MACs Counter</span></span><br><span class="line">pruned_macs, pruned_nparams = tp.utils.count_ops_and_params(model, torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line"><span class="comment"># 计算剪裁后的模型大小。使用的度量依然是MACs和参数数量。输入数据是随机生成的张量。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The pruned model:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(model)</span><br><span class="line"><span class="comment"># 打印剪裁后的模型。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Summary:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Params: &#123;:.2f&#125; M =&gt; &#123;:.2f&#125; M&quot;</span>.<span class="built_in">format</span>(base_nparams/<span class="number">1e6</span>, pruned_nparams/<span class="number">1e6</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;MACs: &#123;:.2f&#125; G =&gt; &#123;:.2f&#125; G&quot;</span>.<span class="built_in">format</span>(base_macs/<span class="number">1e9</span>, pruned_macs/<span class="number">1e9</span>))</span><br><span class="line"><span class="comment"># 打印剪裁前后的模型大小，包括参数数量和MACs。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Test Forward</span></span><br><span class="line">output = model(torch.randn(<span class="number">1</span>,<span class="number">3</span>,<span class="number">224</span>,<span class="number">224</span>))</span><br><span class="line"><span class="comment"># 测试剪裁后模型的正向传播。输入数据是随机生成的张量。</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Output.shape: &quot;</span>, output.shape)</span><br><span class="line"><span class="comment"># 打印正向传播的输出形状。</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Test Backward</span></span><br><span class="line">loss = torch.nn.functional.cross_entropy(output, torch.randint(<span class="number">1</span>, <span class="number">1000</span>, (<span class="number">1</span>,)))</span><br><span class="line"><span class="comment"># 计算反向传播的损失。使用的损失函数是交叉熵，目标值是随机生成的整数。</span></span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line"><span class="comment"># 执行反向传播，计算梯度。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="论文2：Scaling-TransNormer-to-175-Billion-Parameters"><a href="#论文2：Scaling-TransNormer-to-175-Billion-Parameters" class="headerlink" title="论文2：Scaling TransNormer to 175 Billion Parameters"></a>论文2：Scaling TransNormer to 175 Billion Parameters</h1><p>Zhen Qin♯, 1,2Dong Li♯, 1,2Weigao Sun♯, 1,2Weixuan Sun♯, 1,2Xuyang Shen♯,<br>2Xiaodong Han, 2Yunshen Wei, 2Baohong Lv, 1Fei Yuan, 2Xiao Luo,<br>1Yu Qiao, 1,2Yiran Zhong∗<br>1Shanghai AI Laboratory, 2OpenNLPLab</p>
+<h1 id="Basic-Information-1"><a href="#Basic-Information-1" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: Scaling TransNormer to 175 Billion Parameters (将TransNormer扩展到1750亿参数)</li>
+<li>Authors: Zhen Qin, Dong Li, Weigao Sun, Weixuan Sun, Xuyang Shen, Xiaodong Han, Yunshen Wei, Baohong Lv, Fei Yuan, Xiao Luo, Yu Qiao, Yiran Zhong</li>
+<li>Affiliation: Shanghai AI Laboratory, OpenNLPLab (上海人工智能实验室, OpenNLPLab)</li>
+<li>Keywords: Large Language Model, TransNormerLLM, linear attention, efficiency, scalability (大型语言模型, TransNormerLLM, 线性注意力, 效率, 可扩展性)</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2307.14995v1">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/OpenNLPLab/TransnormerLLM">GitHub</a></li>
+</ul>
+<h1 id="论文简要-1"><a href="#论文简要-1" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本文介绍了TransNormerLLM，这是第一个基于线性注意力的大型语言模型，它在准确性和效率方面优于传统的基于softmax注意力的模型。通过引入位置嵌入、线性注意力加速、门控机制、张量归一化和推理加速等先进修改，TransNormerLLM从之前的线性注意力架构TransNormer发展而来。通过一系列的实验验证，该模型在训练和推理阶段都表现出卓越的效率和性能。</li>
+</ul>
+<h1 id="背景和创新点"><a href="#背景和创新点" class="headerlink" title="背景和创新点:"></a>背景和创新点:</h1><blockquote>
+<ol>
+<li><p>尽管现有的 Transformer 模型在许多任务上表现优秀，但是当面对大规模参数时，它们往往会遇到一些问题。首先，计算效率较低，这主要是因为 Transformer 模型需要计算和存储所有 token 之间的注意力权重，这在处理长序列时会导致计算和存储开销极大。其次，Transformer 模型还存在注意力稀释问题，即模型可能无法有效地关注到距离较远的 token。</p>
+<p>为了解决这些问题，论文作者提出了 TransNormerLLM。TransNormerLLM 是对 TransNormer 模型的一个改进，它通过一系列创新的设计来解决上述问题。以下是 TransNormerLLM 的一些主要创新点：</p>
+<ol>
+<li><strong>位置编码</strong>：在 TransNormerLLM 中，作者引入了一种名为 LRPE-d 的新方法，这是一种线性化相对位置编码（LRPE）与指数衰减相结合的方法。这种方法可以让模型对距离较远的 token 给予较小的注意力权重，从而有效地解决了注意力稀释问题。同时，由于 LRPE-d 可以被分解为关于每个输入元素的函数，因此它与线性注意力方法完全兼容。值得一提的是，LRPE-d 的参数可以通过训练进行学习，这为模型提供了更大的灵活性。</li>
+<li><strong>门控机制</strong>：TransNormerLLM 引入了一种新的门控机制，被称为 SGLU（Simple Gated Linear Unit）。SGLU 是一种改进的激活函数，它引入了一个门控参数来控制信息的流动。不同于传统的 GLU，SGLU 去除了激活函数，因为门本身就可以引入非线性，从而使得模型更加高效。</li>
+<li><strong>张量归一化</strong>：在 TransNormerLLM 中，作者引入了一种新的张量归一化方法，称为 SRMSNorm（Simple RMS Norm）。SRMSNorm 是一种更简单的归一化方法，它不依赖于特征维度，因此在处理大规模模型时更为高效。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291115870.png" alt="image-20230729111523716"></p>
+<ul>
+<li><blockquote>
+<p>当然，下面是这些公式的整理以及对应的详细解释：</p>
+<ol>
+<li><p><strong>位置编码 (LRPE-d)</strong>:<br>   $$<br>a_{st} &#x3D; q_s^T k_t \lambda^{s-t} \exp(i\theta(s-t))<br>$$</p>
+<p>  这是 TransNormerLLM 使用的位置编码公式，其中 (q_s) 和 (k_t) 分别是位置 (s) 和 (t) 的查询和键，(\lambda) 是衰减率，(\theta) 是可学习的参数。这个公式表示，模型在计算位置 (s) 和 (t) 之间的注意力时，会考虑它们之间的相对位置，并通过 (\lambda^{s-t}) 和 (\exp(i\theta(s-t))) 来调整这个注意力。</p>
+<ol start="2">
+<li><strong>门控线性注意力 (GLA)</strong>:</li>
+</ol>
+</li>
+</ol>
+<p>$$<br>  O &#x3D; \text{Norm}(QK^TV) \odot U<br>$$</p>
+<pre><code>  这是 TransNormerLLM 的门控机制，其中 \(Q\), \(K\), \(V\) 和 \(U\) 是模型的查询、键、值和门控参数，\(\odot\) 是元素级的乘法，\(\text&#123;Norm&#125;(\cdot)\) 是归一化函数。这个公式表示，模型在计算输出 \(O\) 时，会先计算 \(QK^TV\) 的归一化，然后与门控参数 \(U\) 进行元素级的乘法。
+</code></pre>
+<ol start="3">
+<li><p><strong>简单门控线性单元 (SGLU)</strong>:</p>
+<p>$$<br> O &#x3D; [V \odot U]W_o<br>$$</p>
+<p>   这是 TransNormerLLM 的通道混合机制，其中 (V) 和 (U) 是模型的值和门控参数，(W_o) 是输出的权重矩阵。这个公式表示，模型在计算输出 (O) 时，会先计算 (V) 和 (U) 的元素级乘法，然后乘以权重矩阵 (W_o)。</p>
+</li>
+<li><p><strong>张量归一化 (SRMSNorm)</strong>:</p>
+<p>$$<br> \text{SRMSNorm}(x) &#x3D; \frac{x}{|x|_2&#x2F;\sqrt{d}}<br>$$</p>
+<p>   这是 TransNormerLLM 的张量归一化函数，其中 (x) 是输入的张量，(|x|_2) 是 (x) 的 L2 范数，(d) 是特征的维度。这个公式表示，模型在归一化 (x) 时，会先计算 (x) 的 L2 范数，然后除以 (\sqrt{d})，最后用 (x) 除以这个结果。</p>
+</li>
+</ol>
+<p>以上四个公式是 TransNormerLLM 模型的关键部分，它们分别对应了模型的位置编码、门控机制、通道混合和张量归一化等重要功能。理解这些公式对于理解 TransNormerLLM 模型的工作原理是非常重要的。</p>
+</blockquote>
+</li>
+<li><p>a. 理论背景:</p>
+<ul>
+<li>本文介绍了TransNormerLLM，这是一个基于线性注意力的大型语言模型（LLM），在准确性和效率方面超越了传统的softmax注意力模型。该模型建立在之前的线性注意力架构TransNormer的基础上，并引入了位置嵌入、线性注意力加速、门控机制、张量归一化和推理加速等先进的修改。本文强调了传统Transformer的局限性以及LLM中更高效的序列建模方法的需求。</li>
+</ul>
+</li>
+<li><p>b. 技术路线:</p>
+<ul>
+<li>本文介绍了TransNormerLLM中的架构改进。它引入了将TransNormer的DiagAttention替换为线性注意力，以增强全局交互。本文还引入了具有指数衰减的LRPE来解决注意力稀释问题。在训练过程中，提出了Lightning Attention技术，显著加速线性注意力，将内存使用减少了四倍。本文简化了GLU和归一化，总体加速了20%。通过稳定的推理算法，确保了数值稳定性和恒定的推理速度。本文强调了TransNormerLLM的可扩展性以及在大规模集群上部署的能力。还提到计划开源预训练模型，促进LLM的社区驱动进展。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果-1"><a href="#结果-1" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291141964.png" alt="image-20230729114150913"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291138381.png" alt="image-20230729113850322"></p>
+<p>Transformer vs TransNormerLLM.TransNormerLLM在相同配置下，在385M和1B大小上的性能分别优于Transformer 5%和9%。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291138203.png" alt="image-20230729113857153"></p>
+<p>我们比较原始的TransNormer和改进的TransNormerLLM，结果示于表4中。TransNormerLLM分别表现出2%和1%的增强，同时显著更快。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202307291142007.png" alt="image-20230729114258960"></p>
+<p>位置编码在位置编码实验中，我们进行了一系列测试，比较了LRPE-d、APE（绝对位置编码）、LRPE和Exp-Decay（指数衰减）。从表5中可以明显看出，我们提出的增强已经显示出对原始模型的改进。此外，最终的方案表现出2%的LRPE方法的改进。</p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>本研究使用PyTorch和Triton在Metaseq框架中实现了TransNormerLLM模型。</li>
+<li>使用Adam优化器进行训练，并使用FSDP将模型扩展到NVIDIA A100 80G集群。还采用了模型并行技术进行性能优化。模型在包含300B个标记的样本语料库上进行训练。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>架构消融实验表明，TransNormerLLM在大小为385M时比Transformer性能提高了5%，在大小为1B时提高了9%。</li>
+<li>对比了不同的位置编码方法，LRPE+LRPE-d组合的效果最优，比LRPE提高了2%。</li>
+<li>对于衰减温度的消融研究表明，添加衰减温度可以降低TransNormerLLM的困惑度。</li>
+<li>TransNormerLLM中引入门控机制可以降低损失值。</li>
+<li>对GLA激活函数进行了不同的测试，结果表明激活函数的选择对最终结果影响很小。</li>
+<li>在Gated Linear Units（GLU）结构中去除激活函数对结果影响微乎其微。</li>
+<li>对于归一化方法进行了多种测试，结果表明这些方法在应用于TransNormerLLM时几乎没有区别。然而，使用Triton实现的修改版SRMSNorm在计算速度上比PyTorch实现方法提供了显著的提升。</li>
+<li>Lightning Attention的计算速度至少比NormAttention的PyTorch实现快2倍。</li>
+<li>Lightning Attention的内存占用随序列长度线性增长，当序列长度为8192时，比基线模型的内存效率提高了4倍。</li>
+<li>模型并行显著降低了内存消耗，当模型并行大小设置为8时，TransNormerLLM-7B模型在单个GPU上只需要24.1GB的内存，相比模型并行大小为1时，内存减少了62.3%。</li>
+<li>TransNormerLLM在训练速度和内存消耗方面始终优于Transformer，即使启用了模型并行。</li>
+<li>TransNormerLLM模型在计算速度上始终优于Transformer模型，即使模型规模更大。</li>
+<li>TransNormerLLM能够以更长的上下文长度进行训练，实现更高的计算速度。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E4%BE%9D%E8%B5%96%E5%9B%BE%E8%AE%BA%E6%96%87%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" data-id="cllkmcmey0008ksu74hs77e3r" data-title="" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-7月第二周cViL跨语言多模态知识蒸馏 " class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cViL%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F%20/" class="article-date">
@@ -898,7 +1598,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dbgpt-kagnet/" rel="tag">dbgpt kagnet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" rel="tag">位置插值&#x2F;yarn插值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
     </div>
   </div>
 
@@ -908,7 +1608,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/dbgpt-kagnet/" style="font-size: 10px;">dbgpt kagnet</a> <a href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" style="font-size: 10px;">位置插值/yarn插值</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
     </div>
   </div>
 
@@ -917,7 +1617,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
     </div>
   </div>
 
@@ -930,23 +1630,23 @@
       <ul>
         
           <li>
+            <a href="/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/">10月第一周chatdb</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/">9月第二周周报</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/">9月第一周</a>
+          </li>
+        
+          <li>
             <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
           </li>
         
           <li>
             <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%89%AA%E6%9E%9D%E7%9B%B8%E5%85%B3/">8月第二周剪枝相关</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E8%92%B8%E9%A6%8F/">8月第一周自然语言大模型蒸馏</a>
-          </li>
-        
-          <li>
-            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E5%9B%9B%E5%91%A8%E5%91%A8%E6%8A%A5%E4%BE%9D%E8%B5%96%E5%9B%BE%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/">7月第四周周报依赖图通用剪枝</a>
           </li>
         
       </ul>

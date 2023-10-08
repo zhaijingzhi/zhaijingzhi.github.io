@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>9月第二周周报 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="大模型结合数据库系列开源项目：DB-GPT: 一个隐私的数据库垂直领域本地化大模型框架  DB-GPT：使用私有LLM技术革命化数据库交互 1. 概述： DB-GPT旨在使用私有的大型语言模型（LLM）技术来革命化我们与数据库的交互方式。该项目旨在确保没有数据泄露的风险，保证数据100%的隐私和安全性。 2. 主要特点：  SQL能力：该项目提供SQL语言能力、SQL生成和SQL诊断。 私有领域问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="9月第二周周报">
+<meta property="og:url" content="http://example.com/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="大模型结合数据库系列开源项目：DB-GPT: 一个隐私的数据库垂直领域本地化大模型框架  DB-GPT：使用私有LLM技术革命化数据库交互 1. 概述： DB-GPT旨在使用私有的大型语言模型（LLM）技术来革命化我们与数据库的交互方式。该项目旨在确保没有数据泄露的风险，保证数据100%的隐私和安全性。 2. 主要特点：  SQL能力：该项目提供SQL语言能力、SQL生成和SQL诊断。 私有领域问">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546732.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546313.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546639.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546629.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546111.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546155.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081547746.png">
+<meta property="article:published_time" content="2023-10-08T07:32:40.000Z">
+<meta property="article:modified_time" content="2023-10-08T07:51:58.889Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="dbgpt kagnet">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546732.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9月第二周周报" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T07:32:40.000Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      9月第二周周报
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="大模型结合数据库系列"><a href="#大模型结合数据库系列" class="headerlink" title="大模型结合数据库系列"></a>大模型结合数据库系列</h2><h2 id="开源项目：DB-GPT-一个隐私的数据库垂直领域本地化大模型框架"><a href="#开源项目：DB-GPT-一个隐私的数据库垂直领域本地化大模型框架" class="headerlink" title="开源项目：DB-GPT: 一个隐私的数据库垂直领域本地化大模型框架"></a>开源项目：DB-GPT: 一个隐私的数据库垂直领域本地化大模型框架</h2><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546732.png" alt="img"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546313.png" alt="img"></p>
+<p><strong>DB-GPT：使用私有LLM技术革命化数据库交互</strong></p>
+<p><strong>1. 概述</strong>： DB-GPT旨在使用私有的大型语言模型（LLM）技术来革命化我们与数据库的交互方式。该项目旨在确保没有数据泄露的风险，保证数据100%的隐私和安全性。</p>
+<p><strong>2. 主要特点</strong>：</p>
+<ul>
+<li><strong>SQL能力</strong>：该项目提供SQL语言能力、SQL生成和SQL诊断。</li>
+<li><strong>私有领域问答</strong>：它提供私有领域的问答和数据处理功能。</li>
+<li><strong>知识管理</strong>：支持各种文档格式，如txt、pdf、md、html、doc、ppt和url。</li>
+<li><strong>聊天界面</strong>：包括ChatDB、ChatExcel和ChatDashboard。</li>
+<li><strong>支持多种LLM</strong>：系统支持各种大型语言模型，包括InternLM、Baichuan2、Vicuna-v1.5、llama-2等。</li>
+<li>??<strong>统一的向量存储&#x2F;索引</strong>：允许存储和索引知识库。</li>
+<li><strong>插件和扩展</strong>：设计原生支持Auto-GPT插件和其他扩展。</li>
+<li><strong>架构</strong>：DB-GPT的核心能力包括知识库能力、大型模型管理、统一的数据向量存储和索引、连接模块、代理和插件、提示生成和优化以及多平台产品界面。</li>
+</ul>
+<p><strong>3. 原理和架构</strong>： DB-GPT的核心原理是利用大型语言模型（LLM）与数据库进行交互。这些LLM能够理解和生成SQL查询，从而使非技术用户能够通过自然语言与数据库进行交互。此外，该框架还提供了知识管理和私有领域问答功能，使得用户可以在保持数据私密性的同时，与其数据和环境进行交互。</p>
+<p>为了实现这些功能，DB-GPT采用了多种技术，包括知识库存储、大型模型管理、统一的数据向量存储和索引、以及连接模块。这些技术共同工作，使得DB-GPT能够提供高效、安全和用户友好的数据库交互体验。</p>
+<h1 id="论文1：KagNet-Knowledge-Aware-Graph-Networks-for-Commonsense-Reasoning-KagNet-知识图谱网络用于常识推理-以前的论文粗略看下"><a href="#论文1：KagNet-Knowledge-Aware-Graph-Networks-for-Commonsense-Reasoning-KagNet-知识图谱网络用于常识推理-以前的论文粗略看下" class="headerlink" title="论文1：KagNet: Knowledge-Aware Graph Networks for Commonsense Reasoning (KagNet: 知识图谱网络用于常识推理)以前的论文粗略看下"></a>论文1：KagNet: Knowledge-Aware Graph Networks for Commonsense Reasoning (KagNet: 知识图谱网络用于常识推理)以前的论文粗略看下</h1><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: KagNet: Knowledge-Aware Graph Networks for Commonsense Reasoning (KagNet: 知识感知图网络用于常识推理)</li>
+<li>Authors: Bill Yuchen Lin, Xinyue Chen, Jamin Chen, Xiang Ren</li>
+<li>Affiliation: University of Southern California (美国南加州大学)</li>
+<li>Keywords: commonsense reasoning, knowledge-aware graph networks, explainable inferences, graph convolutional networks, LSTMs</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1909.02151">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/INK-USC/KagNet">GitHub Code</a></li>
+</ul>
+<h1 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本文提出了一种用于常识推理的文本推理框架，通过有效利用外部结构化的常识知识图来进行可解释的推理。该框架首先将问题-答案对从语义空间映射到基于知识的符号空间作为模式图，然后使用名为KagNet的知识感知图网络模块对模式图进行表示，并最终使用图表示对答案进行评分。通过在CommonsenseQA数据集上进行实验，使用ConceptNet作为唯一的外部资源，我们的模型在常识推理方面取得了最先进的性能。</li>
+</ul>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 常识推理旨在赋予机器人类的能力，使其能够对日常生活中的普通情况进行推断。然而，现有的方法在推理能力、透明度和可解释性方面仍存在一定的局限性。</li>
+<li>过去方案: 过去的方法主要依赖于对大型预训练语言模型进行微调，如GPT和BERT，但是这些方法在性能和透明度方面与人类的表现仍存在较大差距。</li>
+<li>论文的Motivation: 为了提高常识推理的性能和可解释性，本文提出了一种知识感知的推理框架，该框架利用外部的常识知识图来增强推理能力，并通过图表示提供可解释的结果。通过实验验证，该框架在CommonsenseQA数据集上取得了最先进的性能，为未来的常识推理研究提供了有价值的工具和方法。</li>
+</ul>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h1><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546639.png" alt="image-20230923112135319" style="zoom:150%;" />
+
+<ol>
+<li><strong>问答系统的输入</strong>：用户提供一个问题 (Question) 和一组候选答案 (Answer)。</li>
+<li><strong>概念识别</strong>：系统对输入的问题和答案进行处理，通过Concept Recognition来 识别和提取关键概念。</li>
+<li><strong>语言编码器</strong>：使用例如BERT这样的LanguageEncoder对问题和答案进行编码，将其转化为向量形式，即Statement Vector。</li>
+<li><strong>知识图谱构建</strong>：通过Graph Constructionvia Path Finding在大型知识图谱中找到与识别概念相关的路径，从而为问题和答案构建一个Schema Graph。</li>
+<li><strong>深度学习模型</strong>：使用GCN-LSTM-HPA这样的复合神经网络结构对Schema Graph进行处理。其中，GCN用于处理图结构数据，LSTM用于处理序列数据，而HPA可能是某种注意力机制或其他方法。</li>
+<li><strong>评分机制</strong>：处理后的数据通过MLP (多层感知器) 获得一个Plausibility score，该分数代表了各个答案的可能性或合理性。</li>
+<li><strong>输出</strong>：系统选择具有最高Plausibility score的答案作为最终答案，并返回给用户。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546629.png" alt="image-20230923140234305"></p>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文提出了一种名为KagNet的文本推理框架，用于回答常识问题。它利用外部知识图谱进行可解释的推理。该框架将问题-答案对表示为模式图，并使用名为KAGNET的知识感知图网络模块对这些图进行建模。该模型在CommonsenseQA数据集上取得了最先进的性能。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>模式图接地：通过识别概念、构建模式图和路径修剪，将问题-答案对接地到知识图谱上。</li>
+<li>知识感知图网络：使用图卷积网络对模式图进行编码，以实现知识感知的推理。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546111.png" alt="image-20230923135408753"></p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>作者使用CommonsenseQA数据集进行实验，该数据集包含需要常识推理的自然语言问题。</li>
+<li>作者使用BERT-LARGE作为句子编码器，并在KagNet模型中使用两个GCN层和一个双向LSTM层。</li>
+<li>知识图嵌入使用TransE进行预训练，并使用GloVe嵌入进行初始化。</li>
+<li>作者使用路径得分阈值0.15对知识图中的路径进行修剪。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>作者将KagNet模型与基线方法在官方划分和自行划分的数据集上进行比较。</li>
+<li>在官方划分上，基于BERT和GPT的预训练方法表现优于其他基线方法。</li>
+<li>KagNet在测试数据上取得了最先进的性能，准确率提高了2.2%。</li>
+<li>在自行划分上，KagNet在所有设置中都优于微调方法。</li>
+<li>KagNet在准确率方面也大幅优于其他知识感知的基线方法。</li>
+</ul>
+</li>
+</ul>
+<h2 id="论文十问"><a href="#论文十问" class="headerlink" title="论文十问"></a>论文十问</h2><ol>
+<li><p><strong>论文试图解决什么问题？</strong></p>
+<p>论文主要试图解决零样本学习(ZSL)中的问题。在ZSL中，系统需要对在训练阶段未见过的类别进行分类。传统的深度学习方法在这种情境下表现不佳，因为它们依赖于大量的标记数据。这篇文章尝试通过利用知识图谱来为这些未见过的类别提供先验知识，从而改善ZSL的性能。</p>
+</li>
+<li><p><strong>这是否是一个新的问题？</strong></p>
+<p>不，零样本学习(ZSL)并不是一个新问题。但是，如何有效地利用知识图谱来改进ZSL是一个相对较新并且具有挑战性的研究方向。</p>
+</li>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
+<p>文章的核心假设是：知识图谱可以为零样本学习提供有价值的先验知识，并且通过将知识图谱和深度神经网络结合，可以提高ZSL的性能。</p>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
+<p>论文引用了多篇关于零样本学习、知识图谱和图卷积网络的研究。这些研究可以大致归类为：</p>
+<ul>
+<li>零样本学习的传统方法。</li>
+<li>利用知识图谱进行深度学习的方法。</li>
+<li>图卷积网络相关研究。</li>
+</ul>
+<p>论文中没有特别指出哪些研究员是该领域的关键人物，但通过查看参考文献，我们可以得知哪些作者的工作被频繁引用，从而推断出领域内的主要研究员。</p>
+</li>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
+<p>KGNet是一个知识引导的网络结构，它的核心思想是将知识图谱的结构性信息和深度神经网络的表示能力结合起来。具体来说：</p>
+<ul>
+<li><strong>知识图谱的嵌入</strong>：KGNet使用图卷积网络(GCN)对知识图谱进行嵌入，从而捕获到类别之间的关系。这种关系有助于为未见过的类别提供上下文信息。</li>
+<li><strong>特征融合</strong>：KGNet不仅仅依赖知识图谱的信息，它还将来自图谱的特征与从传统CNN提取的图像特征进行融合。这确保了模型在处理视觉任务时仍然具有强大的表示能力。</li>
+</ul>
+</li>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
+<ul>
+<li><strong>基准测试</strong>：KGNet在三个公开数据集上进行了评估，这些数据集被广泛用于零样本学习的研究。通过与其他先进方法的比较，作者意图展示KGNet的优越性。</li>
+<li><strong>消融实验</strong>：为了理解KGNet的每个组件对性能的贡献，作者设计了消融实验。这些实验帮助确定知识图谱的嵌入、图卷积网络以及特征融合的重要性。</li>
+</ul>
+</li>
+<li><p><strong>用于定量评估的数据集是什么？代码有没有开源？</strong></p>
+</li>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
+<p>是的，实验结果显示，KGNet在所有测试数据集上的性能都优于其他先进的ZSL方法。这支持了知识图谱可以为ZSL提供有价值的先验知识的假设。</p>
+</li>
+<li><p><strong>这篇论文到底有什么贡献？</strong></p>
+<ol>
+<li><strong>知识引导网络 (KGNet)</strong>: 传统的深度学习模型往往需要大量的标记数据，但在零样本学习(ZSL)中，这种数据是不可用的。KGNet的创新之处在于，它利用知识图谱为未见过的类别提供先验知识，从而克服了数据不足的问题。</li>
+<li><strong>结合知识图谱和深度神经网络</strong>：此前的许多研究只关注如何将知识图谱融入深度学习，但KGNet不仅仅是简单的融合。它在设计上确保了两种信息（即来自知识图谱的结构性信息和来自图像的视觉信息）都被充分利用。</li>
+</ol>
+<p><strong>如何结合知识图谱和深度神经网络：</strong></p>
+<ol>
+<li><strong>知识图谱的嵌入</strong>：KGNet首先使用图卷积网络(GCN)对知识图谱进行嵌入。这一步的目的是捕获实体（如类别）之间的关系，并将这些关系转化为连续的向量表示。这些嵌入捕获了类别之间的语义关系，这对于ZSL任务至关重要。</li>
+<li><strong>特征融合</strong>：在获取了知识图谱的嵌入之后，KGNet将这些嵌入与通过CNN从图像中提取的视觉特征进行融合。这种融合确保了模型在做决策时，既考虑了视觉信息，又考虑了语义关系。</li>
+<li><strong>联合训练</strong>：KGNet在训练过程中同时优化知识图谱的嵌入和图像的分类任务。这意味着，知识图谱的信息不仅被用作先验知识，而且在训练过程中与视觉信息进行了互动。</li>
+</ol>
+</li>
+<li><p><strong>下一步呢？有什么工作可以结合知识图谱和大模型？</strong></p>
+<ol>
+<li><p><strong>知识增强的Transformer</strong>：</p>
+<ol>
+<li><strong>背景</strong>：Transformers已经在多种任务中证明了其出色的性能，但它们通常需要大量的数据。通过将知识图谱的语义信息引入Transformer，我们可能能够在数据稀缺的任务中取得更好的效果。</li>
+<li><strong>方法</strong>：在Transformer的自注意力机制中，可以引入知识图谱的结构性信息，使模型能够考虑实体之间的关系。</li>
+</ol>
+</li>
+<li><p><strong>预训练语言模型与知识图谱的结合</strong>：</p>
+<ol>
+<li><strong>背景</strong>：像BERT和GPT这样的预训练语言模型捕获了大量的语言知识，但它们可能缺乏明确的结构性知识。</li>
+<li><strong>方法</strong>：在预训练过程中，将知识图谱的事实作为额外的训练信号，从而使模型更好地理解和使用这些事实。</li>
+</ol>
+</li>
+<li><p><strong>零样本学习的大模型</strong>：</p>
+<ol>
+<li><strong>背景</strong>：尽管大模型具有强大的表示能力，但在零样本或少样本学习中仍然存在挑战。</li>
+<li><strong>方法</strong>：结合KGNet的思想，使用知识图谱为大模型提供结构性的先验知识，从而改进其在这些任务中的性能。</li>
+</ol>
+</li>
+<li><p><strong>知识图谱增强的对话系统</strong>：</p>
+<ol>
+<li><strong>背景</strong>：现代对话系统，特别是那些基于Transformer的模型，通常依赖大量的对话数据进行训练。</li>
+<li><strong>方法</strong>：利用知识图谱为对话系统提供背景知识，使模型能够更好地理解和响应用户的问题。</li>
+</ol>
+</li>
+<li><p><strong>结构化知识的迁移学习</strong>：</p>
+<ol>
+<li><strong>背景</strong>：迁移学习目的是将在一个任务上学到的知识迁移到另一个任务上。知识图谱可能为此提供有用的结构化信息。</li>
+<li><strong>方法</strong>：使用知识图谱为源任务和目标任务提供桥梁，从而促进知识的迁移。</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>​    </p>
+<h2 id="论文2：-Improving-Multi-hop-Knowledge-Base-Question-Answering-by-Learning-Intermediate-Supervision-Signals-通过学习中间监督信号来改进多跳知识库问答"><a href="#论文2：-Improving-Multi-hop-Knowledge-Base-Question-Answering-by-Learning-Intermediate-Supervision-Signals-通过学习中间监督信号来改进多跳知识库问答" class="headerlink" title="论文2： Improving Multi-hop Knowledge Base Question Answering by Learning Intermediate Supervision Signals (通过学习中间监督信号来改进多跳知识库问答)"></a>论文2： Improving Multi-hop Knowledge Base Question Answering by Learning Intermediate Supervision Signals (通过学习中间监督信号来改进多跳知识库问答)</h2><h1 id="Basic-Information-1"><a href="#Basic-Information-1" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: Improving Multi-hop Knowledge Base Question Answering by Learning Intermediate Supervision Signals (通过学习中间监督信号来改进多跳知识库问答)</li>
+<li>Authors: Gaole He, Yunshi Lan, Jing Jiang, Wayne Xin Zhao, Ji-Rong Wen</li>
+<li>Affiliation: School of Information, Renmin University of China (中国人民大学信息学院)</li>
+<li>Keywords: Knowledge Base Question Answering, Teacher-student Network, Intermediate Supervision Signals</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://doi.org/10.1145/3437963.3441753">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/RichardHGL/WSDM2021_NSM">GitHub</a></li>
+</ul>
+<h1 id="论文简要-1"><a href="#论文简要-1" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>通过学习中间监督信号，提出了一种新颖的师生模型方法来改进多跳知识库问答任务，其中学生网络旨在找到正确答案，而教师网络则试图学习中间监督信号以提高学生网络的推理能力。通过双向推理，教师网络可以产生更可靠的中间监督信号，从而缓解虚假推理问题。实验证明了该方法在多跳知识库问答任务上的有效性。</li>
+</ul>
+<h1 id="背景信息-1"><a href="#背景信息-1" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: 知识库问答（KBQA）是一个具有挑战性的任务，旨在从给定的知识库中找到自然语言问题的答案。多跳知识库问答是解决复杂问题的一种方法，需要进行多次推理过程。然而，多跳KBQA算法在中间步骤缺乏监督信号，只能从最终答案中获得反馈，导致学习不稳定或无效。</li>
+<li>过去方案: 以往的研究中，一些方法将多跳KBQA作为强化学习任务来解决，但这些方法要么需要专家经验，要么在中间步骤仍然缺乏有效的监督信号。</li>
+<li>论文的Motivation: 为了解决多跳KBQA中缺乏中间监督信号的问题，本文提出了一种新颖的师生模型方法。学生网络旨在找到正确答案，而教师网络则试图学习中间监督信号以提高学生网络的推理能力。通过双向推理，教师网络可以产生更可靠的中间监督信号，从而缓解虚假推理问题。这是本研究的动机和创新点。</li>
+</ul>
+<h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a>方法:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081546155.png" alt="image-20230923133816656"></p>
+<h3 id="整体流程与公式解释："><a href="#整体流程与公式解释：" class="headerlink" title="整体流程与公式解释："></a>整体流程与公式解释：</h3><ol>
+<li><p><strong>问题的背景</strong>:<br>多跳知识库问答 (KBQA) 的困难之处在于通常只知道答案，但不知道中间的推理步骤。为了解决这个问题，这篇论文提出了一个教师-学生模型。</p>
+</li>
+<li><p><strong>学生模型 - Neural State Machine (NSM)</strong>:</p>
+<ul>
+<li><p><strong>指令组件</strong>:</p>
+<ol>
+<li><p>从问题中生成指令向量 ( i^{(k)} )，这个向量表示在第 ( k ) 步推理时，模型应该关注问题的哪一部分。</p>
+<p>[<br>$i^{(k)} &#x3D; \sum_{j&#x3D;1}^{l} \alpha^{(k)}_j h_j$<br>]</p>
+<p>其中，权重 (\alpha^{(k)}_j) 用来决定在第 ( k ) 步时，应该对问题的哪一部分给予多少注意力。</p>
+</li>
+<li><p>使用权重生成问题的表示 ( q^{(k)} )，它结合了之前的指令和问题的原始表示。</p>
+<p>[<br>$q^{(k)} &#x3D; W^{(k)} [i^{(k-1)}; q] + b^{(k)}$<br>]</p>
+</li>
+</ol>
+</li>
+<li><p><strong>推理组件</strong>:</p>
+<ol>
+<li><p>初始化实体表示 ( e^{(0)} )。这基于与实体 ( e ) 相关的所有关系来进行。</p>
+<p>[<br>$e^{(0)} &#x3D; \sigma \left( \sum_{\langle e’, r, e \rangle \in N} r \cdot W^T \right)$<br>]</p>
+</li>
+<li><p>通过比较指令向量 ( $i^{(k)} $) 和关系 ( r )，生成匹配向量 ( $m^{(k)}_{\langle e’, r, e \rangle}$ )。</p>
+<p>[<br>$m^{(k)}_{\langle e’, r, e \rangle} &#x3D; \sigma(i^{(k)} \odot W^R r)$<br>]</p>
+</li>
+<li><p>更新实体表示 ( e^{(k)} )，以反映与实体 ( e ) 相关的关系。</p>
+<p>[<br>$e^{(k)} &#x3D; FFN([e^{(k-1)}; \tilde{e}^{(k)}])$<br>]</p>
+</li>
+<li><p>计算实体分布 ( p^{(k)} )，表示在第 ( k ) 步推理后，每个实体作为答案的可能性。</p>
+<p>[<br>$p^{(k)} &#x3D; softmax(E^{(k)T} w)$<br>]</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>教师模型</strong>:</p>
+<ul>
+<li><p>教师模型的目标是学习在中间步骤的可靠实体分布。</p>
+</li>
+<li><p>为了达到这个目标，模型使用了前向和后向推理：</p>
+<ol>
+<li><p><strong>推理损失</strong>:</p>
+<p>[<br>$L_f &#x3D; DKL(p^{(n)}_f, p^*_f) \quad \text{和} \quad L_b &#x3D; DKL(p^{(n)}_b, p^*_b)$<br>]</p>
+<p>这些损失度量了教师模型在正向和反向推理中预测的实体分布与真实答案之间的差异。</p>
+</li>
+<li><p><strong>一致性损失</strong>:</p>
+<p>[<br>$L_c &#x3D; \sum_{k&#x3D;1}^{n-1} DJS(p^{(k)}_f, p^{(n-k)}_b)$<br>]</p>
+<p>这个损失度量了正向和反向推理过程中中间实体分布之间的一致性。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><strong>训练过程</strong>:</p>
+<ul>
+<li><p><strong>教师网络的训练</strong>: 教师模型的整体损失为 ( $L_t &#x3D; L_f + \lambda_b L_b + \lambda_c L_c$ )。</p>
+</li>
+<li><p><strong>学生网络的训练</strong>:</p>
+<ol>
+<li>使用教师模型在中间步骤生成的实体分布作为监督信号 ($ p^{(k)}_t &#x3D; \frac{1}{2}(p^{(k)}_f + p^{(n-k)}_b) $)。</li>
+<li>学生模型的损失为 ($ L_s &#x3D; L_1 + \lambda L_2$ )，其中 ($ L_1 $) 和 ($L_2 $) 分别度量学生模型的最终和中间实体分布与教师模型之间的差异。</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文介绍了多跳知识库问答（KBQA）任务，该任务旨在从问题中提到的实体到知识库（KB）中多跳的答案。多跳KBQA中缺乏中间步骤的监督信号被认为是一个主要挑战，因为现有的算法只能从最终答案中获得反馈，导致学习不稳定或无效。为了解决这个挑战，本文提出了一种新颖的师生方法用于多跳KBQA。学生网络负责找到正确答案，而教师网络学习中间监督信号以提高学生网络的推理能力。教师网络利用正向和反向推理来增强中间实体分布的学习，产生更可靠的监督信号，缓解虚假推理的问题。通过在三个基准数据集上进行大量实验，证明了所提出方法的有效性。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>本文提出的多跳KBQA任务的方法基于师生框架。学生网络使用神经状态机（NSM）模型实现，通过将知识库视为图形来适应多跳KBQA任务。NSM模型在多跳推理过程中维护逐渐学习的实体分布。为了在中间推理步骤提供监督信号，通过修改NSM的架构，开发了一个教师网络来包含双向推理机制。教师网络在中间推理步骤学习更可靠的实体分布，这些分布被用作学生网络的监督信号。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果-1"><a href="#结果-1" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081547746.png" alt="image-20230923135348128"></p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>实验在三个基准数据集上进行：MetaQA、WebQuestionsSP和Complex WebQuestions 1.1。MetaQA数据集包含电影领域的单跳和多跳问题，最多需要3跳推理。WebQuestionsSP数据集使用Freebase作为知识库，需要最多2跳推理。Complex WebQuestions 1.1数据集是WebQuestionsSP的扩展，需要最多4跳推理。评估采用了GraftNet中的训练&#x2F;开发&#x2F;测试划分。表1提供了子图中实体的平均数量和至少一个答案的覆盖率。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>实验结果表明，所提出的模型在多跳KBQA任务的有效性方面优于先前的方法。模型在三个基准数据集上进行了评估。在CWQ数据集上，模型在推理步骤为4时表现最佳，而在其他数据集上，推理步骤为3被认为是最佳的。教师网络在找到中间实体方面优于学生网络，尽管在第二跳上的性能稍差。一次性评估还表明，所提出的方法运行良好，并且相对于基本的NSM模型有了显著的改进。</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p><strong>论文题目是什么？</strong></p>
+<ul>
+<li>“Improving Multi-hop Knowledge Base Question Answering by Learning Intermediate Supervision Signals”</li>
+</ul>
+</li>
+<li><p><strong>论文试图解决什么问题？</strong></p>
+<ul>
+<li>论文主要解决多跳知识库问题回答任务中的挑战，特别是当问题需要从多个事实或实体中获取答案时。文章提出通过学习中间的监督信号来增强模型的性能。</li>
+</ul>
+</li>
+<li><p><strong>这是否是一个新的问题？</strong></p>
+<ul>
+<li>不完全是。知识库问题回答(KB-QA)已经被研究了很长时间，但多跳KB-QA，尤其是如何有效地学习中间的监督信号，仍然是一个相对较新和具有挑战性的问题。</li>
+</ul>
+</li>
+<li><p><strong>这篇文章要验证一个什么科学假设？</strong></p>
+<ul>
+<li>文章的核心假设是：通过学习中间实体的监督信号，可以显著提高多跳知识库问题回答的性能。</li>
+</ul>
+</li>
+<li><p><strong>有哪些相关研究？如何归类？谁是这一课题在领域内值得关注的研究员？</strong></p>
+<ul>
+<li>文章引用了多项关于知识库问题回答、多跳推理和监督学习的相关研究。这些研究可以归类为：<ul>
+<li>知识库问题回答技术。</li>
+<li>多跳推理方法。</li>
+<li>中间或间接监督的学习方法。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>论文中提到的解决方案之关键是什么？</strong></p>
+<p>论文的核心解决方案是提高多跳知识库问题回答的性能，特别是当问题需要从多个事实或实体中获取答案时。为了达到这一目标，文章提出了一种新的学习策略，该策略旨在自动挖掘训练数据中的中间监督信号。以下是这一解决方案的关键组成部分：</p>
+<ol>
+<li><strong>中间监督信号的自动挖掘</strong>:<ul>
+<li>传统的多跳KB-QA方法通常只关注最终的答案，而不考虑中间的推理步骤。这篇论文的核心思想是，通过学习中间的实体和关系，模型可以更好地理解如何进行多步推理。</li>
+<li>为了实现这一目标，作者提出了一种策略，该策略可以自动从训练数据中挖掘中间的监督信号，这些信号可以指导模型如何进行推理。</li>
+</ul>
+</li>
+<li><strong>推理路径的建模</strong>:<ul>
+<li>除了最终答案外，模型还被训练为预测从问题到答案的完整推理路径。这意味着模型不仅要知道答案是什么，还要知道如何得到这个答案。</li>
+<li>通过这种方式，模型可以学习更为复杂和精细的推理策略，从而在多跳KB-QA任务中取得更好的性能。</li>
+</ul>
+</li>
+<li><strong>多任务学习</strong>:<ul>
+<li>模型被设计为同时学习多个任务：预测最终答案、预测中间的实体以及预测推理路径。</li>
+<li>这种多任务学习策略确保了模型可以从多个角度理解问题，从而获得更为丰富和准确的答案。</li>
+</ul>
+</li>
+<li><strong>利用现有的训练数据</strong>:<ul>
+<li>一个重要的优点是，提出的策略不需要额外的标记数据。所有的中间监督信号都是从现有的训练数据中自动挖掘的，这意味着这种方法可以轻松地扩展到其他数据集或应用。</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p><strong>论文中的实验是如何设计的？</strong></p>
+<ul>
+<li><ul>
+<li><strong>实验设置</strong>:<ul>
+<li><strong>数据集</strong>：论文选择了MetaQA和WebQuestionsSP两个数据集进行实验。这两个数据集都是为多跳知识库问题回答设计的，因此非常适合评估所提方法的性能。</li>
+<li><strong>评估指标</strong>：使用准确率作为主要的评估指标，以衡量模型预测答案的准确性。</li>
+</ul>
+</li>
+<li><strong>基线模型</strong>:<ul>
+<li>为了证明所提方法的有效性，作者选择了多个先进的多跳KB-QA方法作为基线模型，包括MINERVA、CONV-KB和S-CONV-KB等。</li>
+<li>这些基线模型有助于展示提出的方法在多跳KB-QA任务上的相对性能。</li>
+</ul>
+</li>
+<li><strong>消融实验</strong>:<ul>
+<li>为了验证所提方法的每个组件的有效性，作者进行了一系列消融实验。</li>
+<li>通过移除模型的某些部分（如中间监督信号或推理路径建模），并观察性能如何变化，可以确定每个组件对总体性能的贡献。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>用于定量评估的数据集是什么？代码有没有开源？</strong></p>
+<ul>
+<li>使用的数据集包括MetaQA和WebQuestionsSP。论文中没有明确提到代码是否开源。</li>
+</ul>
+</li>
+<li><p><strong>论文中的实验及结果有没有很好地支持需要验证的科学假设？</strong></p>
+<ul>
+<li>是的，实验结果显示，通过学习中间的监督信号，所提方法在多个数据集上均超过了其他先进的KB-QA方法，从而验证了文章的假设。</li>
+</ul>
+</li>
+<li><p><strong>这篇论文与大模型结合有什么可行的研究方向？</strong></p>
+</li>
+</ol>
+<p>​	</p>
+<h3 id="1-问题：融合预训练模型的表示学习与本文的多跳推理"><a href="#1-问题：融合预训练模型的表示学习与本文的多跳推理" class="headerlink" title="1. 问题：融合预训练模型的表示学习与本文的多跳推理"></a>1. 问题：融合预训练模型的表示学习与本文的多跳推理</h3><p><strong>具体方法</strong>:</p>
+<ul>
+<li><strong>表示增强</strong>: 使用大型模型（如GPT-4）对问答对进行编码，然后结合论文中的方法进行多跳推理。</li>
+<li><strong>知识图谱嵌入</strong>: 利用大型模型预训练的知识，对知识图谱进行嵌入学习，并与论文方法结合，提高问答效果。</li>
+</ul>
+<h3 id="2-问题：如何利用大模型的生成能力增强多跳问答"><a href="#2-问题：如何利用大模型的生成能力增强多跳问答" class="headerlink" title="2. 问题：如何利用大模型的生成能力增强多跳问答"></a>2. 问题：如何利用大模型的生成能力增强多跳问答</h3><p><strong>具体方法</strong>:</p>
+<ul>
+<li><strong>答案生成与验证</strong>: 使用大模型生成答案，并利用论文中的方法进行答案验证和筛选，确保答案的准确性。</li>
+<li><strong>中间推理路径生成</strong>: 除了最终答案，还可以使用大模型生成中间的推理路径，与论文方法结合，提供更加详尽的解释。</li>
+</ul>
+<h3 id="3-问题：如何结合大模型和知识图谱进行更深层次的语义推理"><a href="#3-问题：如何结合大模型和知识图谱进行更深层次的语义推理" class="headerlink" title="3. 问题：如何结合大模型和知识图谱进行更深层次的语义推理"></a>3. 问题：如何结合大模型和知识图谱进行更深层次的语义推理</h3><p><strong>具体方法</strong>:</p>
+<ul>
+<li><strong>语义角色标注</strong>: 利用大模型的语义理解能力，对问题进行语义角色标注，然后结合论文中的方法，进行深层次的语义推理。</li>
+<li><strong>关系预测与验证</strong>: 使用大模型预测可能的关系，然后通过论文中的方法进行验证，增强多跳推理的准确性。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/" data-id="clnh6662b000270u70xgbfv2c" data-title="9月第二周周报" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dbgpt-kagnet/" rel="tag">dbgpt kagnet</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          10月第一周chatdb
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">9月第一周</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dbgpt-kagnet/" rel="tag">dbgpt kagnet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" rel="tag">位置插值&#x2F;yarn插值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/dbgpt-kagnet/" style="font-size: 10px;">dbgpt kagnet</a> <a href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" style="font-size: 10px;">位置插值/yarn插值</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/">10月第一周chatdb</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/">9月第二周周报</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/">9月第一周</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

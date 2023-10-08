@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>9月第一周 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="论文1 ：EXTENDING CONTEXT WINDOW OF LARGE LAN-GUAGE MODELS VIA POSITION INTERPOLATION  标题 (Title): EXTENDING CONTEXT WINDOW OF LARGE LANGUAGE MODELS VIA POSITION INTERPOLATION 中文标题 (Chinese Title): 通过位置插">
+<meta property="og:type" content="article">
+<meta property="og:title" content="9月第一周">
+<meta property="og:url" content="http://example.com/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="论文1 ：EXTENDING CONTEXT WINDOW OF LARGE LAN-GUAGE MODELS VIA POSITION INTERPOLATION  标题 (Title): EXTENDING CONTEXT WINDOW OF LARGE LANGUAGE MODELS VIA POSITION INTERPOLATION 中文标题 (Chinese Title): 通过位置插">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081543130.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081543302.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544208.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544506.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544198.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544146.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544580.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544409.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544446.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544406.png">
+<meta property="article:published_time" content="2023-10-08T07:31:32.000Z">
+<meta property="article:modified_time" content="2023-10-08T07:46:08.943Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="位置插值&#x2F;yarn插值">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081543130.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9月第一周位置插值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T07:31:32.000Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      9月第一周
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="论文1-：EXTENDING-CONTEXT-WINDOW-OF-LARGE-LAN-GUAGE-MODELS-VIA-POSITION-INTERPOLATION"><a href="#论文1-：EXTENDING-CONTEXT-WINDOW-OF-LARGE-LAN-GUAGE-MODELS-VIA-POSITION-INTERPOLATION" class="headerlink" title="论文1 ：EXTENDING CONTEXT WINDOW OF LARGE LAN-GUAGE MODELS VIA POSITION INTERPOLATION"></a>论文1 ：EXTENDING CONTEXT WINDOW OF LARGE LAN-GUAGE MODELS VIA POSITION INTERPOLATION</h2><blockquote>
+<ol>
+<li><strong>标题 (Title)</strong>: EXTENDING CONTEXT WINDOW OF LARGE LANGUAGE MODELS VIA POSITION INTERPOLATION</li>
+<li><strong>中文标题 (Chinese Title)</strong>: 通过位置插值扩展大型语言模型的上下文窗口</li>
+<li><strong>时间 (Date)</strong>: 28 Jun 2023</li>
+<li><strong>作者 (Authors)</strong>: Shouyuan Chen, Sherman Wong, Liangjian Chen, Yuandong Tian</li>
+<li><strong>机构 (Institution)</strong>: Meta Platforms Inc.</li>
+<li><strong>研究主题 (Research Theme)</strong>: 扩展大型语言模型的上下文窗口，并提出一个名为“位置插值”的方法。</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2306.15595v2">Paper</a>, [GitHub: None]</li>
+</ol>
+</blockquote>
+<h3 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h3><ul>
+<li>本研究提出了一种名为Position Interpolation (PI)的方法，通过线性插值将RoPE-based预训练LLMs（如LLaMA模型）的上下文窗口大小扩展到32768，只需进行最小的微调（1000步），同时在需要长上下文的各种任务上展现出强大的实证结果，包括密钥检索、语言建模和从LLaMA 7B到65B的长文档摘要。通过Position Interpolation扩展的模型在其原始上下文窗口内相对保持较好的质量。该方法通过线性缩放输入位置索引以匹配原始上下文窗口大小，而不是超出训练的上下文长度，这可能导致完全破坏自注意机制的灾难性高注意力分数。我们的理论研究表明，插值的上限至少比外推的上限小约600倍，进一步证明了其稳定性。通过Position Interpolation扩展的模型保留其原始架构，并可以重用大部分现有的优化和基础设施。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081543130.png" alt="image-20230914151507583"></p>
+<blockquote>
+<p>图片理解：</p>
+<ol>
+<li><strong>左上角</strong>：这显示了LLM模型的“正常使用”。这里，输入位置指数（蓝色点）都在模型预先训练的范围内，也就是说，它们都在0到2048的范围内。</li>
+<li><strong>右上角</strong>：这显示了“长度外推”。这意味着模型现在尝试处理超出其预先训练的范围的位置，即4096。这些新位置（红色点）是模型在预训练阶段未见过的。</li>
+<li><strong>左下角</strong>：这是“位置插值”的关键。为了处理更多的位置，我们不是直接外推位置（这可能会导致问题），而是缩小位置指数。这里，我们将位置指数从[0, 4096]的范围缩小到[0, 2048]的范围，使它们与预训练的范围相匹配。这意味着原来的0-4096位置现在被“压缩”到0-2048的范围内，因此蓝色和绿色点都落在了预训练的范围内。</li>
+</ol>
+<h3 id="几个探究问题："><a href="#几个探究问题：" class="headerlink" title="几个探究问题："></a>几个探究问题：</h3><p><strong>问题1</strong>: 什么是LLM模型的“正常使用”？<br>正常使用是指LLM模型在其预训练的上下文窗口长度内进行操作。例如，对于一个预先训练为2048上下文窗口长度的Llama模型，输入位置指数（蓝点）都在这个预先训练的范围内。</p>
+<hr>
+<p><strong>问题2</strong>: 什么是“长度外推”？<br> 长度外推是指当模型需要操作超出其预训练上下文窗口范围的位置时。例如，在上述Llama模型中，模型可能需要处理高达4096的位置，这些位置（红点）是在预训练阶段未见过的。</p>
+<hr>
+<p><strong>问题3</strong>: 位置插值是如何工作的？<br>位置插值的核心思想是，我们不是尝试外推位置编码到未见过的范围，而是直接缩小位置指数。例如，我们将位置指数（蓝点和绿点）从[0, 4096]范围缩小到[0, 2048]范围，强制它们落在预训练的范围内。</p>
+<hr>
+<p><strong>问题4</strong>: 为什么我们要使用位置插值而不是简单地外推位置？<br>外推位置编码可能会导致问题，因为模型在预训练阶段没有见过这些位置。而位置插值方法则利用了位置编码可以应用于非整数位置的事实，将输入的位置编码调整到模型在预训练阶段已经见过的范围内。</p>
+</blockquote>
+<h3 id="背景信息-业务优先-自研大模型"><a href="#背景信息-业务优先-自研大模型" class="headerlink" title="背景信息: (业务优先&#x2F;自研大模型)"></a>背景信息: (业务优先&#x2F;自研大模型)</h3><ul>
+<li><strong>上下文窗口的挑战</strong>：大型语言模型（LLM）通常具有预设的上下文窗口大小，这在某些应用场景中限制了其能力。当模型需要处理长对话、长文档摘要或长期规划时，预设的窗口大小经常成为瓶颈。这意味着我们需要某种方法来扩展现有的LLM的上下文窗口，而不是重新训练一个新模型。</li>
+<li><strong>直接的方法并不高效</strong>：一个直观的方法是微调现有的预训练Transformer，使其具有更长的上下文窗口。然而，这种方法在实践中效果并不理想，因为模型对长上下文窗口的适应性很慢。</li>
+<li><strong>现有扩展方法的局限性</strong>：尽管有一些现有的技术可以进行Transformer的长度外推，但这些方法并不适用于所有的预训练LLM。很多LLM使用的位置编码方法具有弱的外推特性，这限制了它们在长上下文窗口中的应用。</li>
+<li><strong>位置插值的创新</strong>：为了解决上述问题，作者提出了位置插值这一新方法。与其尝试外推位置编码（这可能会导致问题），不如调整位置指数来适应现有的模型。这种方法的关键思想是：为了容纳更多的输入标记，我们在相邻的整数位置上插入位置编码，利用位置编码可以应用于非整数位置的事实。</li>
+<li><strong>实证验证</strong>：作者不仅从理论上验证了他们的方法，还进行了实证验证。结果显示，位置插值是一种高效且有效的方法，可以在非常短的时间内对模型进行微调，使其适应大大扩展的上下文窗口。</li>
+</ul>
+<blockquote>
+<p>背景技术之一RoPE:</p>
+<ol>
+<li><p><strong>背景</strong>：Transformer模型需要注入显式的位置信息来表示输入的顺序，这通常是通过位置编码来实现的。</p>
+</li>
+<li><p><strong>RoPE的定义</strong>：RoPE是LLaMA模型使用的位置编码。对于给定的位置索引 ( m ) 和嵌入向量 ( x )，RoPE定义了一个向量值的复数函数 ( f(x, m) )，该函数通过复数乘法来结合位置和内容信息。其中，( i ) 是虚数单位，而 ( $\theta_j$ ) 定义了一个特定的频率，它随着嵌入的维度变化。</p>
+</li>
+<li><p><strong>自注意力分数</strong>：使用RoPE，自注意力分数 ( a(m, n) ) 只依赖于相对位置 ( m - n )。这是通过三角函数来实现的。具体来说，查询q向量 ( q ) 和key向量 ( k ) 的RoPE编码通过点积来计算它们之间的相似度。然后，这个相似度又被表示为一个只依赖于相对位置的函数 ( a(m - n) )。</p>
+</li>
+<li><p><strong>RoPE的应用</strong>：在每一层，RoPE都应用于查询和密钥的嵌入来计算注意力分数。</p>
+</li>
+</ol>
+<p>RoPE的关键思想是通过复数乘法结合位置和内容信息，并确保注意力机制只依赖于输入之间的相对位置。这种方法与传统的sine和cosine位置编码方法不同，因为它不是简单地将位置信息添加到内容的嵌入中，而是通过复数乘法来结合这两者。</p>
+<ol>
+<li><strong>RoPE的外推问题</strong>：尽管RoPE的注意力分数只依赖于相对位置（这是我们想要的），但其外推性能并不好。具体地说，当直接扩展到训练中未见过的更大的上下文窗口时，困惑度可能会急剧上升，与未经训练的模型相当。</li>
+<li><strong>理想的行为</strong>：理想情况下，如果一个模型在大小为2048的上下文窗口上训练，那么它在更长的上下文窗口上仍应表现得相当好。但实际上，模型的行为是灾难性的，即使证据就在问题的位置附近。</li>
+<li><strong>问题的原因</strong>：尽管根据(Su et al., 2021)的3.4.3节，注意力分数随着相对距离|m − n|的增加而减少，但从很远的距离来的内容仍然很重要。这提示我们，该文中推导的上界可能太松了。</li>
+<li><strong>三角函数的基函数</strong>：如果我们把所有的三角函数都看作基函数，并认为Eqn. 2是基函数的扩展，那么问题就变得明显了。尽管在[0, 2048]的范围内函数的大小可能很小，但在该区域之外的值可能会非常大。</li>
+<li><strong>原因分析</strong>：三角函数族（对于足够大的d）是一个通用的逼近器，可以拟合任意的函数。因此，总是存在一些系数（即k和q），它们在[0, 2048]范围内对应于小的函数值，但在该区域之外的值则大得多。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081543302.png" alt="image-20230914155452906"></p>
+<ol>
+<li><p><strong>左图 (Extrapolation)</strong>:</p>
+</li>
+<li><p>​	这张图展示了一个拟合的注意力分数函数（红线）。</p>
+</li>
+</ol>
+<ul>
+<li>它使用的是公式3，并且给出了一个特定的设置，（这是LLaMA 7B的设置）。</li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544208.png" alt="image-20230915145143066"></li>
+<li>图中的点表示随机输入点，这些点是通过最小二乘法来拟合红线的。</li>
+<li>结果的红线大致在[-1, 1]的范围内。</li>
+</ul>
+<ol start="3">
+<li><strong>中图 (Problem of Extrapolation)</strong>:</li>
+</ol>
+<ul>
+<li>这张图强调了外推的问题。</li>
+<li>尽管拟合函数在[0, L]范围内似乎受到很好的约束（其中L&#x3D;2048），但在这个范围之外，它的值可能超过8000。</li>
+<li>这种巨大的值会在注意力计算中引发灾难性的问题。</li>
+<li>作者还强调，这里并没有特意挑选某种特定的行为：几乎从[0, L]范围内随机生成的每一组输入点得到的学习曲线都存在外推问题。</li>
+</ul>
+<ol start="4">
+<li><strong>右图 (Advantage of Interpolation)</strong>:</li>
+</ol>
+<ul>
+<li>这张图展示了插值的稳定性。</li>
+<li>图中的曲线表示在垂直的虚线之间（即整数位置差异）是平滑且行为良好的。</li>
+<li>这意味着，与外推相比，插值方法在处理超出预训练范围的位置时更为稳定。</li>
+</ul>
+</blockquote>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h3><blockquote>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544506.png" alt="image-20230915153634972"></p>
+<p>我们将此变换称为位置编码位置插值。在这一步中，我们在计算 RoPE 之前将位置索引从 [0, L’) 减少到 [0, L) 以匹配原始索引范围。因此，作为 RoPE 的输入，任意两个标记之间的最大相对距离从 L’ 减少到 L。由于我们在扩展前后对齐位置索引和相对距离的范围，我们减轻了由于上下文窗口扩展而导致的注意力分数计算的影响，这允许模型更容易适应。</p>
+</blockquote>
+<p>具体方法流程</p>
+<blockquote>
+<p>“位置插值” (Position Interpolation) 是一个更改传统 RoPE (Rotary Positional Embeddings) 方法的提议。为了更直观地解释这一过程，我将逐步描述其实现：</p>
+<ol>
+<li><p><strong>定义新的注意力分数</strong>:<br>传统的 RoPE 中的注意力分数是基于当前的位置编码来计算的。在位置插值方法中，注意力分数 ( $\tilde{a}(s)$ ) 被定义为 ($ a(Ls&#x2F;L’)$ )，其中 ( L’ ) 是更长的上下文窗口，( L ) 是原始的上下文窗口。这意味着，我们是在一个更长的上下文窗口中，通过插值将注意力分数调整到原始窗口的大小内。</p>
+</li>
+<li><p><strong>调整位置编码</strong>:<br>为了实现插值，我们首先需要缩放位置编码的范围。这通过将原始的位置编码 ( x ) 转化为 ( $f’(x, m) &#x3D; f(x, m \times L&#x2F;L’)$ ) 来完成。这样，当我们处理更长的上下文窗口 ( L’ ) 时，所有的位置编码都会被缩放到原始窗口 ( L ) 的范围内。</p>
+</li>
+<li><p><strong>线性插值</strong>:<br>为了确保插值的稳定性，提议使用线性插值方法来估算在两个已知位置之间的任何位置的注意力分数。这是通过以下公式完成的：</p>
+<p>[<br>$a_{\text{linear}}(s) :&#x3D; (1 - \lambda(s))a(s_1) + \lambda(s)a(s_2)$<br>]</p>
+<p>其中 ($ \lambda(s) &#x3D; \frac{s - s_1}{s_2 - s_1}$ )。这个公式基本上是一个权重的平均值，取决于 ( s ) 与 ( s_1 ) 和 ( s_2 ) 的相对距离。</p>
+</li>
+<li><p><strong>进一步的微调</strong>:<br>一旦实现了位置插值，可以进一步微调模型，以适应新的位置编码。这通常是通过使用如 “下一个令牌预测” 这样的任务来完成的。</p>
+</li>
+<li><p><strong>正则化</strong>:<br>为了进一步提高插值的稳定性和准确性，可以考虑在训练过程中对查询&#x2F;键产品应用正则化。</p>
+</li>
+</ol>
+<p>位置插值的核心思想是，当我们处理更长的上下文窗口时，不是简单地扩展位置编码，而是将它们缩放到原始窗口的范围内。这样，我们可以确保模型在处理更长的文本时，仍然能够稳定地计算注意力分数。</p>
+</blockquote>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文介绍了扩展预训练大型语言模型（LLM）上下文窗口的挑战，并提出了一种称为位置插值（PI）的方法。该方法通过将输入位置索引进行降尺度处理，以匹配原始的上下文窗口大小，而不是超出训练过的上下文长度。这种方法可以最小化微调的情况下扩展上下文窗口，最多可达32768个标记。作者通过对密码检索、语言建模和长文档摘要等各种任务的实验，证明了PI的有效性。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>本文介绍了一种名为位置插值（PI）的方法，用于扩展预训练LLM的上下文窗口。PI不是通过外推，而是通过将位置索引进行降尺度处理，以匹配原始的上下文窗口大小。这是通过在相邻整数位置插值位置编码来实现的。作者在理论上证明了插值位置编码的上限要比外推位置编码小得多，使其更加稳定。实证上，PI被证明非常有效和高效，只需要短时间的微调，模型就能完全适应大幅扩展的上下文窗口。</li>
+</ul>
+</li>
+</ul>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h3><ul>
+<li>a. 详细的实验设置:</li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544198.png" alt="image-20230915155305482"><ul>
+<li>作者使用了两个数据集（book corpus和cleaned Arxiv Math proof-pile dataset）来评估扩展模型和基准模型的长序列语言建模性能。对于book corpus数据集，作者使用了包含100个文档的整个测试集。对于proof-pile数据集，作者使用了至少包含32768个SentencePiece标记的128个文档的随机子样本。作者使用滑动窗口方法，以256的步长在不同的上下文窗口大小下评估困惑度。</li>
+<li><strong>困惑度(perplexity)的值</strong>：每一个数字都表示了在特定上下文窗口大小下模型的困惑度。困惑度是评估语言模型性能的常用指标，值越低表示模型的性能越好。例如，对于”7B 2048 None”模型，在4096的上下文窗口大小下，它的困惑度大于10^3，这意味着其性能在这种扩展上下文中下降了。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:</li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544146.png" alt="image-20230915155319124"><ul>
+<li>实验结果表明，使用位置插值方法扩展的模型在更长的上下文窗口大小下取得了显著改进的困惑度。作者观察到，模型在更长的上下文窗口下的困惑度呈现出一致的改善趋势，表明模型能够有效利用更长的上下文窗口进行语言建模任务。相比之下，通过直接微调方法扩展的模型在更长的上下文窗口下的困惑度出现回归或轻微改善，表明其在利用更长的上下文窗口方面的能力有限。在一些情况下，扩展模型在原始上下文窗口上的困惑度有轻微下降，这是由于位置插值引起的位置编码范围较窄所致。作者还通过密码检索任务测量了模型的有效上下文窗口大小，并发现通过位置插值扩展的模型成功地实现了其期望的上下文窗口大小扩展目标，而通过直接微调扩展的模型的有效上下文窗口大小增加很小。实验结果表明，与基准模型相比，扩展模型在困惑度和有效上下文窗口大小方面取得了更好的性能。</li>
+</ul>
+</li>
+</ul>
+<h2 id="论文2：YaRN-Efficient-Context-Window-Extension-of-Large-Language-Models-YaRN-大型语言模型的高效上下文窗口扩展-23年9月"><a href="#论文2：YaRN-Efficient-Context-Window-Extension-of-Large-Language-Models-YaRN-大型语言模型的高效上下文窗口扩展-23年9月" class="headerlink" title="论文2：YaRN: Efficient Context Window Extension of Large Language Models (YaRN: 大型语言模型的高效上下文窗口扩展)23年9月"></a>论文2：YaRN: Efficient Context Window Extension of Large Language Models (YaRN: 大型语言模型的高效上下文窗口扩展)23年9月</h2><h1 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h1><ul>
+<li>Title: YaRN: Efficient Context Window Extension of Large Language Models (YaRN: 大型语言模型的高效上下文窗口扩展)</li>
+<li>Authors: Bowen Peng, Jeffrey Quesnelle, Honglu Fan, Enrico Shippole</li>
+<li>Affiliation: Nous Research (Nous研究)</li>
+<li>Keywords: Rotary Position Embeddings, context window extension, language models, LLaMA, fine-tuning</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2309.00071v1">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/jquesnelle/yarn">GitHub Code</a></li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544580.png" alt="image-20230916105228832"></li>
+</ul>
+<h1 id="论文简要-1"><a href="#论文简要-1" class="headerlink" title="论文简要 :"></a>论文简要 :</h1><ul>
+<li>本研究提出了一种名为YaRN的方法，通过使用RoPE（Rotary Position Embeddings）来高效地扩展大型语言模型的上下文窗口，相比之前的方法，YaRN所需的标记数量和训练步骤减少了10倍和2.5倍。使用YaRN，我们展示了LLaMA模型可以有效地利用和推广到比其原始预训练允许的上下文长度更长的范围，并且在上下文窗口扩展方面超过了先前的最新技术。此外，我们还证明了YaRN具有超越微调数据集有限上下文的能力。</li>
+</ul>
+<h1 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h1><ul>
+<li>论文背景: Transformer-based Large Language Models (LLMs)在自然语言处理（NLP）任务中表现出色，但它们的上下文窗口长度限制了它们的能力。RoPE（Rotary Position Embeddings）被用来编码位置信息，但这些模型无法推广到超过它们训练时的序列长度。</li>
+<li>过去方案: 过去的方法如ALiBi能够进行有限的推广，但无法推广到显著超过预训练长度的序列。其他方法如Position Interpolation（PI）和\NTK-aware\ interpolation通过微调和插值来扩展上下文长度，但仍存在一些限制。</li>
+<li>论文的Motivation: 鉴于现有方法的限制，本研究旨在提出一种高效的方法来扩展大型语言模型的上下文窗口，以便更好地利用和推广到更长的上下文范围，从而提高模型的性能和应用范围。</li>
+</ul>
+<p><strong>2.1 Rotary Position Embeddings (RoPE)</strong></p>
+<ul>
+<li><p>输入令牌序列为 ($w_1, w_2, \ldots, w_L$ )，它们的嵌入向量表示为 ($ x_1, \ldots, x_L \in R^{|D|}$ )，其中 ($|D|$ ) 是隐藏状态的维度。</p>
+</li>
+<li><p>公式(1):<br>[<br>$q_m &#x3D; f_q(x_m, m) \in R^{|L|}$<br>]<br>[<br>$k_n &#x3D; f_k(x_n, n) \in R^{|L|}$<br>]<br>这里，( q_m ) 和 ( k_n ) 分别是查询和键向量。这些向量与输入令牌的嵌入和它们的位置索引相对应。</p>
+</li>
+<li><p>在RoPE中，一个关键的想法是将实向量空间与复向量空间相互对应。这通过公式(2)和(3)来完成，其中实部和复部被交错地映射到复数空间。</p>
+</li>
+<li><p>公式(4)描述了如何从嵌入向量 ( x_m, x_n ) 生成查询和键向量：<br>[<br>$f_q(x_m, m) &#x3D; W_q x_m e^{im\theta}$<br>]<br>[<br>$f_k(x_n, n) &#x3D; W_k x_n e^{in\theta}$<br>]<br>这里，( \theta_d &#x3D; b^{-2d&#x2F;|D|} ) 并且 ( b &#x3D; 10000 )。</p>
+</li>
+</ul>
+<p><strong>2.2 Positional Interpolation (PI)</strong></p>
+<ul>
+<li><p>为了解决上下文窗口长度固定的问题，有研究提出了位置插值(PI)方法。这个方法的核心是在预训练的限制内插值位置指数，并利用少量的微调来扩展上下文窗口。</p>
+</li>
+<li><p>公式(9)描述了如何对RoPE进行修改以实现位置插值：<br>[<br>$f’<em>{q}(x_m, m, \theta_d) &#x3D; f</em>{q}(x_m, \frac{mL’}{L}, \theta_d)$<br>]<br>[<br>$f’<em>{k}(x_n, n, \theta_d) &#x3D; f</em>{k}(x_n, \frac{nL’}{L}, \theta_d)$<br>]<br>这里，( L’ ) 是超出预训练限制的新的上下文窗口。</p>
+</li>
+</ul>
+<p><strong>2.3 Additional Notation</strong></p>
+<ul>
+<li><p>这部分提供了一些额外的符号和函数来描述如何对RoPE进行插值。</p>
+</li>
+<li><p>公式(10)为：<br>[<br>$f’<em>{q,k}(x_m, m, \theta_d) &#x3D; f</em>{q,k}(x_m, g(m), h(\theta_d))$<br>]<br>这里，函数 ( g(m) ) 和 ( h(\theta_d) ) 定义了如何进行插值。</p>
+</li>
+<li><p>对于位置插值，我们有:<br>[<br>$s &#x3D; \frac{L’}{L}$<br>]<br>[<br>$g(m) &#x3D; s \cdot m$<br>]<br>[<br>$h(\theta_d) &#x3D; \theta_d$<br>]</p>
+</li>
+</ul>
+<p><strong>2.4 Related work</strong></p>
+<ul>
+<li>这部分简要介绍了与RoPE相关的其他工作，并指出了他们的限制和不同之处。</li>
+</ul>
+<p>总结一下，这篇文章的主要贡献在于提出了对Rotary Position Embeddings (RoPE)进行位置插值的方法，从而能够扩展上下文窗口长度。这种方法允许在不需要大量数据的情况下进行微调，从而在更长的序列上使用预训练的语言模型。</p>
+<h1 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a>方法:</h1><h3 id="1-“NTK-aware”-插值"><a href="#1-“NTK-aware”-插值" class="headerlink" title="1. “NTK-aware” 插值"></a>1. <strong>“NTK-aware” 插值</strong></h3><p><strong>背景</strong>：RoPE从信息编码的角度看，当输入维度较低，相应的嵌入缺乏高频组件时，深度神经网络难以学习高频信息。</p>
+<p><strong>解决方案</strong>：不是简单地通过一个固定的缩放因子 ( s ) 均匀地缩放RoPE的所有维度，而是将插值压力分散到多个维度上，使高频缩放较少，低频缩放较多。</p>
+<ul>
+<li>( $b’ &#x3D; b \cdot s^{\frac{|D|}{|D|-2}}$ )（公式16）</li>
+</ul>
+<p>其中，( b’ ) 是新的基数，( s ) 是缩放因子，( |D| ) 是维度。</p>
+<h3 id="2-“NTK-by-parts”-插值"><a href="#2-“NTK-by-parts”-插值" class="headerlink" title="2. “NTK-by-parts” 插值"></a>2. <strong>“NTK-by-parts” 插值</strong></h3><p><strong>背景</strong>：当上下文大小为 ( L ) 时，某些维度的波长 ( $\lambda$ ) 大于在预训练中看到的最大上下文长度。</p>
+<p><strong>解决方案</strong>：选择不对波长超过上下文长度的高频维度进行插值。这可以避免模型对近距离token的位置顺序感到困惑。</p>
+<ul>
+<li>对于某一维度，它的波长可以通过 ($ \lambda_d &#x3D; \frac{2\pi b}{2^{\frac{d}{|D|}}}$ )（公式19）计算。</li>
+<li>为了决定何时应用插值，定义了一个ramp函数 ( $\gamma_d(r)$ )（公式22）。</li>
+</ul>
+<h3 id="3-“Dynamic-NTK”-插值"><a href="#3-“Dynamic-NTK”-插值" class="headerlink" title="3. “Dynamic NTK” 插值"></a>3. <strong>“Dynamic NTK” 插值</strong></h3><p><strong>背景</strong>：我们希望模型在更长的上下文大小上逐渐降低性能，而不是在超出训练上下文限制时立即失败。</p>
+<p><strong>解决方案</strong>：动态计算缩放因子 ( s )：</p>
+<ul>
+<li>($ s &#x3D; \left{\begin{array}{ll}<br>\frac{L’}{L} &amp; \text{if } \frac{L’}{L} &gt; 1 \<br>1 &amp; \text{otherwise}<br>\end{array}\right. $)（公式26）</li>
+</ul>
+<h3 id="4-YaRN-方法"><a href="#4-YaRN-方法" class="headerlink" title="4. YaRN 方法"></a>4. <strong>YaRN 方法</strong></h3><p><strong>背景</strong>：由于插值，长距离之间的平均最小距离会随着令牌数的增加而减少。</p>
+<p><strong>解决方案</strong>：在应用softmax之前，通过将中间的注意力矩阵乘以一个温度 ( t &gt; 1 ) 来增加注意力的“温度”。这可以通过简单地按常数因子 ( $\sqrt{t}$ ) 缩放RoPE嵌入的长度来实现。</p>
+<ul>
+<li>($ \sqrt{t} \approx 0.1 \ln(s) + 1$ )（公式27）</li>
+</ul>
+<p>这个公式是通过实验得到的，描述了需要的温度与缩放因子 ( s ) 之间的关系。</p>
+<h3 id="5-外推和迁移学习"><a href="#5-外推和迁移学习" class="headerlink" title="5. 外推和迁移学习"></a>5. <strong>外推和迁移学习</strong></h3><p>描述了如何使用YaRN方法进行迁移学习，从 ( s &#x3D; 16 ) 到 ( s &#x3D; 32 ) 进行训练，即使在只进行了200步的训练之后，也可以成功地外推到更长的上下文长度。</p>
+<blockquote>
+<p>举例子：</p>
+<p>文章所解决的问题：想要处理更长的文本序列，但模型在训练时只看到了一定长度的文本。我们需要一种方法来“教”模型处理超出其原始训练上下文的文本。</p>
+<p>现在，将这个问题比作一辆只能在城市内行驶的汽车，而我们想要它能在高速公路上行驶。以下是作者提出的解决方案：</p>
+<ol>
+<li><p><strong>“NTK-aware” 插值</strong>:</p>
+<ul>
+<li>想象一下，城市车辆在高速公路上可能会错过一些高速信号（或高频信息）。</li>
+<li>为了解决这个问题，我们不是简单地提高车速（或均匀地缩放所有信息），而是更多地关注那些容易错过的高速信号。</li>
+</ul>
+</li>
+<li><p><strong>“NTK-by-parts” 插值</strong>:</p>
+<ul>
+<li>在城市中，有些路段的车流比其他路段更重要。在模型中，有些信息维度比其他维度更关键。</li>
+<li>为了确保重要路段流畅，我们对这些关键的维度进行特殊处理。</li>
+</ul>
+</li>
+<li><p><strong>“Dynamic NTK” 插值</strong>:</p>
+<ul>
+<li>当我们的车辆需要进入高速公路时，我们会动态地调整它的速度，使其能够更好地适应高速公路的环境。</li>
+</ul>
+</li>
+<li><p><strong>YaRN 方法</strong>:</p>
+<ul>
+<li>这是一种综合方法。想象一下，我们现在希望汽车在城市和高速公路之间都能流畅行驶。</li>
+<li>为了实现这一点，我们进行了一些调整，如调整车辆的温度控制，使其在不同的环境下都能运行得很好。</li>
+</ul>
+</li>
+<li><p><strong>外推和迁移学习</strong>:</p>
+<ul>
+<li>假设我们的车辆已经在一个城市中训练过了，现在我们想让它在另一个城市中也能表现得很好。</li>
+<li>这部分描述了如何只进行少量的额外训练，就能使模型在新的上下文中也能运行得很好。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文讨论了基于Transformer的语言模型在上下文窗口方面的局限性，即决定了提供示例和进行上下文学习的空间量。作者提出了YaRN方法，使用旋转位置嵌入（RoPE）来扩展这些模型的上下文窗口。他们证明了YaRN可以使模型有效地利用和外推到更长的上下文长度，超过了先前的最先进方法。作者还强调了YaRN超越了微调数据集的有限上下文的能力。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>本文介绍了旋转位置嵌入（RoPE）作为他们工作的基础。RoPE可以有效地对Transformer-based语言模型进行位置信息编码。作者解释了原始Transformer架构使用的绝对正弦位置编码，后来改进为可学习的绝对位置编码。T5相对偏差、RoPE、XPos和ALiBi等相对位置编码方案进一步提高了Transformer的性能。然而，这些位置编码在训练过程中只能泛化到上下文窗口之内。</li>
+</ul>
+</li>
+<li>c. YaRN方法:<ul>
+<li>本文讨论了使用位置插值（PI）来扩展语言模型的上下文长度的概念。他们解释了PI涉及在预训练限制内插值位置索引以扩展上下文长度。这种方法在少量微调中表现良好。作者提出了对PI方法的改进，包括适用于无微调的预训练模型的“动态NTK”插值方法和在长上下文数据上进行微调时表现良好的“NTK-by-part”插值方法。</li>
+</ul>
+</li>
+</ul>
+<h1 id="结果-1"><a href="#结果-1" class="headerlink" title="结果:"></a>结果:</h1><p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544409.png" alt="image-20230916160532328"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544446.png" alt="image-20230916160549288"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081544406.png" alt="image-20230916160603391"></p>
+<ul>
+<li>a. 详细的实验设置:<ul>
+<li>本文使用了Hugging Face Open LLM Leaderboard对不同的LLM进行了比较，使用了一套标准化的四个公共基准测试：25-shot ARC-Challenge、10-shot HellaSwag、5-shot MMLU和0-shot TruthfulQA。这些模型使用这套测试进行评估，并与Llama 2基线和其他模型的已建立分数进行比较。</li>
+</ul>
+</li>
+<li>b. 详细的实验结果:<ul>
+<li>结果显示，YaRN模型与其相应的Llama 2基线之间的性能下降很小。YaRN s &#x3D; 16和s &#x3D; 32模型之间的平均得分下降了0.49％，表明从64k到128k的迭代扩展中性能损失可以忽略不计。总之，YaRN改进了现有的RoPE插值方法，可以作为PI的替代方法，没有任何不利因素，并且实施工作量很小。微调模型在多个基准测试中保留了其原始能力，同时能够关注非常大的上下文大小。YaRN还允许在较短的数据集上进行微调时进行高效的外推，并可以利用转移学习以加快收敛速度。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>法学模型怎么用？glm2能用？</p>
+<p>百川模型？调研一下最新的模型</p>
+<p>创新方向</p>
+<p>外置知识库</p>
+<p>输入的单词太短，外挂知识库，增加输入长度，解决问题，</p>
+<p>有指标上的提升</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/" data-id="clnh6662a000170u71ekof4rj" data-title="9月第一周" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" rel="tag">位置插值&#x2F;yarn插值</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          9月第二周周报
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">7月第二周cvil多模态知识蒸馏</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dbgpt-kagnet/" rel="tag">dbgpt kagnet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" rel="tag">位置插值&#x2F;yarn插值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/dbgpt-kagnet/" style="font-size: 10px;">dbgpt kagnet</a> <a href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" style="font-size: 10px;">位置插值/yarn插值</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/">10月第一周chatdb</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/">9月第二周周报</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/">9月第一周</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>10月第一周chatdb | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="论文1 CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强LLM的符号性内存)1 Basic Information: Title: CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10月第一周chatdb">
+<meta property="og:url" content="http://example.com/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="论文1 CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强LLM的符号性内存)1 Basic Information: Title: CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081552265.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553958.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553269.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553529.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553076.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553100.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553504.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553578.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553199.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553783.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553412.png">
+<meta property="og:image" content="http://example.com/doc/%25E5%259D%259A%25E6%259E%259C%25E4%25BA%2591%25E6%2596%2587%25E6%25A1%25A3/2023.10/assets/image-20231007101741253.png">
+<meta property="og:image" content="http://example.com/doc/%25E5%259D%259A%25E6%259E%259C%25E4%25BA%2591%25E6%2596%2587%25E6%25A1%25A3/2023.10/assets/image-20231007101952871.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554277.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554336.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554233.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554561.png">
+<meta property="article:published_time" content="2023-10-08T07:52:42.000Z">
+<meta property="article:modified_time" content="2023-10-08T07:54:37.794Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081552265.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-10月第一周chatdb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/" class="article-date">
+  <time class="dt-published" datetime="2023-10-08T07:52:42.000Z" itemprop="datePublished">2023-10-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      10月第一周chatdb
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="论文1-CHATDB-AUGMENTING-LLMS-WITH-DATABASES-AS-THEIR-SYMBOLIC-MEMORY-CHATDB-用数据库增强LLM的符号性内存"><a href="#论文1-CHATDB-AUGMENTING-LLMS-WITH-DATABASES-AS-THEIR-SYMBOLIC-MEMORY-CHATDB-用数据库增强LLM的符号性内存" class="headerlink" title="论文1 CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强LLM的符号性内存)"></a>论文1 CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强LLM的符号性内存)</h3><h3 id="1-Basic-Information"><a href="#1-Basic-Information" class="headerlink" title="1 Basic Information:"></a>1 Basic Information:</h3><ul>
+<li>Title: CHATDB: AUGMENTING LLMS WITH DATABASES AS THEIR SYMBOLIC MEMORY (CHATDB: 用数据库增强LLM的符号性内存)</li>
+<li>Authors: Chenxu Hu, Jie Fu, Chenzhuang Du, Simian Luo, Junbo Zhao, Hang Zhao</li>
+<li>Affiliation: Tsinghua University (清华大学)</li>
+<li>Keywords: Large language models, symbolic memory, multi-hop reasoning, databases, SQL statements</li>
+<li>URLs: arXiv:2306.03901v2 [cs.AI] 7 Jun 2023, GitHub: <a target="_blank" rel="noopener" href="https://chatdatabase.github.io/">https://chatdatabase.github.io/</a></li>
+<li><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081552265.png" alt="image-20231006103506241"></li>
+<li><strong>用户 (users)</strong>: 代表与系统互动的最终用户。</li>
+<li><strong>LLM 控制器 (LLM Controller)</strong>: 控制器负责控制内存的读写操作。它与”Memory”进行交互，并执行符号化（Symbolic）和非符号化（Non-Symbolic）的操作。</li>
+<li><strong>ChatGPT, GPT4</strong>: 这些是系统中使用的模型或组件。它们与数据库进行交互，执行插入、更新和删除操作。</li>
+<li><strong>LlaMA</strong>: 与控制器交互，并为输出提供非符号化数据。</li>
+<li><strong>ChatGLM</strong>: 负责读取历史内容及其向量嵌入。</li>
+<li><strong>Memory tokens&#x2F;memory matrices</strong>: 这是系统内部使用的数据结构或存储形式。</li>
+<li><strong>数据库操作</strong>: 包括选择、查询和检索等操作。</li>
+<li><strong>整体工作流程</strong>: 图片中描述了ChatDB的整体工作流程。LLM控制器控制对内存的读写操作。此内存存储历史信息，并提供相关的历史信息来帮助响应用户输入。在ChatDB中，重点是使用数据库作为它们的符号化内存来增强LLMs。</li>
+</ul>
+<h3 id="以前的工作："><a href="#以前的工作：" class="headerlink" title="以前的工作："></a>以前的工作：</h3><h4 id="1-Memory-Augmented-Large-Language-Models-LLMs"><a href="#1-Memory-Augmented-Large-Language-Models-LLMs" class="headerlink" title="1. Memory-Augmented Large Language Models (LLMs):"></a>1. Memory-Augmented Large Language Models (LLMs):</h4><ul>
+<li><strong>主要点</strong>: LLMs 如 GPT-4 和 PaLM 2 已显示出强大的推理和决策能力。但由于其有限的上下文窗口大小（例如 GPT-4 只能处理 32K 令牌），它们的能力受到限制。</li>
+<li><strong>启发</strong>: Memory-augmented LLMs 引入了一个内存模块，该模块可以防止模型忘记关键信息，使其能够处理超出上下文窗口大小的长文本输入。</li>
+</ul>
+<h4 id="2-Retrieval-augmented-in-context-learning（prompt）"><a href="#2-Retrieval-augmented-in-context-learning（prompt）" class="headerlink" title="2. Retrieval-augmented in-context learning（prompt）:"></a>2. Retrieval-augmented in-context learning（prompt）:</h4><ul>
+<li><strong>主要点</strong>: 使用检索模型 (RM) 检索与 LLM 相关的信息作为提示。</li>
+<li><strong>启发</strong>: 例如，Auto-GPT 3 和 Generative Agents 使用一个内存模块直接存储文本提示，允许代理跟踪其历史。这些提示然后输入到 LLM 进行处理。</li>
+</ul>
+<h4 id="3-Neural-Machine-Techniques"><a href="#3-Neural-Machine-Techniques" class="headerlink" title="3. Neural Machine Techniques:"></a>3. Neural Machine Techniques:</h4><ul>
+<li><strong>主要点</strong>: Neural Turing Machines (NMT) 和其他技术如 GGS-NN 和 RMT 被设计为与外部可训练的内存资源互动。</li>
+<li><strong>启发</strong>: 这些技术表明，结合传统的神经网络模型与外部内存可以增强模型的能力。</li>
+</ul>
+<h4 id="4-Reasoning-with-LLMs"><a href="#4-Reasoning-with-LLMs" class="headerlink" title="4. Reasoning with LLMs:"></a>4. Reasoning with LLMs:</h4><ul>
+<li><strong>主要点</strong>: LLMs 在复杂的推理任务中存在挑战。最近的方法通过 In-Context Learning 来增强其推理能力。</li>
+<li><strong>启发</strong>: Chain-of-Thought (CoT) 展示了解决样本问题的中间推理过程，大大增强了其推理能力。</li>
+</ul>
+<h4 id="5-LLMs-with-Databases"><a href="#5-LLMs-with-Databases" class="headerlink" title="5. LLMs with Databases:"></a>5. LLMs with Databases:</h4><ul>
+<li><strong>主要点</strong>: LLMs 已展示了生成代码的能力，包括 Python 代码、Excel 命令和数据库的 SQL。</li>
+<li><strong>启发</strong>: 虽然以前的工作在某种程度上涉及到数据库，但 ChatDB 将数据库视为 LLM 的外部符号化内存模块，然后利用数据库进行读写操作，从而增强了通过 chain-of-memory 的推理过程。</li>
+</ul>
+<h4 id="6-Tool-using-LLMs"><a href="#6-Tool-using-LLMs" class="headerlink" title="6. Tool-using LLMs:"></a>6. Tool-using LLMs:</h4><ul>
+<li><strong>主要点</strong>: 从使用工具的角度看，ChatDB 也可以看作是使用 DB 作为工具的 LLM。</li>
+<li><strong>启发</strong>: ChatDB 的优势在于它允许语言模型保持更准确的记录，并使用历史数据，从而解决更复杂的问题，尤其是那些需要准确的历史数据进行推理的问题。</li>
+</ul>
+<p>总结：过去的工作主要集中在增强 LLM 的存储和推理能力，特别是在处理超出其上下文窗口大小的长文本输入时。通过结合外部内存模块、数据库和其他工具，这些 LLM 可以更好地理解和响应用户的请求。”ChatDB” 的创新之处在于它将数据库视为 LLM 的外部符号化内存模块，并利用这个数据库进行读写操作，从而增强其推理能力。</p>
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2 方法:"></a>2 方法:</h3><p>任务定义：给定自然语言中的用户输入和数据库中现有表的详细信息（如果没有现有表，则目标是操纵符号内存，即外部数据库，以满足用户的请求。例如，如果用户（例如，存储管理器）命令是记录、修改、查询和删除特定数据，则相应的 SQL 操作应该是分别插入、更新、选择和删除适当表中的相关数据。这些操作通常涉及数据库中的多个表。</p>
+<img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553958.png" alt="image-20231006160453417"  />
+
+<p>ChatDB 框架概览图。红色箭头线表示内存链的过程流程，表示多个内存操作之间的连接。数据库表之间的红色箭头线表示主键和外键之间的引用关系，从主键开始到外键。为简洁起见，仅显示每个表的前四列。这个例子展示了返回 2023-01-02 上购买商品的过程，该商品的电话号码为 823451。</p>
+<p>ChatDB 的框架包括三个主要阶段：输入处理、链式记忆 (chain-of-memory) 和响应摘要。</p>
+<h4 id="1-输入处理-Input-Processing"><a href="#1-输入处理-Input-Processing" class="headerlink" title="1 输入处理 (Input Processing):"></a>1 <strong>输入处理 (Input Processing)</strong>:</h4><ul>
+<li>职责：对用户输入进行初步处理。</li>
+<li>工作原理：如果响应用户输入需要使用记忆，则 ChatDB 使用 LLMs 生成一系列中间步骤来操作符号化记忆。否则，直接使用 LLMs 生成回复。</li>
+</ul>
+<h4 id="2-链式记忆-Chain-of-Memory"><a href="#2-链式记忆-Chain-of-Memory" class="headerlink" title="2. 链式记忆 (Chain-of-Memory):"></a>2. <strong>链式记忆 (Chain-of-Memory)</strong>:</h4><ul>
+<li>职责：执行与符号化记忆的交互的一系列中间记忆操作步骤。</li>
+<li>工作原理：<ul>
+<li>ChatDB 按照先前生成的一系列 SQL 语句的顺序操作符号化记忆，包括插入、更新、选择、删除等操作。</li>
+<li>外部数据库执行相应的 SQL 语句，更新数据库，并返回结果。</li>
+<li>需要注意的是，ChatDB 根据先前 SQL 语句的结果决定是否更新记忆操作步骤。</li>
+<li>ChatDB 使用相同的程序执行下一步，直到完成所有对记忆的操作。</li>
+</ul>
+</li>
+</ul>
+<p>实现流程</p>
+<blockquote>
+<ol>
+<li><strong>输入解析</strong>:</li>
+</ol>
+<ul>
+<li>分析用户的输入，确定需要进行的操作和查询。</li>
+<li>对输入进行预处理，例如实体识别、关系识别等，以确定要操作或查询的特定数据。</li>
+</ul>
+<ol start="2">
+<li><strong>生成中间步骤</strong>:</li>
+</ol>
+<ul>
+<li>使用模型（例如 LLMs）将用户的请求分解成一系列的操作和查询步骤。这可以是 SQL 语句、API 调用或其他与数据库或记忆系统的交互。</li>
+<li>这些步骤应该是有序的，确保每个步骤都是在前一个步骤的基础上执行的。</li>
+</ul>
+<ol start="3">
+<li><strong>与符号化记忆交互</strong>:</li>
+</ol>
+<ul>
+<li>执行生成的操作和查询步骤，与外部数据库或其他符号化记忆系统进行交互。</li>
+<li>根据每个步骤的结果，保存或更新中间状态，以供后续步骤使用。</li>
+</ul>
+<ol start="4">
+<li><strong>结果处理</strong>:</li>
+</ol>
+<ul>
+<li>一旦所有中间步骤都完成，对结果进行处理和汇总。</li>
+<li>如果需要，可以使用 LLMs 生成更详细或描述性的输出。</li>
+</ul>
+<ol start="5">
+<li><strong>反馈和学习</strong>:</li>
+</ol>
+<ul>
+<li>根据用户的反馈和系统的性能，持续更新和训练模型，以改善其生成中间步骤和与符号化记忆交互的能力。</li>
+<li>使用 “in-context learning” 和其他技术，提供模型训练时的示例，帮助模型更好地理解和执行复杂的操作。</li>
+</ul>
+<ol start="6">
+<li><strong>优化和扩展</strong>:</li>
+</ol>
+<ul>
+<li>随着时间的推移，不断优化和更新 CoM 的实现，以处理更复杂的请求和场景。</li>
+<li>考虑与其他技术和方法结合，如 “Chain-of-Thought”，以进一步增强模型的推理和操作能力。</li>
+</ul>
+</blockquote>
+<h4 id="3-响应摘要-Response-Summary"><a href="#3-响应摘要-Response-Summary" class="headerlink" title="3. 响应摘要 (Response Summary):"></a>3. <strong>响应摘要 (Response Summary)</strong>:</h4><ul>
+<li>职责：基于一系列 chain-of-memory 步骤的结果为用户总结最终响应。</li>
+<li>工作原理：经过与数据库的一系列交互后，ChatDB 将结果总结为一个清晰、有意义的回复，返回给用户。</li>
+</ul>
+<p>chatdb算法原理：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">**Algorithm 1: ChatDB 的算法**</span><br><span class="line"></span><br><span class="line">**输入**: </span><br><span class="line">- userInput: 用户的输入</span><br><span class="line">- dataBase: 数据库</span><br><span class="line"></span><br><span class="line">**输出**: </span><br><span class="line">- reply: 回复</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">### 输入处理 (Input Processing)</span><br><span class="line"></span><br><span class="line">```markdown</span><br><span class="line">1. if need manipulate memory to respond to userInput then  # 判断是否需要操作记忆来响应用户输入。</span><br><span class="line">2: memOps = LLMgetSteps(userInput)  # 使用 LLMs 生成中间操作步骤。</span><br><span class="line">3: else</span><br><span class="line">4: reply = LLM(userInput)  # 直接使用 LLMs 生成回复。</span><br><span class="line">5: return reply</span><br><span class="line">6: end if</span><br><span class="line">7: sqlResults = []  # 初始化一个数组来存储 SQL 操作的结果。</span><br><span class="line">8: newMemOps = []  # 初始化一个数组来存储更新后的记忆操作。</span><br><span class="line">9: for each memOp in memOps do  # 遍历之前生成的每个记忆操作。</span><br><span class="line">10: if need update memOp based on sqlResults then  # 判断是否需要基于先前的 SQL 结果更新当前的记忆操作。</span><br><span class="line">11: newMemOp = LLMupdateOperation(memOp, sqlResults)  # 使用 LLMs 更新当前的记忆操作。</span><br><span class="line">12: else</span><br><span class="line">13: newMemOp = memOp  # 保持当前的记忆操作不变。</span><br><span class="line">14: end if</span><br><span class="line">15: sqlResult = executeOperation(newMemOp, dataBase)  # 在数据库上执行更新后的操作。</span><br><span class="line">16: sqlResults.append(sqlResult)  # 将执行结果添加到 `sqlResults` 数组中。</span><br><span class="line">17: newMemOps.append(newMemOp)  # 将更新后的记忆操作添加到 `newMemOps` 数组中。</span><br><span class="line">18: end for</span><br><span class="line">19: reply = LLMsummary(userInput, newMemOps, sqlResults)  # 使用 LLMs 生成最终的回复基于用户输入、更新后的记忆操作和 SQL 操作的结果。</span><br><span class="line">20: return reply  # 返回生成的回复。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553269.png" alt="image-20231006171204438"></p>
+<ol>
+<li><strong>记忆格式 (Memory Format)</strong>:<ul>
+<li>ChatDB 使用数据库作为其记忆存储格式。</li>
+<li>基于提示的记忆存储相关的交互内容和&#x2F;或其对应的向量嵌入。</li>
+<li>基于矩阵的记忆使用额外的可训练的记忆令牌或记忆矩阵作为记忆。</li>
+</ul>
+</li>
+<li><strong>支持的操作 (Supported Operations)</strong>:<ul>
+<li>ChatDB 支持插入、删除、更新和选择数据库中的数据等操作。</li>
+<li>基于提示的记忆主要支持插入和选择操作，但对更新和删除的支持不完整。</li>
+<li>基于矩阵的记忆支持读取和写入操作，但神经网络执行的确切操作并不明确。</li>
+</ul>
+</li>
+<li><strong>记忆存储 (Memory Storage)</strong>:<ul>
+<li>ChatDB 使用数据库以结构化格式存储记忆。</li>
+<li>基于提示的记忆和基于矩阵的记忆都被视为半结构化。</li>
+</ul>
+</li>
+<li><strong>记忆执行 (Memory Execution)</strong>:<ul>
+<li>ChatDB 使用 SQL（一种符号语言）在其数据库记忆上执行操作，从而具有符号性。</li>
+<li>基于提示的记忆和基于矩阵的记忆执行都被认为是非符号性的。</li>
+</ul>
+</li>
+<li><strong>可解释性 (Interpretability)</strong>:<ul>
+<li>ChatDB 的记忆具有高度的可解释性。</li>
+<li>基于提示的记忆的可解释性通常受到限制。</li>
+<li>对于基于矩阵的记忆方法，可解释性较低。</li>
+</ul>
+</li>
+<li><strong>状态跟踪 (State Tracking)</strong>:<ul>
+<li>ChatDB 的记忆准确地跟踪了 LLMs 的当前状态。</li>
+<li>基于矩阵的记忆方法可以跟踪 LLMs 的当前状态。</li>
+<li>基于提示的记忆方法仅存储历史上下文，而没有明确理解当前状态。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文提出了ChatDB，这是一个将大型语言模型（LLMs）与数据库结合的框架，将数据库作为其外部符号内存。该框架使用结构化查询语言（SQL）语句实现历史数据的结构化存储，并允许进行符号和复杂数据操作。通过将用户输入转换为多步中间内存操作，提出的链式内存（CoM）方法实现了有效的内存操作，提高了ChatDB的性能。将LLMs与数据库作为外部符号内存的组合特别适用于高准确性和长期数据记录和处理。实验数据表明，ChatDB在合成数据集上明显优于ChatGPT。该提出的框架在使用数据库作为符号内存方面独特，可以实现更准确的记录，并利用历史数据进行复杂和准确的推理。ChatDB解决了LLMs在存储、检索和操作历史信息方面面临的主要挑战。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>ChatDB是一个基于用户自然语言输入和现有表格细节来操作符号内存（如数据库）的框架。该框架由三个主要阶段组成：输入处理、链式内存和响应摘要。链式内存是ChatDB的主要组成部分，负责执行一系列中间内存操作步骤与符号内存进行交互。这种方法使得大型语言模型能够以更高的准确性执行复杂的数据库操作，并更好地处理意外情况，使其成为现实世界应用的一种有前景的方法。ChatDB使用数据库作为其内存格式，并支持在数据库内存中插入、删除、更新和选择数据等操作。与基于提示和基于矩阵的内存方法相比，ChatDB具有更高的可解释性、状态跟踪和符号存储，并支持更广泛的内存操作。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-实验结果"><a href="#3-实验结果" class="headerlink" title="3 实验结果:"></a>3 实验结果:</h3><p>我们通过实验来评估使用数据库增强 LLM 作为其符号记忆的有效性。实验结果表明，ChatDB 显着优于基线模型 ChatGPT，突出了符号记忆集成的优势。 </p>
+<p>3.1 实验设置：</p>
+<p>使用数据库作为符号记忆特别适用于需要精确记录和处理历史信息的场景，例如各种数据管理场景。为了适应ChatDB的用例，并与其他模型进行定量比较，我们构建了一个模拟水果车间管理的合成数据集。此外，为了评估模型的性能，我们收集了一组 50 个问题和带注释的候选答案。这些问题的难度各不相同，从需要多跳推理的简单推理到只需要从历史数据中检索信息的难问题不等。有 15 个简单的问题和 35 个难题。每个问题都由模型独立回答。</p>
+<p>3.2 模型配置</p>
+<p>ChatDB：ChatDB 中使用的 LLM 是 ChatGPT (GPT-3.5 Turbo)，超参数大小设置为 0。我们使用 MySQL 数据库作为外部符号内存。</p>
+<p>baseline：我们使用ChatGPT (GPT-3.5 Turbo)作为最大令牌长度为4096的基线模型。与ChatDB类似，我们将温度设置为0。</p>
+<p>在神经网络中，特别是生成模型如语言模型，”temperature”是一个常用的参数，它会影响模型输出的多样性。Temperature值的调整可以使模型的输出从非常确定性（低多样性）到非常随机（高多样性）。</p>
+<ul>
+<li><strong>Temperature &#x3D; 1</strong>：不改变模型的输出概率分布。模型将按其学到的内容生成输出。</li>
+<li><strong>Temperature &gt; 1</strong>：会增加所有事件的输出概率，导致输出更加随机。</li>
+<li><strong>Temperature &lt; 1</strong>：会使高概率的事件更有可能发生，使输出更加确定性。</li>
+<li><strong>Temperature &#x3D; 0</strong>：会使模型总是选择概率最高的输出，即最确定性的输出。但在实际实施中，通常不会完全设置为0，因为这可能会导致计算问题。</li>
+</ul>
+<p>3.3 数据集配置</p>
+<p>我们综合了水果车间管理记录的数据集，称为“水果车间数据集”。该数据集模拟了商店中的四种常见操作：购买、销售、不断变化的价格和商品回报。我们确保所有历史记录都是有效的，并且不会出现负面清单等问题。我们生成 70 条按时间顺序排列的记录，总共大约 3.3k 个标记，位于 ChatGPT (4096 个标记) 的最大标记长度限制内。</p>
+<p>下面是如何对外部数据库（符号化内存）进行操作以响应与水果商店相关的四种常见操作：购买货物、销售货物、商品退货、更改价格。</p>
+<ol>
+<li>购买货物数据的交互（这个是购买商品的一些chatdb sql交互）<ol>
+<li>商店从供应商购买货物。</li>
+<li>系统首先检查是否已经有该供应商的记录，如果没有，则插入供应商信息。</li>
+<li>然后，系统检查是否有该水果的记录（在这里是樱桃），如果没有，则插入水果信息。</li>
+<li>接着，系统会插入购买记录，并记录购买的每一项内容。</li>
+<li>最后，系统更新库存数量，并设置或更新销售价格。</li>
+</ol>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553529.png" alt="image-20231005092615061"></p>
+<ol start="2">
+<li>销售货物的交互：<ol>
+<li>客户从商店购买货物。</li>
+<li>系统首先检查是否已经有该客户的记录，如果没有，则插入客户信息。</li>
+<li>接着，系统插入销售记录，并记录每一项销售内容。</li>
+<li>最后，系统更新水果的库存数量。</li>
+</ol>
+</li>
+</ol>
+<p>​	<img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553076.png" alt="image-20231005093345524"></p>
+<ol start="3">
+<li><p><strong>退货</strong>操作交互：</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553100.png" alt="image-20231005093909814"></p>
+<ol>
+<li>客户退回之前购买的货物。</li>
+<li>系统首先找到对应的销售记录。</li>
+<li>根据找到的销售记录，系统获取该次销售的所有商品及其数量。</li>
+<li>然后，系统增加库存数量，表示退货商品已回到库存。</li>
+<li>最后，系统删除与这次销售相关的所有记录。</li>
+</ol>
+</li>
+<li><p><strong>更改价格</strong></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553504.png" alt="image-20231005093926576"></p>
+<ol>
+<li>商店更改货物的销售价格。</li>
+<li>系统更新对应货物的销售价格。</li>
+</ol>
+</li>
+</ol>
+<p>实验对比：相当于自己构造数据集了</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553578.png" alt="image-20231005100328764"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553199.png" alt="image-20231005100503684"></p>
+<p>想法：</p>
+<p>chatfig：与图片进行对话</p>
+<h3 id="图片解析为LLM能理解的形式："><a href="#图片解析为LLM能理解的形式：" class="headerlink" title="图片解析为LLM能理解的形式："></a>图片解析为LLM能理解的形式：</h3><ol>
+<li><p><strong>图像到文本的转换</strong>: </p>
+<ul>
+<li>最直观的方法是使用图像识别技术（如OCR）来从图像中提取文本。但这仅适用于包含明确文本的图片。</li>
+<li>对于非文本图片（例如风景、物体、人物等），可以使用图像描述或图像字幕生成技术。这种技术使用深度学习模型将图像内容转化为描述性的句子。例如，对于一张狗在草地上玩耍的图片，模型可能会输出“一只棕色的狗在绿色的草地上玩耍”。</li>
+<li>科研图片，论文图片理解和识别</li>
+</ul>
+</li>
+<li><p><strong>语义理解</strong>:</p>
+<ul>
+<li>仅仅将图像转化为文本可能不足以捕捉其所有语义内容。例如，图像中的色彩、情感或复杂的交互可能难以用简单的句子描述。这可能需要更高级的模型来理解和解释。</li>
+</ul>
+</li>
+<li><p><strong>向量嵌入</strong>:</p>
+<ul>
+<li>一种可能的策略是将图像直接转化为向量形式（称为嵌入），这些向量可以表示图像的语义内容。这些向量可以被视为LLM的输入，与文本数据一起处理。现有的技术，如预训练的图像分类模型，可以用于此目的。</li>
+</ul>
+</li>
+</ol>
+<h3 id="难点：VQA"><a href="#难点：VQA" class="headerlink" title="难点：VQA"></a>难点：VQA</h3><ol>
+<li><p><strong>高质量的图像描述</strong>: </p>
+<ul>
+<li>自动图像描述技术虽然已经取得了很大进步，但仍然面临挑战，尤其是对于复杂或不常见的图像。</li>
+</ul>
+</li>
+<li><p><strong>实时性</strong>:</p>
+<ul>
+<li>图像处理和描述生成可能会比简单的文本处理更耗时，这可能影响到系统的响应时间。</li>
+</ul>
+</li>
+<li><p><strong>信息丢失</strong>:</p>
+<ul>
+<li>任何从图像到文本的转换都可能导致信息的丢失。例如，图像中的某些细节、色彩或情感可能难以完全转化为文本。</li>
+</ul>
+</li>
+<li><p><strong>模型的训练和维护</strong>:</p>
+<ul>
+<li>需要大量的标注数据来训练高质量的图像描述模型。此外，这些模型需要定期更新以处理新的图像内容。</li>
+</ul>
+</li>
+</ol>
+<p>将用户上传的图片解析为LLM能理解的形式是一个具有挑战性的任务，但随着技术的进步，这些挑战逐渐得到了解决。为了实现这一目标，可能需要结合多种技术，并进行大量的模型训练和优化。</p>
+<h3 id="论文2：Human-Parity-on-CommonsenseQA-Augmenting-Self-Attention-with-External-Attention-CommonsenseQA上的人类水平：通过外部注意力增强自注意力"><a href="#论文2：Human-Parity-on-CommonsenseQA-Augmenting-Self-Attention-with-External-Attention-CommonsenseQA上的人类水平：通过外部注意力增强自注意力" class="headerlink" title="论文2：Human Parity on CommonsenseQA: Augmenting Self-Attention with External Attention (CommonsenseQA上的人类水平：通过外部注意力增强自注意力)"></a>论文2：Human Parity on CommonsenseQA: Augmenting Self-Attention with External Attention (CommonsenseQA上的人类水平：通过外部注意力增强自注意力)</h3><h3 id="Basic-Information"><a href="#Basic-Information" class="headerlink" title="Basic Information:"></a>Basic Information:</h3><ul>
+<li>Title: Human Parity on CommonsenseQA: Augmenting Self-Attention with External Attention (CommonsenseQA上的人类水平：通过外部注意力增强自注意力)</li>
+<li>Authors: Yichong Xu, Chenguang Zhu, Shuohang Wang, Siqi Sun, Hao Cheng, Xiaodong Liu, Jianfeng Gao, Pengcheng He, Michael Zeng, Xuedong Huang</li>
+<li>Affiliation: Microsoft Corporation (微软公司)</li>
+<li>Keywords: self-attention, transformer architecture, external attention, commonsense reasoning, human parity (自注意力，Transformer架构，外部注意力，常识推理，人类水平)</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2112.03254v3">Paper</a>, <a href="github:">GitHub Code</a></li>
+</ul>
+<h3 id="论文简要"><a href="#论文简要" class="headerlink" title="论文简要 :"></a>论文简要 :</h3><ul>
+<li>本文提出了一种在Transformer架构中增加外部注意力机制的方法，通过将外部知识和上下文引入预测过程，希望减少对越来越大的模型的需求，增加人工智能系统的民主化。通过在常识推理任务上的实验证明，这种外部注意力机制可以显著提高现有人工智能系统的性能，使从业者能够轻松地将基础人工智能模型定制为多样化的下游应用，达到了人类水平的性能。</li>
+<li>当今大多数人工智能系统都专注于在大量不同数据上使用自注意力机制和转换器架构，以实现令人印象深刻的性能提升。在本文中，我们建议使用外部注意机制来增强 Transformer 架构，以带来外部知识和上下文以承担。通过将外部信息整合到预测过程中，我们希望减少对越来越大模型的需求并增加人工智能系统的民主化。我们发现所提出的外部注意机制可以显着提高现有 AI 系统的性能，允许从业者轻松地将基础 AI 模型定制到许多不同的下游应用程序。特别是，我们专注于常识推理的任务，表明所提出的外部注意力机制可以增强现有的 Transformer 模型并显着提高模型的推理能力。该系统，常识推理 (KEAR) 的基于知识的外部注意力，在开放 CommonsenseQA 研究基准上达到了人类平等，与人类准确率为 89.4%，而人类准确率为 88.9%。</li>
+</ul>
+<h3 id="背景信息"><a href="#背景信息" class="headerlink" title="背景信息:"></a>背景信息:</h3><ul>
+<li>论文背景: 近年来，自注意力机制和Transformer架构在大量多样化数据上取得了令人瞩目的性能提升，成为当今人工智能系统的关注重点。然而，巨大模型的使用已经引发了一系列问题，包括模型理解和生成能力仍然落后于人类，以及模型规模对于利用、部署、解释和环境影响等方面带来的挑战。因此，本文提出了一种增加外部注意力机制的方法，以引入相关的上下文和知识，从而减少对大型模型的依赖，增加人工智能技术的可访问性和民主化。</li>
+<li>过去方案: 过去的研究表明，随着模型规模的增大和更多数据的使用，模型的学习能力会得到提升。然而，这种“扩大规模”的方法在可持续性和实用性方面存在问题，并且与人类水平的性能仍有差距。</li>
+<li>论文的Motivation: 鉴于当前Transformer模型的机制，本文提出了一种外部注意力机制的思路。通过提供相关的上下文和知识，使模型能够从外部获取信息，而不仅仅依赖于内部的自注意力机制。这种方法类似于人类进行智能活动的方式，我们经常借助搜索引擎、字典或他人的信息来获取所需的知识。此外，外部注意力的另一个好处是，由于相关的知识存储在模型之外，从业者可以轻松更新知识源，改变模型的行为。通过明确表示知识，模型的决策过程变得更加透明和可解释。</li>
+<li><strong>Transformer模型的影响</strong>：自从2017年Vaswani等人提出，Transformer模型在许多AI领域都取得了巨大的成功，这主要归功于它的自注意力机制。</li>
+<li><strong>模型规模</strong>：随着时间的推移，Transformer模型越来越大，从BERT的1.1亿参数到GPT-3的1750亿参数。但尽管如此，这些大型模型的理解和生成能力仍然落后于人类。</li>
+<li><strong>模型规模的问题</strong>：这些大型模型不仅对环境产生了影响，而且在实际应用中也面临许多挑战。</li>
+<li><strong>新的方法</strong>：文章提出了一种新的方法，即给模型提供外部上下文和知识。这种方法不仅可以减小模型的规模，而且还可以使AI技术更加普及。</li>
+<li><strong>外部注意力的优势</strong>：由于知识是以符号方式存储的，因此即使是中等大小的Transformer模型也可以在NLP任务上表现出色。另外，这种方法的另一个好处是，由于相关知识是存储在模型之外的，所以从业者可以轻松地更新知识来源，从而改变模型的行为。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553783.png" alt="image-20231007105432886"></p>
+<ol>
+<li>展示了一个新的方法，即将外部知识与输入数据相结合，以改进常识推理。</li>
+<li><strong>数据来源</strong>：模型从多个外部数据集中提取相关知识，这些数据集包括知识图、词典和训练数据。例如，有一部分显示了从ConceptNet、OpenBookQA、CommonsenseQA、RiddleSense和Rainbow等数据集中检索的数据。</li>
+<li><strong>如何工作</strong>：对于给定的输入问题（例如：“人们在弹吉他时都做什么？”），模型会查找相关的外部知识（例如，从知识图中获取“弹吉他的子事件是唱歌”），然后将这些信息与原始输入进行结合。</li>
+<li><strong>注意力机制</strong>：模型将使用自注意力机制来处理这些组合的输入，并通过外部注意力机制来关注外部知识。</li>
+<li><strong>结果预测</strong>：模型最后将基于这些处理后的输入来预测答案。</li>
+<li><strong>特点</strong>：这种方法的一个关键特点是，它不需要对原始Transformer模型进行任何结构上的修改，只需通过文本级连接将输入和知识结合在一起。</li>
+</ol>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法:"></a>方法:</h3><p><strong>任务定义</strong><br>研究的核心是一个多选问题的常识推理任务。在这个任务中，模型的目标是从给定的选择列表c1, c2, …, cn中为一个常识问题q选择正确的答案。模型输出一个概率分布P，反映每个选项被选择为正确答案的概率。常识推理</p>
+<p><strong>2.1 外部关注</strong></p>
+<ul>
+<li><p><strong>自注意力 (Self Attention)</strong><br>自注意力是Transformer结构的核心组件。其计算方式可以用以下公式表示：<br>[$ Q &#x3D; H_l W_q$ ]<br>[ $K &#x3D; H_l W_k $]<br>[ $V &#x3D; H_l W_v$ ]<br>[ $A &#x3D; \frac{Q K^T}{\sqrt{d}} $]<br>[ $H_{l+1} &#x3D; \text{softmax}(A)V$ ]<br>其中，($ H_l$ ) 是传入第l层的隐藏向量，($ W_q$, $W_k,$ $W_v $) 是投影矩阵，N代表输入长度，d代表隐藏向量的维度。</p>
+</li>
+<li><p><strong>外部注意力 (External Attention)</strong><br>在常识问题答案中，通常所需的答案信息并不直接包含在输入中。为此，这项研究提出了引入外部知识的方法。此处，该外部知识被表示为K，并与原始输入文本连接。然后，通过在合并的输入上应用自注意力，模型可以在知识文本和问题&#x2F;答案之间进行推理。</p>
+<p><strong>外部注意力 (External Attention)</strong></p>
+<p>这部分内容是关于如何在模型中整合外部知识，以提高模型对常识问题答案的推理能力。对于常识问题，所需的答案信息很可能不直接出现在输入中，因此，引入外部知识变得尤为重要。</p>
+<p><strong>1. 外部知识 K：</strong></p>
+<ul>
+<li>描述为文本格式的额外知识，记为 K &#x3D; [xK1 , xK2 , …, xK Nk ]。</li>
+<li>这可以是来自不同知识库、文章或任何其他信息源的文本。</li>
+</ul>
+<p><strong>2. 如何整合外部知识：</strong></p>
+<ul>
+<li>虽然存在许多方法可以将外部知识整合到模型中（例如，使用图神经网络），但在此论文中，作者选择了一种简单的方法：直接将知识与输入文本连接起来。</li>
+<li>新的输入 H0 是原始输入 X 和外部知识 K 的连接：H0 &#x3D; [X; K] &#x3D; [x1, …, xN , xK1 , …, xK Nk ]。</li>
+</ul>
+<p><strong>3. 连接的优势：</strong></p>
+<ul>
+<li>该方法的一个主要优势是不需要修改现有的模型架构。因为你只是扩展了输入，而不是改变了模型的核心。</li>
+<li>这样，模型可以直接处理增加了知识的输入，而不需要额外的处理步骤或修改。</li>
+<li>一旦外部知识与原始输入连接，可以在 H0 上应用自注意力。</li>
+<li>这允许模型自由地在知识文本和问题&#x2F;选择之间进行推理。</li>
+<li>结果是，模型获得了增强的推理能力，因为它现在可以利用外部知识来解答问题。</li>
+</ul>
+</li>
+</ul>
+<p><strong>2.2 外部知识源</strong></p>
+<ul>
+<li><p>**知识图 (Knowledge Graph)**：知识图提供了一些有关常识推理的事实，这些事实可能不在通常的语料库中。</p>
+<ul>
+<li><p><strong>目的</strong>：知识图谱包含经过策划的事实，这些事实可能在常规语料库中没有出现，但对常识推理很有帮助。</p>
+</li>
+<li><p><strong>数据来源</strong>：该文本使用ConceptNet图谱（由Speer等人于2017年开发），并遵循KCR项目来检索相关的关系三元组。</p>
+</li>
+<li><p><strong>检索方式</strong>：假设问题中的实体是<code>eq</code>，选项中的实体是<code>ec</code>。如果ConceptNet中<code>eq</code>到<code>ec</code>有直接的边<code>r</code>，则选择这个三元组<code>(eq, r, ec)</code>。如果没有这样的边，就检索所有从<code>ec</code>出发的三元组，然后为每个三元组打分。分数是由三元组的置信度<code>wj</code>（由ConceptNet提供）和关系类型权重<code>trj</code>的乘积计算的。最后，选择得分最高的三元组。</p>
+</li>
+<li><p><strong>结果表示</strong>：如果选中的三元组是<code>(e1, r, e2)</code>，那么KG的知识表示为<code>KKG(q, c) = [e1 r e2]</code>。</p>
+</li>
+<li><p><strong>其他注意事项</strong>：在CommonsenseQA数据集中，<code>eq</code>和<code>ec</code>都已提供。如果没有提供，他们会使用实体链接技术找到与输入文本相关的知识图谱节点。</p>
+</li>
+</ul>
+<p><strong>2. 词典 (Dictionary)：</strong></p>
+<ul>
+<li><p><strong>目的</strong>：虽然预训练的语言模型接触过大量的文本数据，但由于单词的长尾分布，一个单词的表示质量高度依赖于它在预训练语料库中的频率。与此相反，词典可以为单词提供准确的语义解释，而不考虑它们在数据集中的频率。</p>
+</li>
+<li><p><strong>数据来源</strong>：作者遵循DEKCOR项目，使用Wiktionary的定义作为问题和答案概念的外部知识。</p>
+</li>
+<li><p><strong>操作方式</strong>：对于每一个概念，他们从Wiktionary中获取最常见（最频繁）的定义。定义文本对于<code>eq</code>是<code>dq</code>，对于<code>ec</code>是<code>dc</code>。</p>
+</li>
+<li><p><strong>结果表示</strong>：词典的知识表示为<code>Kdict(q, c) = [eq : dq ; ec : dc]</code>。</p>
+</li>
+</ul>
+<p>作者使用了两个外部知识源：一个是知识图谱，特别是ConceptNet，来提供与问题和答案相关的事实；另一个是词典，特别是Wiktionary，来提供与问题和答案相关的概念的定义。</p>
+</li>
+<li><p>**训练数据 (Training Data)**：这是一个创新之处，研究者提议从训练数据中检索相关的问题和答案，并将其作为额外的知识源。</p>
+</li>
+</ul>
+<p><strong>2.3 提高常识推理能力的一般方法</strong></p>
+<ul>
+<li><p><strong>文本编码器 (Text Encoders)</strong></p>
+<p>为了提高NLU（自然语言理解）的性能，之前的研究尝试使用了多种文本编码器，如BERT、RoBERTa、ALBERT、T5、ELECTRA和DeBERTa。这些模型在GLUE基准测试上都取得了最先进的性能。基于这一事实，作者选择评估这些模型作为常识推理任务的编码器。</p>
+</li>
+<li><p><strong>虚拟对抗性训练 (Virtual Adversarial Training, VAT)</strong></p>
+<p>VAT是一种强化模型鲁棒性的方法，已被证明能够提高一般NLU和问答任务的性能。</p>
+<ul>
+<li><p><strong>基本目标</strong>: 多项选择的常识推理任务的主要目标是最小化交叉熵损失。公式(2)表示这一目标，其中<code>f</code>代表模型的预测（关于选择的分布P），θ表示模型参数，y是真实答案的one-hot向量，CE是交叉熵，D是经验数据分布。</p>
+</li>
+<li><p><strong>VAT操作</strong>: VAT的工作原理是找到一个更新δ，这个更新会导致预测分布的最大变化，但受到L2范数约束。此后，增加一个一致性正则化损失项，目的是最小化函数输出与输入变化δ之间的差异。这就是公式(3)所表示的内容。</p>
+<p>公式(3)的第二部分，即$max‖δ‖2≤ε CE(f (x; θ), f (x + δ; θ)$)，确保模型对小的输入扰动（如δ）是鲁棒的。α和ε是超参数，可以调整以控制一致性正则化的强度和允许的输入扰动大小。</p>
+</li>
+</ul>
+</li>
+<li><p>a. 理论背景:</p>
+<ul>
+<li>本文介绍了在AI系统中使用自注意力机制和Transformer架构，并强调了它们在性能上的显著提升。然而，作者提出了在Transformer架构中增加外部注意力机制以融入外部知识和上下文。这种方法旨在减少对更大模型的依赖，并提高AI系统的可访问性。作者证明了所提出的外部注意力机制显著提高了现有AI系统的性能，特别是在常识推理任务中。所提出的系统名为Knowledgeable External Attention for Commonsense Reasoning (KEAR)，在CommonsenseQA基准测试中实现了人类水平的准确性，达到了89.4%。</li>
+</ul>
+</li>
+<li><p>b. 技术路线:</p>
+<ul>
+<li>本文描述了所提出方法中使用的外部注意力框架。自注意力机制是Transformer架构的关键组成部分，用于分析输入数据的内部结构。除了自注意力，作者还提出将外部知识和上下文整合到模型中。这是通过将外部知识与输入文本进行连接来实现的。这种方法的优点是不需要对现有模型架构进行任何修改。模型可以自由地使用自注意力在知识文本和问题&#x2F;选项之间进行推理。</li>
+</ul>
+</li>
+</ul>
+<p>实验：</p>
+<p>数据集：</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081553412.png" alt="image-20231006211215926"></p>
+<p>用于训练数据检索的数据集。 NLI 代表自然语言推理，MC 是多项选择，MRC 是机器阅读理解，CLF 是分类，NSP 是下一句预测</p>
+<p>展示三种外部知识来源如何增强常识推理性能，通过结合这三种技术，帮助实现在CommonsenseQA基准测试上达到人类的表现水平。</p>
+<p><strong>实验概述</strong>:</p>
+<ol>
+<li><strong>设置</strong>:<ul>
+<li><strong>数据</strong>: 重点研究CommonsenseQA (CSQA)基准测试，它是一个需要常识知识的多选题问答数据集，包含12k问题，都是基于ConceptNet创建的。</li>
+<li><strong>模型设置</strong>: 输入文本传入预训练的文本编码器（如DeBERTa），取[CLS]标记的表示，并对问题和答案文本设置段落ID为0，对附加的知识文本设置段落ID为1。</li>
+<li><strong>实现细节</strong>: 使用AdamW优化器对模型进行微调，批大小设置为48或更小，以适应单个GPU。模型训练10个周期，取dev集上的最佳结果。</li>
+</ul>
+</li>
+<li><strong>单独组件的效果</strong>:<ul>
+<li><strong>常规方法</strong>: NLI任务的总体表现与CommonsenseQA上的常识推理能力呈正相关。</li>
+<li><strong>外部注意力的效果</strong>: 所有提出的知识来源在所有基本编码器模型上都提高了常识推理准确性。</li>
+</ul>
+</li>
+<li><strong>结合技术</strong>:<ul>
+<li><strong>KEAR结果</strong>: KEAR模型结合了之前实验中的最佳技术，包括最佳编码器和对所有知识来源的外部关注，以进一步提高性能。最佳单一模型（DeBERTaV3-large + KEAR）在dev集上达到了91.2%的准确性。</li>
+<li><strong>集成模型</strong>: 经过多次实验，最终的集成模型在dev集上达到了93.4%的准确率。</li>
+</ul>
+</li>
+<li><strong>案例研究</strong>: 通过CommonsenseQA数据集中的两个例子，说明模型如何在所有检索到的知识来源之间进行推理，从而得出正确的答案。</li>
+</ol>
+<p><img src="/../../../../doc/%25E5%259D%259A%25E6%259E%259C%25E4%25BA%2591%25E6%2596%2587%25E6%25A1%25A3/2023.10/assets/image-20231007101741253.png" alt="image-20231007101741253"></p>
+<p>MNLI 是 MultiNLI 的简称，表示 “Multi-Domain Natural Language Inference” 数据集。这是一个大型、多领域的自然语言推理（NLI）任务的数据集。自然语言推理是一种常见的NLP任务，要求模型判断一个假设（hypothesis）是否根据一个前提（premise）是真的、假的，还是中立的。例如，给定前提 “The man is playing the piano” 和假设 “The man is playing a musical instrument”，模型应该判断假设是真的。</p>
+<p>MultiNLI 数据集包含了大量这样的前提-假设对，并涵盖了多个领域和文体，这使得模型需要具备广泛和多样的语言理解能力。数据集旨在帮助研究人员训练和评估他们的NLP模型在多种情境下的泛化能力。</p>
+<p><img src="/../../../../doc/%25E5%259D%259A%25E6%259E%259C%25E4%25BA%2591%25E6%2596%2587%25E6%25A1%25A3/2023.10/assets/image-20231007101952871.png" alt="image-20231007101952871"></p>
+<p>描述了为不同的知识源应用外部注意力时的效果。这里可以看到，对于不同的基础编码器模型（如E-l+VAT, D-xxl, DV3-l），添加外部的知识源（如KG, Dictionary, Training data）都带来了性能提升。</p>
+<ol>
+<li><strong>KG (知识图谱)</strong>:<ul>
+<li>知识图谱是一种结构化的知识库，通常表示为实体和关系的图。例如，一个知识图谱可能会有一个实体为“苹果”和关系为“是”连接到另一个实体“水果”。这提供了一种将丰富的背景知识融入到模型中的方式。</li>
+<li><strong>特点</strong>：结构化，能够表示复杂的实体和关系，可以帮助模型理解背景知识和上下文关系。</li>
+</ul>
+</li>
+<li><strong>Dictionary (词典)</strong>:<ul>
+<li>词典通常为单词或短语提供定义和解释。它可以帮助模型理解特定词语的含义和使用上下文。</li>
+<li><strong>特点</strong>：为单词和短语提供准确的定义和解释，可以帮助模型更好地理解文本。</li>
+</ul>
+</li>
+<li><strong>Training data (训练数据)</strong>:<ul>
+<li>原始的训练数据，或者是为了提高模型性能而特别选定的其他数据。这些数据可以提供更多的上下文，帮助模型更好地理解和回答问题。</li>
+<li><strong>特点</strong>：与任务直接相关，为模型提供了更多的上下文和示例，可以帮助模型更好地进行常识推理。</li>
+</ul>
+</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554277.png" alt="image-20231007102906419"></p>
+<h3 id="idea-chatkg-长文本理解"><a href="#idea-chatkg-长文本理解" class="headerlink" title="idea: chatkg  长文本理解"></a>idea: chatkg  长文本理解</h3><h2 id="论文3：Fusing-Context-Into-Knowledge-Graph-for-Commonsense-Question-Answering-将上下文融入知识图谱以进行常识问答"><a href="#论文3：Fusing-Context-Into-Knowledge-Graph-for-Commonsense-Question-Answering-将上下文融入知识图谱以进行常识问答" class="headerlink" title="论文3：Fusing Context Into Knowledge Graph for Commonsense Question Answering (将上下文融入知识图谱以进行常识问答)"></a>论文3：Fusing Context Into Knowledge Graph for Commonsense Question Answering (将上下文融入知识图谱以进行常识问答)</h2><h3 id="Basic-Information-1"><a href="#Basic-Information-1" class="headerlink" title="Basic Information:"></a>Basic Information:</h3><ul>
+<li>Title: Fusing Context Into Knowledge Graph for Commonsense Question Answering (将上下文融入知识图谱以进行常识问答)</li>
+<li>Authors: Yichong Xu, Chenguang Zhu, Ruochen Xu, Yang Liu, Michael Zeng, Xuedong Huang</li>
+<li>Affiliation: Microsoft Cognitive Services Research Group (微软认知服务研究小组)</li>
+<li>Keywords: commonsense question answering, knowledge graph, language modeling, contextual information, external entity descriptions</li>
+<li>URLs: <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2012.04808v3">Paper</a>, <a target="_blank" rel="noopener" href="https://github.com/microsoft/DEKCOR-CommonsenseQA">GitHub Code</a></li>
+</ul>
+<h4 id="论文简要-1"><a href="#论文简要-1" class="headerlink" title="论文简要 :"></a>论文简要 :</h4><ul>
+<li>本研究提出了一种将上下文融入知识图谱的方法，用于常识问答。通过从外部实体描述中提取上下文信息，将其作为额外输入提供给预训练语言模型，从而提高常识问答的性能。该方法在CommonsenseQA数据集中取得了最先进的结果，并在OpenBookQA中超过了其他非生成模型的最佳结果。</li>
+</ul>
+<p>背景信息:</p>
+<ul>
+<li>论文背景: 常识问答是一项需要模型理解常识和事实知识以回答关于世界事件的问题的任务。过去的方法通常将语言建模与知识图谱相结合，但是知识图谱虽然包含丰富的结构信息，却缺乏上下文来提供对概念的更精确理解，尤其在标注数据不足的情况下，将知识图谱融入语言建模存在一定的差距。</li>
+<li>过去方案: 过去的方法将语言模型与各种形式的知识图谱相结合，包括知识库、关系路径、图关系网络和异构图等，以提高常识推理和问答的性能。然而，这些模型的性能与人类之间仍存在一定的差距，其中一个原因是知识图谱虽然可以编码概念之间的拓扑信息，但缺乏丰富的上下文信息。</li>
+<li>论文的Motivation: 鉴于知识图谱缺乏上下文信息，本研究提出了一种利用外部实体描述提供上下文信息的方法。通过从Wiktionary中检索相关概念的描述，并将其作为额外输入提供给预训练语言模型，从而提供对知识的更全面理解。通过实验证明，该方法在CommonsenseQA数据集中取得了最先进的结果，并在OpenBookQA中超过了其他非生成模型的最佳结果。</li>
+<li><strong>对常识的理解是人类智慧的关键</strong>：人类有能力基于观察和知识对日常事务进行推理。这种能力为人与人之间的沟通和与世界的互动提供了基础。因此，常识推理成为了自然语言理解领域的重要任务。</li>
+<li><strong>预训练模型的局限性</strong>：尽管大规模的预训练模型在语言理解方面非常有效，但它们缺乏明确处理知识和常识的模块。而结构化数据，如知识图谱，比非结构化文本更有效地表示常识。</li>
+<li><strong>知识图谱与语言模型的结合</strong>：多种方法已经尝试将语言模型与各种形式的知识图谱结合起来进行常识推理。这些方法结合了语言建模和结构化知识信息的优点，提高了常识推理和问题回答的性能。</li>
+<li><strong>知识图谱的局限性</strong>：尽管知识图谱可以在概念之间编码拓扑信息，但它缺乏丰富的上下文信息。例如，知识图谱可能会表示实体“Mona Lisa”与其他实体的关系，但只靠这些关系信息，很难推断它是一幅画。</li>
+<li><strong>引入外部描述性知识</strong>：为了提供知识图谱中每个概念的全景视图，包括其邻近的概念、与它们的关系以及对其的明确描述，作者提议引入外部的描述性知识。例如，从Wiktionary中获取“Mona Lisa”的定义。</li>
+</ul>
+<h4 id="方法-1"><a href="#方法-1" class="headerlink" title="方法:"></a>方法:</h4><ol>
+<li><p><strong>问题定义</strong>：</p>
+<ul>
+<li>本文关注的是一个QA任务，即给定一个常识问题 q，从若干选项 c1, …, cn 中选择正确答案。</li>
+<li>在大多数情况下，问题本身不直接包含答案的提及。因此，可以使用外部知识源来提供额外的信息。</li>
+</ul>
+</li>
+<li><p><strong>知识图谱</strong>：</p>
+<ul>
+<li>作者选择使用ConceptNet作为他们的知识图谱G，这是一个包含超过800万实体作为节点和超过2100万关系作为边的图。</li>
+<li>在这里，作者将两个相邻节点及其之间的边称为“三元组”。其中u是主体，p是关系，v是对象。</li>
+</ul>
+</li>
+<li><p><strong>如何选择关系三元组</strong>：</p>
+<ul>
+<li>假设问题提及了一个实体 eq，而选项中包含了一个实体 ec。</li>
+<li>作者使用KCR方法来选择关系三元组。<ul>
+<li>如果在知识图谱G中从eq到ec有直接的边r，那么就选择这个三元组 (eq, r, ec)。</li>
+<li>如果没有这样的直接边，那么我们会检索包含实体ec的所有N个三元组。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>三元组的评分机制</strong>：</p>
+<ul>
+<li>为了决定哪个三元组最相关，每个三元组j都会被分配一个分数 sj。</li>
+<li>三元组的分数是由ConceptNet提供的三元组权重 wj 和关系类型权重 trj 的乘积决定的。</li>
+<li>在这里，rj 是三元组j的关系类型，而 Nrj 是检索到的三元组中具有关系类型 rj 的三元组数量。</li>
+<li>这个过程倾向于选择更稀有的关系类型。</li>
+<li>最终，权重最高的三元组被选为最相关的三元组。</li>
+</ul>
+</li>
+</ol>
+<p>简而言之，这个方法旨在为给定的问题和选择找到最相关的知识图谱中的三元组。如果问题和选项中的实体在知识图谱中有直接的关系，则直接选择该三元组；否则，会从包含选项实体的所有三元组中选择权重最高的那个。</p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554336.png" alt="image-20231007144448698"></p>
+<p>图片解释</p>
+<ol>
+<li><strong>问题与选项</strong>：<ul>
+<li>Q: Where would you find magazines alongside many other printed works?</li>
+<li>C: Bookstore 这是一个典型的问答任务，其中问题询问你在哪里可以找到杂志和其他印刷品，答案或选择是“书店”。</li>
+</ul>
+</li>
+<li><strong>实体描述</strong>：<ul>
+<li>为了提供更多的上下文，模型使用了问题和选项中涉及的实体的描述。</li>
+<li>Ques_ent: magazines</li>
+<li>Choice_ent: bookstore</li>
+<li>bookstore 的描述是：A store where books are bought and sold.</li>
+<li>magazines 的描述是：A non-academic periodical publication.</li>
+</ul>
+</li>
+<li><strong>知识图谱的三元组</strong>：<ul>
+<li>为了增强模型的预测能力，从知识图谱（如ConceptNet）中提取了一个与问题和答案相关的三元组。</li>
+<li>Triple: Rel: magazines, AtLocation, Bookstore 这意味着“杂志”在“书店”中的关系是“AtLocation”，这提供了额外的上下文支持书店是正确的答案。</li>
+</ul>
+</li>
+<li><strong>模型输入</strong>：<ul>
+<li>所有这些信息都被组织起来，形成一个复杂的输入，供ALBERT处理。</li>
+<li>输入包括：问题、选择、实体名、描述文本和三元组。</li>
+</ul>
+</li>
+<li><strong>模型输出</strong>：<ul>
+<li>ALBERT处理输入后，其输出经过一个基于注意力的加权和以及一个softmax层进行处理，以产生一个预测。</li>
+<li>基于注意力的加权和可以帮助模型确定输入中哪些部分对于给定问题最为重要。</li>
+<li>softmax层将模型的输出转化为一个概率分布，表示每个选项被选中为正确答案的概率。</li>
+</ul>
+</li>
+</ol>
+<p>上下文信息如何获取</p>
+<ol>
+<li><strong>使用在线字典获取上下文</strong>:<ul>
+<li>为了提供这些实体的上下文描述，作者利用了大规模的在线字典，特别是Wiktionary的数据转储。这个转储包含了999,614个概念的定义。</li>
+<li>对于每个概念，选择其在Wiktionary中的第一个定义条目作为描述。</li>
+</ul>
+</li>
+<li><strong>寻找匹配的描述</strong>:<ul>
+<li>为了为每个问题&#x2F;选择中的概念找到最合适的描述，作者使用了以下三种方法按顺序查找： i) 原始形式。 ii) 使用Spacy (Honnibal and Montani, 2017) 的词元形式。 iii) 基词（最后一个词）。</li>
+<li>举例来说，”taking notes”这个概念在Wiktionary的原始形式中并不存在，但它的词元形式”take notes”是存在的。从中，我们得到了描述文本：”To make a record of what one hears or observes for future reference”。</li>
+</ul>
+</li>
+<li><strong>整合所有描述信息</strong>:<ul>
+<li>找到所有实体的描述后，将问题和选项概念的描述分别表示为dq和dc。</li>
+<li>然后，将问题、选择、描述和三元组（来自第3.1节）以特定的格式输入到ALBERT模型中，格式如下：[CLS] q c [SEP] eq: dq [SEP] ec: dc [SEP] triple。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>a. 理论背景:<ul>
+<li>本文介绍了常识问题回答任务，并强调了基于观察和知识推理的重要性。它提到了语言模型在处理知识和常识方面的局限性，以及知识图谱在表示结构化数据方面的有效性。</li>
+</ul>
+</li>
+<li>b. 技术路线:<ul>
+<li>本文提出了DEKCOR模型用于常识问题回答。该模型利用ALBERT语言模型，并融合来自知识图谱的上下文信息。模型使用来自Wiktionary的实体描述作为ALBERT的额外输入。ALBERT模型的输入格式包括问题、选项、描述和三元组。使用基于注意力的加权和和softmax层生成问题和选项之间的相关性分数。模型的架构和输入构造如图1所示。</li>
+</ul>
+</li>
+</ul>
+<p>ALBERT模型上使用基于注意力的加权求和和softmax层来为问题-选项对生成相关性得分。</p>
+<ol>
+<li><p><strong>ALBERT的输出表示</strong>:</p>
+<ul>
+<li>假设ALBERT的输出表示为 ( ($x_0, …, x_m$) ) ，其中每个 ( $x_i $) 是一个 ( d ) 维的向量。</li>
+</ul>
+</li>
+<li><p><strong>基于注意力的加权求和</strong>:</p>
+<ul>
+<li>使用参数向量 ( u ) 计算每个表示 ( x_i ) 的权重（或注意力得分） ( q_i ) 。</li>
+<li>具体计算为： ( $q_i &#x3D; u^T x_i$ ) （方程(2)）。</li>
+<li>然后使用softmax函数计算每个 ( q_i ) 的归一化权重（或注意力权重） ( $\alpha_i$ )。</li>
+<li>具体计算为： ($ \alpha_i &#x3D; softmax(q_i)$ ) （方程(3)）。</li>
+<li>使用这些归一化的权重计算表示 ( x_i ) 的加权求和 ( v )。</li>
+<li>具体计算为： ($ v &#x3D; \sum_{i&#x3D;0}^{m} \alpha_i x_i $) （方程(4)）。</li>
+</ul>
+</li>
+<li><p><strong>计算问题和选项之间的相关性得分</strong>:</p>
+<ul>
+<li>使用参数向量 ( b ) 和前面计算的加权向量 ( v ) ，计算问题和选项之间的相关性得分 ( s )。</li>
+<li>具体计算为： ($ s &#x3D; softmax(v^T b) $) 。这里的softmax是对所有选项计算，用于交叉熵损失函数。</li>
+</ul>
+</li>
+</ol>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果:"></a>结果:</h3><ul>
+<li><p><strong>数据集</strong>:</p>
+<ul>
+<li><strong>CommonsenseQA</strong>: 基于ConceptNet的实体和关系来创建问题。</li>
+<li><strong>OpenBookQA</strong>: 探索来自一本包含1,326个事实的书的基础科学知识。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554233.png" alt="image-20231007143735578"></p>
+<p><img src="https://raw.githubusercontent.com/zhaijingzhi/imgtable/main/202310081554561.png" alt="image-20231007143827049"></p>
+</li>
+<li><p>a. 详细的实验设置:</p>
+<ul>
+<li>本文使用了ConceptNet作为知识图谱，并描述了从ConceptNet中检索相关三元组的过程。根据直接边缘或检索分数选择关系三元组。</li>
+</ul>
+</li>
+<li><p>b. 详细的实验结果:</p>
+<ul>
+<li>本文使用DEKCOR模型进行常识问题回答实验。模型的输入包括问题、选项、描述和三元组。通过基于注意力的加权和和softmax层生成问题和选项之间的相关性分数。模型的架构和输入构造如图1所示。</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/" data-id="clnh66623000070u78ona2kzc" data-title="10月第一周chatdb" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">9月第二周周报</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" rel="tag">QLORA 剪枝 lomo全参数微调</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dbgpt-kagnet/" rel="tag">dbgpt kagnet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" rel="tag">位置插值&#x2F;yarn插值</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" rel="tag">剪枝+蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" rel="tag">密集连接、滤波器剪枝</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" rel="tag">线性注意力，promot，lora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" rel="tag">跨语言多模态知识蒸馏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" rel="tag">通用剪枝</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/QLORA-%E5%89%AA%E6%9E%9D-lomo%E5%85%A8%E5%8F%82%E6%95%B0%E5%BE%AE%E8%B0%83/" style="font-size: 10px;">QLORA 剪枝 lomo全参数微调</a> <a href="/tags/dbgpt-kagnet/" style="font-size: 10px;">dbgpt kagnet</a> <a href="/tags/%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC-yarn%E6%8F%92%E5%80%BC/" style="font-size: 10px;">位置插值/yarn插值</a> <a href="/tags/%E5%89%AA%E6%9E%9D-%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">剪枝+蒸馏</a> <a href="/tags/%E5%AF%86%E9%9B%86%E8%BF%9E%E6%8E%A5%E3%80%81%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">密集连接、滤波器剪枝</a> <a href="/tags/%E7%BA%BF%E6%80%A7%E6%B3%A8%E6%84%8F%E5%8A%9B%EF%BC%8Cpromot%EF%BC%8Clora/" style="font-size: 10px;">线性注意力，promot，lora</a> <a href="/tags/%E8%B7%A8%E8%AF%AD%E8%A8%80%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/" style="font-size: 10px;">跨语言多模态知识蒸馏</a> <a href="/tags/%E9%80%9A%E7%94%A8%E5%89%AA%E6%9E%9D/" style="font-size: 10px;">通用剪枝</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">October 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/08/10%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8chatdb/">10月第一周chatdb</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8%E5%91%A8%E6%8A%A5/">9月第二周周报</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/08/9%E6%9C%88%E7%AC%AC%E4%B8%80%E5%91%A8%E4%BD%8D%E7%BD%AE%E6%8F%92%E5%80%BC/">9月第一周</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/7%E6%9C%88%E7%AC%AC%E4%BA%8C%E5%91%A8cvil%E5%A4%9A%E6%A8%A1%E6%80%81%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F/">7月第二周cvil多模态知识蒸馏</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/21/8%E6%9C%88%E7%AC%AC%E4%B8%89%E5%91%A8/">8月第三周HomoDistil</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
